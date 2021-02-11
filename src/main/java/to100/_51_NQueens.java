@@ -13,6 +13,7 @@ public class _51_NQueens {
         helper(res, new int[n], 0);
         return res;
     }
+
     public void helper(List<List<String>> res, int[] queens, int pos) {
         if (pos == queens.length) {
             addSolution(res, queens);

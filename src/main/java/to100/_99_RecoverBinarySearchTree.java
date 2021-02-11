@@ -1,7 +1,8 @@
 package to100;
 
-import java.util.Stack;
 import dependency.TreeNode;
+
+import java.util.Stack;
 
 public class _99_RecoverBinarySearchTree {
 
@@ -17,6 +18,7 @@ public class _99_RecoverBinarySearchTree {
         first.val = second.val;
         second.val = temp;
     }
+
     public void helper(TreeNode root) {
         if (root == null) return;
         helper(root.left);

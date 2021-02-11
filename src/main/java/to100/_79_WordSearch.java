@@ -13,6 +13,7 @@ public class _79_WordSearch {
         }
         return false;
     }
+
     private boolean exist(char[][] board, int i, int j, String word, int start) {
         if (start >= word.length()) return true;
         if (i < 0 || i >= board.length || j < 0 || j >= board[0].length) return false;

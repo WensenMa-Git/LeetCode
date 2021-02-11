@@ -13,6 +13,7 @@ public class _22_GenerateParentheses {
         helper(res, "", n, n);
         return res;
     }
+
     public static void helper(List<String> res, String s, int left, int right) {
         if (left > right) {
             return;

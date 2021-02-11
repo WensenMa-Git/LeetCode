@@ -1,19 +1,20 @@
 package to100;
 
+import dependency.TreeNode;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
-import dependency.TreeNode;
 
 
 public class _94_BinaryTreeInorderTraversal {
 
 
     public static List<Integer> inorderTraversal(TreeNode root) {
-       List<Integer> res = new ArrayList<>();
-       if (root == null) return res;
-       helper(res, root);
-       return res;
+        List<Integer> res = new ArrayList<>();
+        if (root == null) return res;
+        helper(res, root);
+        return res;
     }
 
     public static void helper(List<Integer> res, TreeNode root) {

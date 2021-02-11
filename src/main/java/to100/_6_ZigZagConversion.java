@@ -6,7 +6,7 @@ public class _6_ZigZagConversion {
         if (numRows <= 1) return s;
         StringBuilder[] sb = new StringBuilder[numRows];
         for (int i = 0; i < sb.length; i++) {
-            sb[i] = new StringBuilder("");
+            sb[i] = new StringBuilder();
         }
         for (int i = 0; i < s.length(); i++) {
             int index = i % (2 * numRows - 2);

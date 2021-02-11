@@ -1,6 +1,8 @@
 package to100;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 
 public class _49_GroupAnagrams {
@@ -16,7 +18,7 @@ public class _49_GroupAnagrams {
             String s = "";
             for (int i = 0; i < count.length; i++) {
                 if (count[i] != 0) {
-                    s += String.valueOf(count[i]) + String.valueOf((char)(i + 'a'));
+                    s += String.valueOf(count[i]) + (char) (i + 'a');
                 }
             }
             if (map.containsKey(s)) {

@@ -4,7 +4,6 @@ package to100;
 public class _65_ValidNumber {
 
 
-
     public boolean isNumber(String s) {
         s = s.trim();
         boolean numberSeen = false;

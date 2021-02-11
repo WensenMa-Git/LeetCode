@@ -1,9 +1,10 @@
 package to100;
 
+import dependency.Interval;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import dependency.Interval;
 
 public class _56_MergeIntervals {
 

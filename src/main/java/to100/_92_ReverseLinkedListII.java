@@ -1,9 +1,9 @@
- package to100;
+package to100;
 
 
- import dependency.ListNode;
+import dependency.ListNode;
 
- public class _92_ReverseLinkedListII {
+public class _92_ReverseLinkedListII {
 
     public ListNode reverseBetween(ListNode head, int m, int n) {
         ListNode dummy = new ListNode(0);

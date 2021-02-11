@@ -13,6 +13,7 @@ public class _52_NQueensII {
         helper(0, cols, d1, d2, n);
         return res;
     }
+
     public void helper(int row, boolean[] cols, boolean[] d1, boolean[] d2, int n) {
         if (row == n) {
             res++;
@@ -23,9 +24,13 @@ public class _52_NQueensII {
             int id2 = col + row;
             if (cols[col] || d1[id1] || d2[id2]) continue;
 
-            cols[col] = true; d1[id1] = true; d2[id2] = true;
+            cols[col] = true;
+            d1[id1] = true;
+            d2[id2] = true;
             helper(row + 1, cols, d1, d2, n);
-            cols[col] = false; d1[id1] = false; d2[id2] = false;
+            cols[col] = false;
+            d1[id1] = false;
+            d2[id2] = false;
         }
     }
 }

@@ -19,9 +19,9 @@ public class _69_Sqrt {
             }
         }
         if (high * high < x) {
-            return (int) high;
+            return high;
         } else {
-            return (int) low;
+            return low;
         }
     }
 

@@ -4,7 +4,6 @@ package to100;
 public class _87_ScrambleString {
 
 
-
     public boolean isScramble(String s1, String s2) {
         if (s1 == null || s2 == null) return false;
         if (s1.equals(s2)) return true;

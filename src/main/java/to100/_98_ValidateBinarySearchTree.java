@@ -5,7 +5,6 @@ import dependency.TreeNode;
 public class _98_ValidateBinarySearchTree {
 
 
-
     public static boolean isValidBST(TreeNode root) {
 
         if (root == null) return true;

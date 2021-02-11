@@ -44,11 +44,11 @@ public class _4_MedianofTwoSortedArrays {
         int total = m + n;
         if (total % 2 == 1) {
             return findKth(nums1, 0, nums2, 0, total / 2 + 1);
-        }
-        else {
+        } else {
             return (findKth(nums1, 0, nums2, 0, total / 2) + findKth(nums1, 0, nums2, 0, total / 2 + 1)) / 2.0;
         }
     }
+
     private int findKth(int[] A, int indexA, int[] B, int indexB, int k) {
         int lenA = (A == null) ? 0 : A.length;
         if (indexA > lenA - 1) {
@@ -65,8 +65,7 @@ public class _4_MedianofTwoSortedArrays {
         if (indexB + k / 2 - 1 < lenB) keyB = B[indexB + k / 2 - 1];
         if (keyA > keyB) {
             return findKth(A, indexA, B, indexB + k / 2, k - k / 2);
-        }
-        else {
+        } else {
             return findKth(A, indexA + k / 2, B, indexB, k - k / 2);
         }
     }

@@ -33,6 +33,7 @@ public class _46_Permutations {
         helper2(res, 0, nums);
         return res;
     }
+
     public static void helper2(List<List<Integer>> res, int start, int[] nums) {
         if (start == nums.length) {
             List<Integer> list = new ArrayList<>();
@@ -48,6 +49,7 @@ public class _46_Permutations {
             swap(nums, start, i);
         }
     }
+
     public static void swap(int[] nums, int l, int r) {
         int temp = nums[l];
         nums[l] = nums[r];

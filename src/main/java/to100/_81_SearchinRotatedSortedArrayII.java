@@ -4,7 +4,6 @@ package to100;
 public class _81_SearchinRotatedSortedArrayII {
 
 
-
     public boolean search(int[] nums, int target) {
         if (nums == null || nums.length == 0) return false;
         int start = 0;
@@ -24,7 +23,6 @@ public class _81_SearchinRotatedSortedArrayII {
             }
         }
         if (nums[start] == target) return true;
-        if (nums[end] == target) return true;
-        return false;
+        return nums[end] == target;
     }
 }

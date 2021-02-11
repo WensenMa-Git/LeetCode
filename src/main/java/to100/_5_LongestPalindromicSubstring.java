@@ -2,6 +2,8 @@ package to100;
 
 public class _5_LongestPalindromicSubstring {
 
+    String res = "";
+
     public String longestPalindrome(String s) {
         if (s == null || s.length() == 0) return s;
         String res = "";
@@ -21,7 +23,6 @@ public class _5_LongestPalindromicSubstring {
         return res;
     }
 
-    String res = "";
     // time : O(n^2) space : O(1)
     public String longestPalindrome2(String s) {
         if (s == null || s.length() == 0) return s;
@@ -31,6 +32,7 @@ public class _5_LongestPalindromicSubstring {
         }
         return res;
     }
+
     public void helper(String s, int left, int right) {
         while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
             left--;

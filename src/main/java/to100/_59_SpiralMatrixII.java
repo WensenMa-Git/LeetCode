@@ -4,7 +4,6 @@ package to100;
 public class _59_SpiralMatrixII {
 
 
-
     public int[][] generateMatrix(int n) {
 
         int[][] matrix = new int[n][n];

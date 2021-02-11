@@ -1,8 +1,9 @@
 package to100;
 
+import dependency.TreeNode;
+
 import java.util.ArrayList;
 import java.util.List;
-import dependency.TreeNode;
 
 public class _95_UniqueBinarySearchTreesII {
 

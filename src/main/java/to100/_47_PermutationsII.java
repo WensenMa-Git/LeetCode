@@ -9,7 +9,7 @@ public class _47_PermutationsII {
 
     public List<List<Integer>> permuteUnique(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
-        if (nums == null || nums.length == 0) return  res;
+        if (nums == null || nums.length == 0) return res;
         Arrays.sort(nums);
         helper(res, new ArrayList<Integer>(), nums, new boolean[nums.length]);
         return res;
@@ -32,11 +32,12 @@ public class _47_PermutationsII {
     // time : O(n!) space : O(n);
     public List<List<Integer>> permuteUnique2(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
-        if (nums == null || nums.length == 0) return  res;
+        if (nums == null || nums.length == 0) return res;
         Arrays.sort(nums);
         helper2(res, nums, 0);
         return res;
     }
+
     public void helper2(List<List<Integer>> res, int[] nums, int start) {
         if (start == nums.length) {
             List<Integer> list = new ArrayList<>();
@@ -48,7 +49,7 @@ public class _47_PermutationsII {
         }
 
         for (int i = start; i < nums.length; i++) {
-            if (isUsed(nums,start, i)) continue;
+            if (isUsed(nums, start, i)) continue;
             swap(nums, start, i);
             helper2(res, nums, start + 1);
             swap(nums, start, i);

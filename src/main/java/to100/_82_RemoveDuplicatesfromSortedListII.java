@@ -11,7 +11,7 @@ public class _82_RemoveDuplicatesfromSortedListII {
         ListNode dummy = new ListNode(0);
         dummy.next = head;
         ListNode p = dummy;
-        while (p.next != null && p.next.next !=null) {
+        while (p.next != null && p.next.next != null) {
             if (p.next.val == p.next.next.val) {
                 int sameNum = p.next.val;
                 while (p.next != null && p.next.val == sameNum) {

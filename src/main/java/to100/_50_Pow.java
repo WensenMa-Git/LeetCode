@@ -7,10 +7,11 @@ public class _50_Pow {
         if (n > 0) {
             return pow(x, n);
         } else {
-            return  1.0 / pow(x, n);
+            return 1.0 / pow(x, n);
         }
     }
-    public static double pow (double x, int n) {
+
+    public static double pow(double x, int n) {
         if (n == 0) {
             return 1;
         }
@@ -26,7 +27,7 @@ public class _50_Pow {
         if (n == 0) return 1;
         double res = 1;
         // int : -6.. ~ +6..  -2^32 ~ 2 ^32-1 Integer.MIN_VALUE
-        long abs = Math.abs((long)n);
+        long abs = Math.abs((long) n);
         while (abs > 0) {
             if (abs % 2 != 0) {
                 res *= x;

@@ -4,7 +4,6 @@ package to100;
 public class _62_UniquePaths {
 
 
-
     public int uniquePaths(int m, int n) {
         int[][] res = new int[m][n];
         for (int i = 0; i < m; i++) {
@@ -34,7 +33,6 @@ public class _62_UniquePaths {
     }
 
 
-
     public int uniquePaths3(int m, int n) {
         int count = m + n - 2;
         int k = m - 1;
@@ -42,6 +40,6 @@ public class _62_UniquePaths {
         for (int i = 1; i <= k; i++) {
             res = res * (count - k + i) / i;
         }
-        return (int)res;
+        return (int) res;
     }
 }

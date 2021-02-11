@@ -8,7 +8,7 @@ import java.util.List;
 public class _17_LetterCombinationsofaPhoneNumber {
 
 
-    private String[] mapping = new String[] {"0", "1", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+    private final String[] mapping = new String[]{"0", "1", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
 
     public List<String> letterCombinations(String digits) {
         List<String> res = new ArrayList<>();
@@ -35,7 +35,7 @@ public class _17_LetterCombinationsofaPhoneNumber {
         if (digits == null || digits.length() == 0) {
             return res;
         }
-        String[] mapping = new String[] {"0", "1", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+        String[] mapping = new String[]{"0", "1", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
         res.add("");
         for (int i = 0; i < digits.length(); i++) {
             int num = digits.charAt(i) - '0';

@@ -10,7 +10,7 @@ public class _7_ReverseInteger {
             x /= 10;
             if (res > Integer.MAX_VALUE || res < Integer.MIN_VALUE) return 0;
         }
-        return (int)res;
+        return (int) res;
     }
 
     public static int reverse2(int x) {

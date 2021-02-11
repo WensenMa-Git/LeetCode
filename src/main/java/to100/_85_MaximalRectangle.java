@@ -47,7 +47,6 @@ public class _85_MaximalRectangle {
     }
 
 
-
     public int maximalRectangle2(char[][] matrix) {
         if (matrix == null || matrix.length == 0) return 0;
         int n = matrix[0].length;

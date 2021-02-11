@@ -7,7 +7,6 @@ import java.util.List;
 public class _39_CombinationSum {
 
 
-
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
         List<List<Integer>> res = new ArrayList<>();
         if (candidates == null || candidates.length == 0) return res;

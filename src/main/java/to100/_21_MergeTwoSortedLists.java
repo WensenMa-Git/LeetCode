@@ -14,7 +14,7 @@ public class _21_MergeTwoSortedLists {
                 l1 = l1.next;
             } else {
                 cur.next = new ListNode(l2.val);
-                l2= l2.next;
+                l2 = l2.next;
             }
             cur = cur.next;
         }

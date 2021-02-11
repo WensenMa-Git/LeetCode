@@ -1,8 +1,9 @@
 package to100;
 
+import dependency.Interval;
+
 import java.util.ArrayList;
 import java.util.List;
-import dependency.Interval;
 
 
 public class _57_InsertInterval {
