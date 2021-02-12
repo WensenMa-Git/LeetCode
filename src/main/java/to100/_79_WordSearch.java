@@ -30,3 +30,33 @@ public class _79_WordSearch {
         return false;
     }
 }
+
+class Solution_2 {
+    public boolean exist(char[][] board, String word) {
+        char[] wordLetters = word.toCharArray();
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[i].length; j++) {
+                if (search(board, wordLetters, i, j, 0)) return true;
+            }
+        }
+        return false;
+    }
+    private boolean search(char[][]board, char[] wordLetters, int i, int j, int index) {
+        if (i < 0 || i >= board.length || j >= board[0].length || j < 0 || board[i][j] != wordLetters[index])               {
+            return false;
+        }
+        if (index == wordLetters.length - 1) {
+            return true;
+        }
+        char letter = board[i][j];
+        board[i][j] = '.';
+        if (search(board, wordLetters, i + 1, j, index + 1)
+                || search(board, wordLetters, i - 1, j, index + 1)
+                || search(board, wordLetters, i, j + 1, index + 1)
+                || search(board, wordLetters, i, j - 1, index + 1)) {
+            return true;
+        }
+        board[i][j] = letter;
+        return false;
+    }
+}
