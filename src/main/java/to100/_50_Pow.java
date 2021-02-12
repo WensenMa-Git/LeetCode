@@ -40,4 +40,22 @@ public class _50_Pow {
         }
         return res;
     }
+
+    //Provide a third solution (Preferred)
+    public double myPow3(double x, int n) {
+        if (x == 0)
+            return 0;
+        if (n >= 0)
+            return myF(x, n);
+        else
+            return 1.0 / myF(x, -n);
+    }
+    private double myF(double x, int n) {
+        if (n == 0)
+            return 1;
+        if (n == 1)
+            return x;
+        double half = myF(x, n / 2);
+        return n % 2 == 0 ? half * half : x * half * half;
+    }
 }

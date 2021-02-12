@@ -6,7 +6,6 @@ import java.util.List;
 
 public class _77_Combinations {
 
-
     public List<List<Integer>> combine(int n, int k) {
         List<List<Integer>> res = new ArrayList<>();
         helper(res, new ArrayList<>(), n, k, 1);

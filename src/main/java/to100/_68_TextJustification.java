@@ -3,7 +3,10 @@ package to100;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * https://leetcode.com/problems/text-justification/
+ * #Hard #hard
+ */
 public class _68_TextJustification {
 
     public List<String> fullJustify(String[] words, int L) {

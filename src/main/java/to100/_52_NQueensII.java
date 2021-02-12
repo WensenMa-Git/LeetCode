@@ -1,15 +1,17 @@
 package to100;
 
-
+/**
+ * https://leetcode.com/problems/n-queens/
+ * #Hard
+ */
 public class _52_NQueensII {
-
 
     int res = 0;
 
     public int totalNQueens(int n) {
         boolean[] cols = new boolean[n];
-        boolean[] d1 = new boolean[2 * n]; //  \
-        boolean[] d2 = new boolean[2 * n]; //  /
+        boolean[] d1 = new boolean[2 * n];
+        boolean[] d2 = new boolean[2 * n];
         helper(0, cols, d1, d2, n);
         return res;
     }

@@ -1,6 +1,10 @@
 package to100;
 
-
+/**
+ * https://leetcode.com/problems/first-missing-positive/
+ * Given an unsorted integer array nums, find the smallest missing positive integer.
+ * #Hard
+ */
 public class _41_FirstMissingPositive {
 
     public int firstMissingPositive(int[] nums) {

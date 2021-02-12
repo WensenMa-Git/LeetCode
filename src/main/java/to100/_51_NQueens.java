@@ -3,9 +3,11 @@ package to100;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * https://leetcode.com/problems/n-queens/
+ * #Hard
+ */
 public class _51_NQueens {
-
 
     public List<List<String>> solveNQueens(int n) {
         List<List<String>> res = new ArrayList<>();

@@ -1,8 +1,10 @@
 package to100;
 
-
+/**
+ * https://leetcode.com/problems/jump-game-ii/
+ * #Hard
+ */
 public class _45_JumpGameII {
-
 
     //time : O(n) space : O(1)
     public int jump(int[] nums) {
@@ -19,7 +21,6 @@ public class _45_JumpGameII {
         }
         return res;
     }
-
 
     // time : O(n)  space : O(1)
     public int jump2(int[] nums) {

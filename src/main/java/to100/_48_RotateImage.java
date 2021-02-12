@@ -19,4 +19,26 @@ public class _48_RotateImage {
             }
         }
     }
+
+    //Provide a second solution (Preferred)
+    public void rotate2(int[][] matrix) {
+        if (matrix == null || matrix.length == 0) return;
+        int m = matrix.length;
+        int n = matrix[0].length;
+        for (int up = 0, down = m - 1; up < down; up++, down--) {
+            for (int c = 0; c < n; c++) {
+                int temp = matrix[up][c];
+                matrix[up][c] = matrix[down][c];
+                matrix[down][c] = temp;
+            }
+        }
+        for (int r = 0; r < m; r++) {
+            for (int c = 0; c < r; c++) {
+                int temp = matrix[r][c];
+                matrix[r][c] = matrix[c][r];
+                matrix[c][r] = temp;
+            }
+        }
+    }
+
 }

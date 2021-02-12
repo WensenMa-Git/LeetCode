@@ -31,10 +31,9 @@ public class _79_WordSearch {
         }
         return false;
     }
-}
 
-class Solution_2 {
-    public boolean exist(char[][] board, String word) {
+    //Provide a second solution (Preferred)
+    public boolean exist2(char[][] board, String word) {
         char[] wordLetters = word.toCharArray();
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) {

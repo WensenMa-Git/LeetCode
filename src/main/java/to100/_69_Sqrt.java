@@ -1,9 +1,10 @@
 package to100;
 
-
+/**
+ * https://leetcode.com/problems/sqrtx/
+ * #Easy
+ */
 public class _69_Sqrt {
-    // 367	Valid Perfect Square
-
 
     public int mySqrt(int x) {
         if (x <= 0) return 0;

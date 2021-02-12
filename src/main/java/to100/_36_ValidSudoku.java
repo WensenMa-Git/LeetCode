@@ -52,11 +52,9 @@ public class _36_ValidSudoku {
         }
         return true;
     }
-}
 
-//Provide a second solution
-class Solution_36 {
-    public boolean isValidSudoku(char[][] board) {
+    //The best solution
+    public boolean isValidSudoku3(char[][] board) {
         int[] vset = new int[9];
         int[] hset = new int[9];
         int[] bckt = new int[9];

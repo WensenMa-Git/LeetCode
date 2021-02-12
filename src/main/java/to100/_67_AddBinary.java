@@ -1,6 +1,9 @@
 package to100;
 
-
+/**
+ * https://leetcode.com/problems/add-binary/
+ * #Easy
+ */
 public class _67_AddBinary {
 
     public static String addBinary(String a, String b) {

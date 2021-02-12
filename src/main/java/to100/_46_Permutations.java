@@ -3,7 +3,6 @@ package to100;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class _46_Permutations {
 
     public static List<List<Integer>> permute(int[] nums) {

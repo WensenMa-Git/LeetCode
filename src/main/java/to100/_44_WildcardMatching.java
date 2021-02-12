@@ -1,6 +1,9 @@
 package to100;
 
-
+/**
+ * https://leetcode.com/problems/wildcard-matching/
+ * #Hard
+ */
 public class _44_WildcardMatching {
 
     public boolean isMatch(String s, String p) {

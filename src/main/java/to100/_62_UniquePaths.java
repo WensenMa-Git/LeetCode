@@ -3,7 +3,6 @@ package to100;
 
 public class _62_UniquePaths {
 
-
     public int uniquePaths(int m, int n) {
         int[][] res = new int[m][n];
         for (int i = 0; i < m; i++) {
@@ -32,7 +31,6 @@ public class _62_UniquePaths {
         return res[n - 1];
     }
 
-
     public int uniquePaths3(int m, int n) {
         int count = m + n - 2;
         int k = m - 1;
@@ -41,5 +39,17 @@ public class _62_UniquePaths {
             res = res * (count - k + i) / i;
         }
         return (int) res;
+    }
+
+    //Provide a fourth solution (Preferred)
+    public int uniquePaths4(int m, int n) {
+        int[][] mat = new int[m + 1][n + 1];
+        mat[m - 1][n] = 1;
+        for (int r = m - 1; r >= 0; r--) {
+            for (int c = n - 1; c >= 0; c--) {
+                mat[r][c] = mat[r + 1][c] + mat[r][c + 1];
+            }
+        }
+        return mat[0][0];
     }
 }

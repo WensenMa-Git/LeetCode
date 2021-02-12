@@ -1,5 +1,7 @@
 package to100;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 
@@ -26,4 +28,30 @@ public class _71_SimplifyPath {
         }
         return res;
     }
+
+    //Provide a second solution (Preferred)
+    public String simplifyPath2(String path) {
+        String[] parts = path.split("/");
+        List<String> list = new ArrayList<>();
+        for(String part : parts){
+            if(part.equals("") || part.equals(".")){
+                continue;
+            }
+            if(part.equals("..")){
+                if(list.size() > 0){
+                    list.remove(list.size() - 1);
+                }
+            }else{
+                list.add(part);
+            }
+        }
+        if(list.size() == 0) return "/";
+        StringBuilder sb = new StringBuilder();
+        for(String part : list){
+            sb.append("/");
+            sb.append(part);
+        }
+        return sb.toString();
+    }
+
 }

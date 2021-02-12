@@ -3,7 +3,6 @@ package to100;
 
 public class _53_MaximumSubarray {
 
-
     // time : O(n) space : O(n);
     public int maxSubArray(int[] nums) {
         int[] dp = new int[nums.length];
@@ -16,6 +15,7 @@ public class _53_MaximumSubarray {
         return res;
     }
 
+    //Provide a second solution (Preferred)
     // time : O(n) space : O(1);
     public int maxSubArray2(int[] nums) {
         int res = nums[0];

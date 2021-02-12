@@ -2,9 +2,7 @@ package to100;
 
 import dependency.Interval;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class _56_MergeIntervals {
 
@@ -26,4 +24,27 @@ public class _56_MergeIntervals {
         res.add(new Interval(start, end));
         return res;
     }
+
+    //Provide a second solution (Preferred)
+    public List<Interval> merge2(List<Interval> intervals) {
+        if (intervals == null || intervals.isEmpty()) return intervals;
+        Collections.sort(intervals, new Comparator<Interval>() {
+            public int compare(Interval l1, Interval l2) {
+                return l1.start - l2.start;
+            }
+        });
+        Iterator<Interval> it = intervals.iterator();
+        Interval pre = it.next();
+        while (it.hasNext()) {
+            Interval cur = it.next();
+            if (pre.end < cur.start) {
+                pre = cur;
+            } else {
+                pre.end = Math.max(pre.end, cur.end);
+                it.remove();
+            }
+        }
+        return intervals;
+    }
+
 }
