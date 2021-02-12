@@ -1,6 +1,8 @@
 package to100;
 
-
+/**
+ * https://leetcode.com/problems/word-search/
+ */
 public class _79_WordSearch {
 
     public boolean exist(char[][] board, String word) {
