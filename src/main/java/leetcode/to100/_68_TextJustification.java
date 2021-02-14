@@ -5,6 +5,7 @@ import java.util.List;
 
 /**
  * https://leetcode.com/problems/text-justification/
+ * Subject: String, Two Pointer, Math
  * #Hard #hard
  */
 public class _68_TextJustification {
@@ -50,5 +51,53 @@ public class _68_TextJustification {
             index = last;
         }
         return res;
+    }
+
+    //Provide a second solution (Preferred)
+    //中文讲解：https://leetcode-cn.com/problems/text-justification/solution/text-justification-by-ikaruga/
+    class Solution {
+        public List<String> fullJustify(String[] words, int maxWidth) {
+            List<String> res = new ArrayList<>();
+            int count = 0;
+            int start = 0;
+            for (int end = 0; end < words.length; end++) {
+                count += words[end].length() + 1;
+                if(end == words.length - 1 || count + words[end + 1].length() > maxWidth) {
+                    res.add(generateLine(words, maxWidth, start, end, end == words.length - 1));
+                    start = end + 1;
+                    count = 0;
+                }
+            }
+            return res;
+        }
+
+        private String generateLine(String[] words, int maxWidth, int start, int end, boolean isLastLine) {
+            int wordCount = end - start + 1;
+            int spaceCount = maxWidth + 1 - wordCount;
+            for (int i = start; i <= end; i++) {
+                spaceCount -= words[i].length();
+            }
+            int spaceSuffix = 1;
+            int spaceAvg = (wordCount == 1) ? 1 : spaceCount / (wordCount - 1);
+            int spaceTotalExtra = (wordCount == 1) ? 0 : spaceCount % (wordCount - 1);
+            StringBuilder sb = new StringBuilder();
+            for(int i = start; i < end; i++) {
+                sb.append(words[i]);
+                if (isLastLine) {
+                    sb.append(' ');
+                    continue;
+                }
+                int extra = i - start < spaceTotalExtra ? 1 : 0;
+                int space = spaceSuffix + spaceAvg + extra;
+                for (int j = 0; j < space; j++) {
+                    sb.append(' ');
+                }
+            }
+            sb.append(words[end]);
+            for (int i = sb.length(); i < maxWidth; i++) {
+                sb.append(' ');
+            }
+            return sb.toString();
+        }
     }
 }

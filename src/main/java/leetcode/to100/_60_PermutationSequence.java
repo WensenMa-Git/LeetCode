@@ -3,7 +3,10 @@ package leetcode.to100;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * https://leetcode.com/problems/permutation-sequence/
+ * #Hard #hard
+ */
 public class _60_PermutationSequence {
 
     public static String getPermutation(int n, int k) {

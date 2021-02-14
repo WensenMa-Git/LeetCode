@@ -1,8 +1,10 @@
 package leetcode.to100;
 
-
+/**
+ * https://leetcode.com/problems/spiral-matrix-ii/
+ * Subject: Array
+ */
 public class _59_SpiralMatrixII {
-
 
     public int[][] generateMatrix(int n) {
 
@@ -36,4 +38,42 @@ public class _59_SpiralMatrixII {
         }
         return matrix;
     }
+
+    //Provide a second solution (Preferred)
+    public int[][] generateMatrix2(int n) {
+        if(n <= 0) return null;
+        int[][] res = new int[n][n];
+        int rows = n, columns = n;
+        int r = 0, c = -1;
+
+        int count = 1;
+        while(true) {
+            for(int i = 0; i < columns; i++) {
+                res[r][++c] = count++;
+            }
+            if(--rows == 0) {
+                break;
+            }
+            for(int i = 0; i < rows; i++) {
+                res[++r][c] = count++;
+            }
+            if(--columns == 0) {
+                break;
+            }
+            for(int i = 0; i < columns; i++) {
+                res[r][--c] = count++;
+            }
+            if(--rows == 0) {
+                break;
+            }
+            for(int i = 0; i < rows; i++) {
+                res[--r][c] = count++;
+            }
+            if(--columns == 0) {
+                break;
+            }
+        }
+        return res;
+    }
+
 }
