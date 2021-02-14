@@ -2,6 +2,7 @@ package leetcode.to100;
 
 /**
  * https://leetcode.com/problems/valid-number/
+ * Subject: String
  * #Hard
  */
 public class _65_ValidNumber {

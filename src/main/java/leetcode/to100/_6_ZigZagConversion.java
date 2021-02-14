@@ -1,5 +1,10 @@
 package leetcode.to100;
 
+/**
+ * https://leetcode.com/problems/zigzag-conversion/
+ * Subject: String
+ * #Medium #hard
+ */
 public class _6_ZigZagConversion {
 
     public String convert(String s, int numRows) {

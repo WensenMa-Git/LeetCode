@@ -1,6 +1,10 @@
 package leetcode.to100;
 
-
+/**
+ * https://leetcode.com/problems/reverse-integer/
+ * Subject: Math
+ * #Easy
+ */
 public class _7_ReverseInteger {
 
     public static int reverse(int x) {
@@ -22,5 +26,28 @@ public class _7_ReverseInteger {
             x = x / 10;
         }
         return res;
+    }
+
+    //Provide a third solution.
+    public int reverse3(int x) {
+        int num = 0;
+        while (x != 0) {
+            int digit = x % 10;
+            x /= 10;
+            if (Math.abs(num) > 214748364) return 0;
+            num = num * 10 + digit;
+        }
+        return num;
+    }
+
+    //Provide a fourth solution (Preferred)
+    public int reverse4(int x) {
+        int num = 0;
+        while (x != 0) {
+            if (Math.abs(num) > 214748364) return 0;
+            num = num * 10 + x % 10;
+            x /= 10;
+        }
+        return num;
     }
 }

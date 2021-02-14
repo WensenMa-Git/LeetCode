@@ -1,5 +1,10 @@
 package leetcode.to100;
 
+/**
+ * https://leetcode.com/problems/longest-palindromic-substring/
+ * Subject: String, Two Pointer
+ * #Medium
+ */
 public class _5_LongestPalindromicSubstring {
 
     String res = "";
@@ -23,6 +28,7 @@ public class _5_LongestPalindromicSubstring {
         return res;
     }
 
+    //Provide a second solution (Preferred)
     // time : O(n^2) space : O(1)
     public String longestPalindrome2(String s) {
         if (s == null || s.length() == 0) return s;
@@ -42,5 +48,31 @@ public class _5_LongestPalindromicSubstring {
         if (cur.length() > res.length()) {
             res = cur;
         }
+    }
+
+    //Provide a third solution.
+    public String longestPalindrome3(String s) {
+        if(s.length() == 0) return "";
+        char[] sChars = s.toCharArray();
+        int start = 0;
+        int end = 0;
+        for(int i = 0; i < sChars.length; i++){
+            int len1 = getLen(sChars, i, i);
+            int len2 = getLen(sChars, i, i + 1);
+            int len = Math.max(len1, len2);
+            if(len > end - start){
+                start = i - (len - 1) / 2;
+                end = i + len / 2;
+            }
+        }
+        return s.substring(start, end + 1);
+    }
+
+    private int getLen(char[] sChars, int left, int right){
+        while(left >= 0 && right < sChars.length && sChars[left] == sChars[right]){
+            left--;
+            right++;
+        }
+        return right - left - 1;
     }
 }

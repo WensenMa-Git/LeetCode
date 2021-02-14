@@ -1,8 +1,12 @@
 package leetcode.to100;
 
+/**
+ * https://leetcode.com/problems/median-of-two-sorted-arrays/
+ * Subject: Math, 二分法
+ * #Hard #hard
+ */
 public class _4_MedianofTwoSortedArrays {
 
-    //Solution 1
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
         if (nums1.length > nums2.length) {
             return findMedianSortedArrays(nums2, nums1);
@@ -37,7 +41,7 @@ public class _4_MedianofTwoSortedArrays {
         return -1;
     }
 
-    //Solution 2
+    //Provide a second solution (Preferred)
     public double findMedianSortedArrays2(int[] nums1, int[] nums2) {
         int m = nums1.length;
         int n = nums2.length;

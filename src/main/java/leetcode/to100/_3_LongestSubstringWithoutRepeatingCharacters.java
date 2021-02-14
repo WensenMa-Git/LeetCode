@@ -3,6 +3,11 @@ package leetcode.to100;
 import java.util.HashMap;
 import java.util.HashSet;
 
+/**
+ * https://leetcode.com/problems/longest-substring-without-repeating-characters/
+ * Subject: String, Two Pointer
+ * #Medium
+ */
 public class _3_LongestSubstringWithoutRepeatingCharacters {
 
     public int lengthOfLongestSubstring(String s) {
@@ -33,6 +38,21 @@ public class _3_LongestSubstringWithoutRepeatingCharacters {
             }
         }
         return res;
+    }
+
+    //Provide a third solution (Preferred)
+    public int lengthOfLongestSubstring3(String s) {
+        char[] sChars = s.toCharArray();
+        boolean[] visited = new boolean[256];
+        int len = 0;
+        for(int L = 0, R = 0; R < sChars.length; R++){
+            while(visited[sChars[R]]){
+                visited[sChars[L++]] = false;
+            }
+            visited[sChars[R]] = true;
+            len = Math.max(R - L + 1, len);
+        }
+        return len;
     }
 }
 
