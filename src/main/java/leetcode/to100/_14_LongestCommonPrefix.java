@@ -1,6 +1,10 @@
 package leetcode.to100;
 
-
+/**
+ * https://leetcode.com/problems/longest-common-prefix/
+ * Subject: String
+ * #Easy, #Attention
+ */
 public class _14_LongestCommonPrefix {
 
     public String longestCommonPrefix(String[] strs) {
