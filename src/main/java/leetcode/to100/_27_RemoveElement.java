@@ -2,7 +2,9 @@ package leetcode.to100;
 
 import java.util.Arrays;
 
-
+/**
+ *
+ */
 public class _27_RemoveElement {
 
     public static int removeElement(int[] nums, int val) {
@@ -15,10 +17,5 @@ public class _27_RemoveElement {
         }
         System.out.println(Arrays.toString(nums));
         return res;
-    }
-
-    public static void main(String[] args) {
-        int[] nums = new int[]{1, 2, 3, 3, 4};
-        removeElement(nums, 3);
     }
 }
