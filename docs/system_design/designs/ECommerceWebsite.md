@@ -1,4 +1,4 @@
-Design eCommerce Website (Part I)
+#### Design eCommerce Website (Part I)
 
 Over the past couple of weeks, a lot of people requested us to discuss eCommerce website. Not only has this topic been asked in quite a lot system design interviews, but also eCommerce websites are so popular today that a lot of techniques and researches are developed for it.
 
@@ -48,8 +48,7 @@ In the next post, we’ll continue discussing concurrency and will also talk abo
 By the way, if you want to have more guidance from experienced interviewers, you can check Gainlo that allows you to have mock interview with engineers from Google, Facebook etc..
 
 
----
-Design eCommerce Website (Part II)
+#### Design eCommerce Website (Part II)
 
 This is the second post of Design eCommerce Website series posts. If you haven’t read the first post, it’s better to check it first as we’ll continue our discussion here.
 
