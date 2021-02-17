@@ -39,7 +39,7 @@ Summary
 
 We’ll talk about a better solution for concurrency issue without using a lock in the next post. There are so many topics I’d like to cover about eCommerce websites.
 
-many techniques are common across all distributed systems, what’s important is to compare the pros and cons of each approach and select the one that works best for the particular application.
+In fact, many techniques are common across all distributed systems, what’s important is to compare the pros and cons of each approach and select the one that works best for the particular application.
 
 In the next post, we’ll continue discussing concurrency and will also talk about system availability and consistency.
 
