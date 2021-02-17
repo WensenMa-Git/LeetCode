@@ -43,8 +43,6 @@ In fact, many techniques are common across all distributed systems, what’s imp
 
 In the next post, we’ll continue discussing concurrency and will also talk about system availability and consistency.
 
-By the way, if you want to have more guidance from experienced interviewers, you can check Gainlo that allows you to have mock interview with engineers from Google, Facebook etc..
-
 
 #### Design eCommerce Website (Part II)
 
