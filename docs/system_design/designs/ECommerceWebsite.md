@@ -3,7 +3,7 @@
 First of all, building an eCommerce website requires things like database design, system availability, concurrency consideration and so on so forth. All of them are extremely important in today’s distributed systems. In addition, everyone has used some eCommerce website like Amazon. If you are generally curious about surroundings, you should have already thought about this topic.
 eCommerce model
 
-In our guideline 8 Things You Need to Know Before a System Design Interview, we said that a common strategy of system design interview is starting with simple and basic things instead of jumping into details directly. So how would you design the basic data structure of an eCommerce website? And what about the database schema?
+A common strategy of system design interview is starting with simple and basic things instead of jumping into details directly. So how would you design the basic data structure of an eCommerce website? And what about the database schema?
 
 I’ll skip the data structure for user models as it should be quite similar to other applications. Let’s focus on the product. In the simplest scenario, we need three major objects: Product, User and Order.
 
