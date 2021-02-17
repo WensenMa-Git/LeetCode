@@ -1,7 +1,5 @@
 #### Design eCommerce Website (Part I)
 
-Over the past couple of weeks, a lot of people requested us to discuss eCommerce website. Not only has this topic been asked in quite a lot system design interviews, but also eCommerce websites are so popular today that a lot of techniques and researches are developed for it.
-
 Before digging into this topic, it’s better to understand why design eCommerce website is popular in system design interviews. First of all, building an eCommerce website requires things like database design, system availability, concurrency consideration and so on so forth. All of them are extremely important in today’s distributed systems. In addition, everyone has used some eCommerce website like Amazon. If you are generally curious about surroundings, you should have already thought about this topic.
 eCommerce model
 
