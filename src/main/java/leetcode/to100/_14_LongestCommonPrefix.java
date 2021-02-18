@@ -3,7 +3,7 @@ package leetcode.to100;
 /**
  * https://leetcode.com/problems/longest-common-prefix/
  * Subject: String
- * #Easy, #Attention
+ * #Easy
  */
 public class _14_LongestCommonPrefix {
 

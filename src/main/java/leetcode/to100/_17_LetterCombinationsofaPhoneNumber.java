@@ -4,9 +4,12 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-
+/**
+ * https://leetcode.com/problems/letter-combinations-of-a-phone-number/
+ * Subject: Backtrack
+ * #Medium
+ */
 public class _17_LetterCombinationsofaPhoneNumber {
-
 
     private final String[] mapping = new String[]{"0", "1", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
 
@@ -47,6 +50,26 @@ public class _17_LetterCombinationsofaPhoneNumber {
             }
         }
         return res;
+    }
+
+    //Provide a third solution (Preferred)
+    List<String> result = new ArrayList<>();
+    public List<String> letterCombinations3(String digits) {
+        if (digits == null || digits.length() == 0) {
+            return result;
+        }
+        String[] phone = {"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+        dfs(digits, result, phone, 0, "");
+        return result;
+    }
+    private void dfs(String digits, List<String> result, String[] phone, int index, String cur) {
+        if (index == digits.length()) {
+            result.add(cur);
+            return;
+        }
+        for (char c : phone[digits.charAt(index) - '0'].toCharArray()) {
+            dfs(digits, result, phone, index + 1, cur + c);
+        }
     }
 
 }

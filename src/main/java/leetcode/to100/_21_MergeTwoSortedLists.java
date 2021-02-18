@@ -3,6 +3,11 @@ package leetcode.to100;
 
 import leetcode.dependency.ListNode;
 
+/**
+ * https://leetcode.com/problems/merge-two-sorted-lists/
+ * Subject: LinkedList
+ * #Easy
+ */
 public class _21_MergeTwoSortedLists {
 
     public static ListNode mergeTwoLists(ListNode l1, ListNode l2) {

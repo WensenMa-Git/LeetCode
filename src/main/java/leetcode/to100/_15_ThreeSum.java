@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-
+/**
+ * https://leetcode.com/problems/3sum/
+ * Subject: Two Pointer
+ * #Medium
+ */
 public class _15_ThreeSum {
 
     public List<List<Integer>> threeSum(int[] nums) {

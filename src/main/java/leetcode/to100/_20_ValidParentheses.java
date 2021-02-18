@@ -2,7 +2,11 @@ package leetcode.to100;
 
 import java.util.Stack;
 
-
+/**
+ * https://leetcode.com/problems/remove-nth-node-from-end-of-list/
+ * Subject: Stack
+ * #Easy
+ */
 public class _20_ValidParentheses {
 
     public static boolean isValid(String s) {

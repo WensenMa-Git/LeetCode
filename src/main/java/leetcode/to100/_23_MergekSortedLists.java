@@ -4,7 +4,11 @@ import leetcode.dependency.ListNode;
 
 import java.util.PriorityQueue;
 
-
+/**
+ * https://leetcode.com/problems/merge-k-sorted-lists/
+ * Subject: LinkedList
+ * #Hard #easy
+ */
 public class _23_MergekSortedLists {
 
     public ListNode mergeKLists(ListNode[] lists) {
@@ -51,5 +55,40 @@ public class _23_MergekSortedLists {
             }
         }
         return dummy.next;
+    }
+
+    //Provide a third solution (Preferred)
+    public ListNode mergeKLists3(ListNode[] lists) {
+        if(lists == null || lists.length == 0) return null;
+        int right = lists.length - 1;
+        while(right > 0){
+            for(int left = 0; left < right; left++, right--){
+                lists[left] = merge2(lists[left], lists[right]);
+            }
+        }
+        return lists[0];
+    }
+
+    private ListNode merge2(ListNode n1, ListNode n2){
+
+        ListNode dummyHead = new ListNode(0);
+        ListNode p = dummyHead;
+        while(n1 != null && n2 != null){
+            if(n1.val < n2.val){
+                p.next = n1;
+                n1 = n1.next;
+            }else{
+                p.next = n2;
+                n2 = n2.next;
+            }
+            p = p.next;
+        }
+        if(n1 != null){
+            p.next = n1;
+        }else{
+            p.next = n2;
+        }
+        return dummyHead.next;
+
     }
 }
