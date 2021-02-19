@@ -22,3 +22,4 @@ We must say that the architecture will evolve as time grows. But it’s not nece
 1. Amazon Locker
 2. eCommerce Website
 3. Youtube
+4. News Feed System
