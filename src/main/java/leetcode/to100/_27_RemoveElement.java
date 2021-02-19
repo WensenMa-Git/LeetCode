@@ -3,7 +3,9 @@ package leetcode.to100;
 import java.util.Arrays;
 
 /**
- *
+ * https://leetcode.com/problems/remove-element/
+ * Subject: Array
+ * #Easy
  */
 public class _27_RemoveElement {
 
@@ -17,5 +19,16 @@ public class _27_RemoveElement {
         }
         System.out.println(Arrays.toString(nums));
         return res;
+    }
+
+    //Provide a second solution (Preferred)
+    public int removeElement2(int[] nums, int val) {
+        int index = 0;
+        for(int n : nums){
+            if(n != val){
+                nums[index++] = n;
+            }
+        }
+        return index;
     }
 }
