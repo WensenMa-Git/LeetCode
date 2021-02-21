@@ -1,8 +1,11 @@
 package leetcode.to100;
 
-
+/**
+ * https://leetcode.com/problems/search-in-rotated-sorted-array/
+ * Subject: Binary Search
+ * #Medium, #Attention
+ */
 public class _33_SearchinRotatedSortedArray {
-
 
     public int search2(int[] nums, int target) {
         int start = 0;

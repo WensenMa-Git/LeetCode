@@ -2,7 +2,11 @@ package leetcode.to100;
 
 import java.util.HashSet;
 
-
+/**
+ * https://leetcode.com/problems/valid-sudoku/
+ * Subject: Bitset
+ * #Medium
+ */
 public class _36_ValidSudoku {
 
     // time : O(n^2) space : O(n)
@@ -53,7 +57,7 @@ public class _36_ValidSudoku {
         return true;
     }
 
-    //The best solution
+    //Provide a second solution (Preferred)
     public boolean isValidSudoku3(char[][] board) {
         int[] vset = new int[9];
         int[] hset = new int[9];

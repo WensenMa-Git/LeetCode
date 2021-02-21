@@ -1,6 +1,10 @@
 package leetcode.to100;
 
-
+/**
+ * https://leetcode.com/problems/divide-two-integers/
+ * Subject: Math, Recruit.
+ * #Medium
+ */
 public class _29_DivideTwoIntegers {
 
     public int divide(int dividend, int divisor) {

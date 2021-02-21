@@ -2,9 +2,12 @@ package leetcode.to100;
 
 import java.util.Stack;
 
-
+/**
+ * https://leetcode.com/problems/longest-valid-parentheses/
+ * Subject: Two Pointer, Stack
+ * #Hard
+ */
 public class _32_LongestValidParentheses {
-
 
     public int longestValidParentheses(String s) {
         Stack<Integer> stack = new Stack<>();

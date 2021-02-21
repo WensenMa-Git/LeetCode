@@ -1,8 +1,11 @@
 package leetcode.to100;
 
-
+/**
+ * https://leetcode.com/problems/search-insert-position/
+ * Subject: Binary Search
+ * #Easy
+ */
 public class _35_SearchInsertPosition {
-
 
     public int searchInsert(int[] nums, int target) {
         int left = 0;

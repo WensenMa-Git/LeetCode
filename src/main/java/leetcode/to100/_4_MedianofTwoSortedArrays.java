@@ -2,7 +2,7 @@ package leetcode.to100;
 
 /**
  * https://leetcode.com/problems/median-of-two-sorted-arrays/
- * Subject: Math, 二分法
+ * Subject: Math, Binary Search
  * #Hard #hard
  */
 public class _4_MedianofTwoSortedArrays {
