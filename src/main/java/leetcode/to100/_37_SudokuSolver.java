@@ -3,6 +3,11 @@ package leetcode.to100;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * https://leetcode.com/problems/sudoku-solver/
+ * Subject: Backtrack
+ * #Hard
+ */
 public class _37_SudokuSolver {
 
     public void solveSudoku(char[][] board) {
