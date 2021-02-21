@@ -3,6 +3,11 @@ package leetcode.to100;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * https://leetcode.com/problems/permutations/
+ * Subject: Backtrack
+ * #Medium
+ */
 public class _46_Permutations {
 
     public static List<List<Integer>> permute(int[] nums) {
@@ -53,5 +58,25 @@ public class _46_Permutations {
         int temp = nums[l];
         nums[l] = nums[r];
         nums[r] = temp;
+    }
+
+    //Provide a third solution (Preferred)
+    public List<List<Integer>> permute3(int[] nums) {
+        List<List<Integer>> lists = new ArrayList<>();
+        permuteUtil(lists, new ArrayList<>(), nums);
+        return lists;
+    }
+
+    private void permuteUtil(List<List<Integer>> lists, ArrayList<Integer> tempList, int[] nums){
+        if(tempList.size() == nums.length){
+            lists.add(new ArrayList(tempList));
+        }
+        for(int i = 0; i < nums.length; i++){
+            if(!tempList.contains(nums[i])){
+                tempList.add(nums[i]);
+                permuteUtil(lists, tempList, nums);
+                tempList.remove(tempList.size() - 1);
+            }
+        }
     }
 }

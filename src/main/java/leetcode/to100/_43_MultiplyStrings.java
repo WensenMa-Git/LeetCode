@@ -1,6 +1,10 @@
 package leetcode.to100;
 
-
+/**
+ * https://leetcode.com/problems/multiply-strings/
+ * Subject: String, Math, 找规律
+ * #Medium
+ */
 public class _43_MultiplyStrings {
 
     public String multiply(String num1, String num2) {

@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-
+/**
+ * https://leetcode.com/problems/permutations-ii/
+ * Subject: Backtrack
+ * #Medium
+ */
 public class _47_PermutationsII {
 
     public List<List<Integer>> permuteUnique(int[] nums) {
@@ -67,5 +71,29 @@ public class _47_PermutationsII {
             if (nums[x] == nums[j]) return true;
         }
         return false;
+    }
+
+    //Provide a third solution (Preferred)
+    public List<List<Integer>> permuteUnique3(int[] nums) {
+        List<List<Integer>> lists = new ArrayList<>();
+        if(nums == null || nums.length == 0) return lists;
+        Arrays.sort(nums);
+        permuteUniqueUtil(lists, new ArrayList<Integer>(), nums, new boolean[nums.length]);
+        return lists;
+    }
+
+    private void permuteUniqueUtil(List<List<Integer>> lists, List<Integer> tempList, int[] nums, boolean[] used){
+        if(tempList.size() == nums.length){
+            lists.add(new ArrayList<>(tempList));
+            return;
+        }
+        for(int i = 0; i < nums.length; i++){
+            if(used[i] || (i >0 && nums[i] == nums[i - 1] && !used[i - 1])) continue;
+            tempList.add(nums[i]);
+            used[i] = true;
+            permuteUniqueUtil(lists, tempList, nums, used);
+            tempList.remove(tempList.size() - 1);
+            used[i] = false;
+        }
     }
 }

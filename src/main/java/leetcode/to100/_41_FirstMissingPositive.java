@@ -1,5 +1,7 @@
 package leetcode.to100;
 
+import java.util.Arrays;
+
 /**
  * https://leetcode.com/problems/first-missing-positive/
  * Given an unsorted integer array nums, find the smallest missing positive integer.
@@ -24,5 +26,31 @@ public class _41_FirstMissingPositive {
             }
         }
         return nums.length + 1;
+    }
+
+    //Provide a second solution. (O(nlogn))
+    public int firstMissingPositive2(int[] nums) {
+        Arrays.sort(nums);
+        int index = 0;
+        while(index < nums.length && nums[index] < 1) index++;
+        int pre = 0;
+        while(index < nums.length){
+            if(nums[index] > pre + 1){
+                return pre + 1;
+            }
+            pre = nums[index++];
+        }
+        return pre + 1;
+    }
+
+    //Provide a third solution (Preferred)
+    public int firstMissingPositive3(int[] nums) {
+        int min = 1;
+        Arrays.sort(nums);
+        for (int num : nums) {
+            if (num > min) break;
+            if (num == min) min++;
+        }
+        return min;
     }
 }

@@ -33,7 +33,7 @@ public class _44_WildcardMatching {
         return pp == p.length();
     }
 
-    //Solution 2 (Preferred)
+    //Provide a second solution (Preferred).
     public boolean isMatch2(String s, String p) {
         boolean[][] dp = new boolean[s.length() + 1][p.length() + 1];
         dp[0][0] = true;

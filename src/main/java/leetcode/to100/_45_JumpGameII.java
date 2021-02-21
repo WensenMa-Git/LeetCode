@@ -2,6 +2,7 @@ package leetcode.to100;
 
 /**
  * https://leetcode.com/problems/jump-game-ii/
+ * Subject: Dynamic Programming.
  * #Hard
  */
 public class _45_JumpGameII {
@@ -40,5 +41,21 @@ public class _45_JumpGameII {
             curMaxArea = maxNext;
         }
         return 0;
+    }
+
+    //Provide a third solution (Preferred).
+    public int jump3(int[] nums) {
+        if (nums == null || nums.length < 2) return 0;
+        int res = 0;
+        int curMaxArea = 0;
+        int maxNext = 0;
+        for (int i = 0; i < nums.length - 1; i++) {
+            maxNext = Math.max(maxNext, i + nums[i]);
+            if (i == curMaxArea) {
+                res++;
+                curMaxArea = maxNext;
+            }
+        }
+        return res;
     }
 }

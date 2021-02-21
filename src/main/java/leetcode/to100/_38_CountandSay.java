@@ -1,6 +1,10 @@
 package leetcode.to100;
 
-
+/**
+ * https://leetcode.com/problems/count-and-say/
+ * Subject: Two Pointer
+ * #Medium
+ */
 public class _38_CountandSay {
 
     public String countAndSay(int n) {
@@ -26,5 +30,27 @@ public class _38_CountandSay {
             i++;
         }
         return res;
+    }
+
+    //Provide a second solution (Preferred)
+    public String countAndSay2(int n) {
+        String s = "1";
+        for (int i = 1; i < n; i++) {
+            s = compress(s);
+        }
+        return s;
+    }
+
+    private String compress(String s) {
+        char[] arr = s.toCharArray();
+        StringBuilder sb = new StringBuilder();
+        for(int L = 0, R = 1; R <= arr.length; R++){
+            if(R == arr.length || arr[R] != arr[L]){
+                sb.append(R - L);
+                sb.append(arr[L]);
+                L = R;
+            }
+        }
+        return sb.toString();
     }
 }
