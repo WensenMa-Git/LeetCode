@@ -1,6 +1,10 @@
 package leetcode.to100;
 
-
+/**
+ * https://leetcode.com/problems/jump-game/
+ * Subject: Dynamic Programming
+ * #Medium
+ */
 public class _55_JumpGame {
 
     public boolean canJump(int[] nums) {
