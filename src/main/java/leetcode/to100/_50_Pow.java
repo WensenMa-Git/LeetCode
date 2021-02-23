@@ -1,6 +1,10 @@
 package leetcode.to100;
 
-
+/**
+ * https://leetcode.com/problems/powx-n/
+ * Subject: Math
+ * #Math
+ */
 public class _50_Pow {
 
     public static double myPow1(double x, int n) {
