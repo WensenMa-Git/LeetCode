@@ -5,7 +5,9 @@ import java.util.List;
 
 /**
  * https://leetcode.com/problems/permutation-sequence/
+ * Subject: 找规律 Permutation
  * #Hard #hard
+ * Similar questions: 31. Next Permutation
  */
 public class _60_PermutationSequence {
 
