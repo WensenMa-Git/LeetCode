@@ -5,7 +5,11 @@ import leetcode.dependency.Interval;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * https://leetcode.com/problems/insert-interval/
+ * Subject: Interval
+ * #Medium
+ */
 public class _57_InsertInterval {
 
     public List<Interval> insert(List<Interval> intervals, Interval newInterval) {
