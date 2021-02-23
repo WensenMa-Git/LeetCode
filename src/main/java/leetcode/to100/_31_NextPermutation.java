@@ -2,8 +2,9 @@ package leetcode.to100;
 
 /**
  * https://leetcode.com/problems/next-permutation/
- * Subject: 找规律
+ * Subject: 找规律 Permutation
  * #Medium #hard
+ * Similar questions: 60. Permutation Sequence
  */
 public class _31_NextPermutation {
 

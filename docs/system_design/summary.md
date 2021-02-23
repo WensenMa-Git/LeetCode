@@ -7,7 +7,7 @@ We must say that the architecture will evolve as time grows. But it’s not nece
 
 - [Split tiers] Initially, when the application is quite small, we run application server (web server and backend servier), database server and store the static files in one host. Application generally have three tiers (rest, service, data)
 - [Split Server] To improve the performance, separate the application with database. We can use three host: application server, storage server, database server.
-- [IO-Cache] To improve the I/O performance, we can use cache such as Redis, Hazelcast. The database access pressure could be relieved 
+- [IO-Cache] To improve the I/O performance, we can use cache such as Redis, Hazelcast. The database access pressure could be relieved.
 - [IO-Cache] To improve the internet response speed, we can use CDN (AWS cloudfront) for caching static files.
 - [IO] To improve the I/O performance even more, we can split the read and write for the database. The primary database takes the responsibility for writing data and syncing the data to the secondary database. The secondary database took the responsibility for reading data. (Segregate our read traffic from write traffic)
 - [IO] Index the database table.
