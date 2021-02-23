@@ -4,6 +4,11 @@ import leetcode.dependency.Interval;
 
 import java.util.*;
 
+/**
+ * https://leetcode.com/problems/merge-intervals/
+ * Subject: Interval
+ * #Medium
+ */
 public class _56_MergeIntervals {
 
     public List<Interval> merge(List<Interval> intervals) {
@@ -28,6 +33,7 @@ public class _56_MergeIntervals {
     //Provide a second solution (Preferred)
     public List<Interval> merge2(List<Interval> intervals) {
         if (intervals == null || intervals.isEmpty()) return intervals;
+//        Collections.sort(intervals, (l1, l2) -> l1.start - l2.start);
         Collections.sort(intervals, new Comparator<Interval>() {
             public int compare(Interval l1, Interval l2) {
                 return l1.start - l2.start;
