@@ -74,7 +74,7 @@ public class _65_ValidNumber {
             if((cur == '-' || cur == '+') && i == eIndex + 1) continue;
             if(cur <= '9' && cur >= '0'){
                 if(hasE){
-                    hasEBackNum = true;;
+                    hasEBackNum = true;
                 }else{
                     hasEPreNum = true;
                 }
@@ -87,13 +87,7 @@ public class _65_ValidNumber {
         if(!hasNum) {
             return false;
         }
-        if(hasE){
-            if(hasEPreNum && hasEBackNum){
-                return true;
-            }else{
-                return false;
-            }
-        }
+        if(hasE) return hasEPreNum && hasEBackNum;
         return true;
 
     }

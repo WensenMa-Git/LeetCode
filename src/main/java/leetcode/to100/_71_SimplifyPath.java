@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-
+/**
+ * https://leetcode.com/problems/simplify-path/
+ * Subject: String
+ * #Medium
+ */
 public class _71_SimplifyPath {
 
     public String simplifyPath(String path) {

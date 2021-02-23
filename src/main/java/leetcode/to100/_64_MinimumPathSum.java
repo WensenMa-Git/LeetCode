@@ -1,6 +1,10 @@
 package leetcode.to100;
 
-
+/**
+ * https://leetcode.com/problems/minimum-path-sum/
+ * Subject: Dynamic Programming
+ * #Medium
+ */
 public class _64_MinimumPathSum {
 
     public int minPathSum(int[][] grid) {

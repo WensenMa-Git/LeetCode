@@ -2,7 +2,7 @@ package leetcode.to100;
 
 /**
  * https://leetcode.com/problems/sqrtx/
- * #Easy
+ * #Easy #hard
  */
 public class _69_Sqrt {
 

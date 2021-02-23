@@ -1,6 +1,10 @@
 package leetcode.to100;
 
-
+/**
+ * https://leetcode.com/problems/set-matrix-zeroes/
+ * Subject: Array
+ * #Medium
+ */
 public class _73_SetMatrixZeroes {
 
     public void setZeroes(int[][] matrix) {

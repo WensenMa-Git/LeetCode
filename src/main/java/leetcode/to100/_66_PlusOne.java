@@ -1,6 +1,10 @@
 package leetcode.to100;
 
-
+/**
+ * https://leetcode.com/problems/plus-one/
+ * Subject: Array
+ * #Easy
+ */
 public class _66_PlusOne {
 
     public static int[] plusOne(int[] digits) {

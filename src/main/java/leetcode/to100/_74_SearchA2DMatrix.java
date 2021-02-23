@@ -1,8 +1,13 @@
 package leetcode.to100;
 
+/**
+ * https://leetcode.com/problems/search-a-2d-matrix/
+ * Subject: Binary Search
+ * #Medium
+ */
+public class _74_SearchA2DMatrix {
 
-public class _74_Searcha2DMatrix {
-
+    //Preferred Solution.
     public boolean searchMatrix(int[][] matrix, int target) {
         if (matrix == null || matrix.length == 0) return false;
         int row = matrix.length;
@@ -22,7 +27,7 @@ public class _74_Searcha2DMatrix {
         return false;
     }
 
-    //Provide a second solution (Preferred)
+    //Provide a second solution.
     public boolean searchMatrix2(int[][] matrix, int target) {
         if(matrix.length == 0) return false;
         int i = 0;
