@@ -1,6 +1,10 @@
 package leetcode.to100;
 
-
+/**
+ * https://leetcode.com/problems/maximum-subarray/
+ * Subject: Dynamic Programming
+ * #Easy
+ */
 public class _53_MaximumSubarray {
 
     // time : O(n) space : O(n);
