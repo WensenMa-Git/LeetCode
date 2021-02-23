@@ -2,7 +2,11 @@ package leetcode.to100;
 
 import java.util.*;
 
-
+/**
+ * https://leetcode.com/problems/group-anagrams/
+ * Subject: Map
+ * #Medium
+ */
 public class _49_GroupAnagrams {
 
     public List<List<String>> groupAnagrams(String[] strs) {
@@ -59,6 +63,21 @@ public class _49_GroupAnagrams {
         for (int i = 0; i < freq.length; i++)
             sb.append(freq[i]).append(spliter);
         return sb.toString();
+    }
+
+    //Provide a third solution.
+    public List<List<String>> groupAnagrams3(String[] strs) {
+        HashMap<String, List<String>> map = new HashMap<>();
+        for(String str: strs){
+            char[] c = str.toCharArray();
+            Arrays.sort(c);
+            String key = String.valueOf(c);
+            if(!map.containsKey(key)){
+                map.put(key, new ArrayList());
+            }
+            map.get(key).add(str);
+        }
+        return new ArrayList(map.values());
     }
 
 }
