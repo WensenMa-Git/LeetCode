@@ -2,7 +2,8 @@ package leetcode.to100;
 
 /**
  * https://leetcode.com/problems/minimum-window-substring/
- * #Hard
+ * Subject: Sliding Window
+ * #Hard #Attention
  */
 public class _76_MinimumWindowSubstring {
 
@@ -27,7 +28,7 @@ public class _76_MinimumWindowSubstring {
         return (min == Integer.MAX_VALUE) ? "" : s.substring(from, from + min);
     }
 
-    //Provide a second solution (Perferred)
+    //Provide a second solution
     public String minWindow2(String s, String t) {
         int[] counts = new int[256];
         char[] sChars = s.toCharArray();

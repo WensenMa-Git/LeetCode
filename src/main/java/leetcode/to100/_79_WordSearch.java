@@ -2,6 +2,8 @@ package leetcode.to100;
 
 /**
  * https://leetcode.com/problems/word-search/
+ * Subject: Backtrack
+ * #Medium
  */
 public class _79_WordSearch {
 
