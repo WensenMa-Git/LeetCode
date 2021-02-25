@@ -2,7 +2,11 @@ package leetcode.to100;
 
 import java.util.Stack;
 
-
+/**
+ * https://leetcode.com/problems/largest-rectangle-in-histogram/
+ * Subject: Stack
+ * #Hard
+ */
 public class _84_LargestRectangleinHistogram {
 
     //Preferred Solution.
