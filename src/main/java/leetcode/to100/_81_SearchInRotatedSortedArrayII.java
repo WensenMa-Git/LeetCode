@@ -1,7 +1,11 @@
 package leetcode.to100;
 
-
-public class _81_SearchinRotatedSortedArrayII {
+/**
+ * https://leetcode.com/problems/search-in-rotated-sorted-array-ii/
+ * Subject: Array
+ * #Medium
+ */
+public class _81_SearchInRotatedSortedArrayII {
 
     public boolean search(int[] nums, int target) {
         if (nums == null || nums.length == 0) return false;

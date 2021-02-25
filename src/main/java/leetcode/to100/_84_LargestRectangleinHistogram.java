@@ -5,6 +5,7 @@ import java.util.Stack;
 
 public class _84_LargestRectangleinHistogram {
 
+    //Preferred Solution.
     public int largestRectangleArea(int[] heights) {
         if (heights == null || heights.length == 0) return 0;
         Stack<Integer> stack = new Stack<>();
@@ -20,5 +21,22 @@ public class _84_LargestRectangleinHistogram {
             stack.push(i);
         }
         return res;
+    }
+
+    //Provide a second solution
+    public int largestRectangleArea2(int[] heights) {
+        Stack<Integer> stack = new Stack<>();
+        int sum = 0;
+        for (int i = 0; i <= heights.length; i++) {
+            if (stack.isEmpty() || (i != heights.length && heights[i] > heights[stack.peek()])) {
+                stack.push(i);
+            }
+            else {
+                int temp = stack.pop();
+                sum = Math.max(sum, heights[temp] * (stack.isEmpty() ? i : i - stack.peek() - 1));
+                i--;
+            }
+        }
+        return sum;
     }
 }

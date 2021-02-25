@@ -1,8 +1,12 @@
 package leetcode.to100;
 
-
 import leetcode.dependency.ListNode;
 
+/**
+ * https://leetcode.com/problems/remove-duplicates-from-sorted-list/
+ * Subject: LinkedList
+ * #Easy
+ */
 public class _83_RemoveDuplicatesfromSortedList {
 
     public static ListNode deleteDuplicates(ListNode head) {
