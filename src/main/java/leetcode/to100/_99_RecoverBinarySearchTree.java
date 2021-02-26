@@ -6,7 +6,6 @@ import java.util.Stack;
 
 public class _99_RecoverBinarySearchTree {
 
-
     TreeNode first = null;
     TreeNode second = null;
     TreeNode prev = null;
