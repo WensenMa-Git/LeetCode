@@ -1,6 +1,10 @@
 package leetcode.to100;
 
-
+/**
+ * https://leetcode.com/problems/merge-sorted-array/
+ * Subject: Array
+ * #Easy
+ */
 public class _88_MergeSortedArray {
 
     public void merge(int[] nums1, int m, int[] nums2, int n) {
