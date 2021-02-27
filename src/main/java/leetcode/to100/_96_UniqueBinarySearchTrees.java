@@ -3,7 +3,7 @@ package leetcode.to100;
 /**
  * https://leetcode.com/problems/unique-binary-search-trees/
  * Subject: Dynamic Programming
- * #Medium #Attension
+ * #Medium
  */
 public class _96_UniqueBinarySearchTrees {
 
