@@ -3,7 +3,11 @@ package leetcode.to200;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * https://leetcode.com/problems/pascals-triangle/
+ * Subject: 找规律
+ * #Easy
+ */
 public class _118_PascalTriangle {
 
     public List<List<Integer>> generate(int numRows) {
