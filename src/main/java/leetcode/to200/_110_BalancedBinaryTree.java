@@ -19,4 +19,19 @@ public class _110_BalancedBinaryTree {
         }
         return Math.max(l, r) + 1;
     }
+
+    //Provide a second solution (Preferred)
+    public boolean isBalanced2(TreeNode root) {
+        return maxDepth(root) != -1;
+    }
+
+    private int maxDepth(TreeNode root) {
+        if (root == null) return 0;
+        int leftDepth = maxDepth(root.left);
+        if (leftDepth == -1) return -1;
+        int rightDepth = maxDepth(root.right);
+        if (rightDepth == -1) return -1;
+        if (Math.abs(leftDepth - rightDepth) > 1) return -1;
+        return Math.max(leftDepth, rightDepth) + 1;
+    }
 }

@@ -7,9 +7,14 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-
+/**
+ * https://leetcode.com/problems/binary-tree-level-order-traversal-ii/
+ * Subject: Tree BSF
+ * #Medium
+ */
 public class _107_BinaryTreeLevelOrderTraversalII {
 
+    //Preferred solution.
     public static List<List<Integer>> levelOrderBottom(TreeNode root) {
         List<List<Integer>> res = new LinkedList<>();
         if (root == null) return res;

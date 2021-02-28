@@ -24,4 +24,29 @@ public class _109_ConvertSortedListtoBinarySearchTree {
         root.right = toBST(slow.next, tail);
         return root;
     }
+
+    //Provide a second solution (Preferred)
+    private ListNode node = null;
+
+    public TreeNode sortedListToBST2(ListNode head) {
+        ListNode p = head;
+        int count = 0;
+        while (p != null) {
+            count++;
+            p = p.next;
+        }
+        node = head;
+        return sortedListToBSTUtil(0, count - 1);
+    }
+
+    private TreeNode sortedListToBSTUtil(int left, int right) {
+        if (left > right) return null;
+        int middle = (left + right) / 2;
+        TreeNode leftNode = sortedListToBSTUtil(left, middle - 1);
+        TreeNode root = new TreeNode(node.val);
+        root.left = leftNode;
+        node = node.next;
+        root.right = sortedListToBSTUtil(middle + 1, right);
+        return root;
+    }
 }

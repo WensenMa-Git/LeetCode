@@ -1,10 +1,15 @@
 package leetcode.to200;
 
-
 import leetcode.dependency.TreeLinkNode;
 
-public class _116_PopulatingNextRightPointersinEachNode {
+/**
+ * https://leetcode.com/problems/populating-next-right-pointers-in-each-node/
+ * Subject: Tree Recurse
+ * #Medium
+ */
+public class _116_PopulatingNextRightPointersInEachNode {
 
+    //Preferred solution.
     public void connect(TreeLinkNode root) {
         if (root == null) return;
         if (root.left != null) {
@@ -17,7 +22,7 @@ public class _116_PopulatingNextRightPointersinEachNode {
         connect(root.right);
     }
 
-    //space : O(1)
+    //space : O(1). Preferred solution.
     public void connect2(TreeLinkNode root) {
         TreeLinkNode start = root;
         while (start != null) {

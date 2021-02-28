@@ -4,7 +4,11 @@ import leetcode.dependency.TreeNode;
 
 import java.util.Stack;
 
-
+/**
+ * https://leetcode.com/problems/path-sum/
+ * Subject: Tree DFS
+ * #Easy
+ */
 public class _112_PathSum {
 
     public static boolean hasPathSum(TreeNode root, int sum) {

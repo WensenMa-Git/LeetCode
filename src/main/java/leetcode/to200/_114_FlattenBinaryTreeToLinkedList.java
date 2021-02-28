@@ -4,8 +4,12 @@ import leetcode.dependency.TreeNode;
 
 import java.util.Stack;
 
-
-public class _114_FlattenBinaryTreetoLinkedList {
+/**
+ * https://leetcode.com/problems/flatten-binary-tree-to-linked-list/
+ * Subject: Tree LinkedList
+ * #Medium #Attention
+ */
+public class _114_FlattenBinaryTreeToLinkedList {
 
     private TreeNode prev = null;
 
