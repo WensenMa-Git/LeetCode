@@ -1,6 +1,10 @@
 package leetcode.to200;
 
-
+/**
+ * https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/
+ * Subject: Array, Greedy
+ * #Easy
+ */
 public class _122_BestTimetoBuyandSellStockII {
 
     public static int maxProfit(int[] prices) {
