@@ -1,6 +1,8 @@
 package leetcode.to200;
 
-
+/**
+ * d
+ */
 public class _125_ValidPalindrome {
 
     public static boolean isPalindrome(String s) {

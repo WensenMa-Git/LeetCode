@@ -1,6 +1,5 @@
 package leetcode.to200;
 
-
 import leetcode.dependency.TreeNode;
 
 public class _124_BinaryTreeMaximumPathSum {
