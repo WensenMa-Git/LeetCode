@@ -80,7 +80,7 @@ public class _126_WordLadderII {
         list.remove(0);
     }
 
-
+    //Provide a second solution (Preferred)
     //https://leetcode-cn.com/problems/word-ladder-ii/solution/yan-du-you-xian-bian-li-shuang-xiang-yan-du-you--2/
     public List<List<String>> findLadders2(String beginWord, String endWord, List<String> wordList) {
         // 先将 wordList 放到哈希表里，便于判断某个单词是否在 wordList 里
