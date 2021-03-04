@@ -4,10 +4,14 @@ import leetcode.dependency.UndirectedGraphNode;
 
 import java.util.*;
 
-
+/**
+ * https://leetcode.com/problems/clone-graph/
+ * Subject: Tree DFS, BFS
+ * #Medium
+ */
 public class _133_CloneGraph {
 
-
+    //Preferred solution.
     HashMap<UndirectedGraphNode, UndirectedGraphNode> map = new HashMap<>();
 
     public UndirectedGraphNode cloneGraph(UndirectedGraphNode node) {
@@ -26,7 +30,28 @@ public class _133_CloneGraph {
         return dup;
     }
 
+    //Provide a second solution (Preferred)
     public UndirectedGraphNode cloneGraph2(UndirectedGraphNode node) {
+        if (node == null) return null;
+        UndirectedGraphNode root = new UndirectedGraphNode(node.label);
+        Map<UndirectedGraphNode, UndirectedGraphNode> map = new HashMap<>();
+        map.put(node, root);
+        Queue<UndirectedGraphNode> queue = new LinkedList<>();
+        queue.add(node);
+        while (!queue.isEmpty()) {
+            UndirectedGraphNode cur = queue.poll();
+            for (UndirectedGraphNode neighbor : cur.neighbors) {
+                if (!map.containsKey(neighbor)) {
+                    map.put(neighbor, new UndirectedGraphNode(neighbor.label));
+                    queue.add(neighbor);
+                }
+                map.get(cur).neighbors.add(map.get(neighbor));
+            }
+        }
+        return root;
+    }
+
+    public UndirectedGraphNode cloneGraph3(UndirectedGraphNode node) {
         if (node == null) return node;
         List<UndirectedGraphNode> nodes = getNodes(node);
         HashMap<UndirectedGraphNode, UndirectedGraphNode> map = new HashMap<>();

@@ -44,6 +44,7 @@ public class _127_WordLadder {
         return 0;
     }
 
+    //Provide a second solution (Preferred)
     public int ladderLength2(String beginWord, String endWord, List<String> wordList) {
         HashSet<String> set = new HashSet<>(wordList);
         set.remove(beginWord);
@@ -66,6 +67,68 @@ public class _127_WordLadder {
                         map.put(temp, curLevel + 1);
                         queue.offer(temp);
                         set.remove(temp);
+                    }
+                }
+            }
+        }
+        return 0;
+    }
+
+    //Provide a third solution (Preferred)
+    public int ladderLength3(String beginWord, String endWord, List<String> wordList) {
+        HashSet<String> set = new HashSet<>(wordList);
+        set.remove(beginWord);
+        Queue<String> queue = new LinkedList<>();
+        int curLevel = 0;
+        queue.offer(beginWord);
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            curLevel++;
+            for (int s = 0; s < size; s++) {
+                String word = queue.poll();
+                for (int i = 0; i < word.length(); i++) {
+                    char[] wordUnit = word.toCharArray();
+                    for (char j = 'a'; j <= 'z'; j++) {
+                        wordUnit[i] = j;
+                        String temp = new String(wordUnit);
+                        if (set.contains(temp)) {
+                            if (temp.equals(endWord)) {
+                                return curLevel + 1;
+                            }
+                            queue.offer(temp);
+                            set.remove(temp);
+                        }
+                    }
+                }
+            }
+        }
+        return 0;
+    }
+
+    //Provide a fourth solution (Preferred)
+    public int ladderLength4(String beginWord, String endWord, List<String> wordList) {
+        HashSet<String> set = new HashSet<>(wordList);
+        set.remove(beginWord);
+        Queue<String> queue = new LinkedList<>();
+        int curLevel = 0;
+        queue.offer(beginWord);
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            curLevel++;
+            for (int s = 0; s < size; s++) {
+                String word = queue.poll();
+                if (word.equals(endWord)) {
+                    return curLevel;
+                }
+                for (int i = 0; i < word.length(); i++) {
+                    char[] wordUnit = word.toCharArray();
+                    for (char j = 'a'; j <= 'z'; j++) {
+                        wordUnit[i] = j;
+                        String temp = new String(wordUnit);
+                        if (set.contains(temp)) {
+                            queue.offer(temp);
+                            set.remove(temp);
+                        }
                     }
                 }
             }
