@@ -3,7 +3,6 @@ package leetcode.to200;
 
 public class _132_PalindromePartitioningII {
 
-
     public int minCut(String s) {
         if (s == null || s.length() == 0) return 0;
         int len = s.length();

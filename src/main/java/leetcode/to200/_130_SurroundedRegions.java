@@ -3,9 +3,12 @@ package leetcode.to200;
 import java.util.LinkedList;
 import java.util.Queue;
 
-
+/**
+ * https://leetcode.com/problems/surrounded-regions/
+ * Subject: DFS
+ * #Medium
+ */
 public class _130_SurroundedRegions {
-
 
     public void solve(char[][] board) {
         if (board == null || board.length == 0 || board[0].length == 0) return;

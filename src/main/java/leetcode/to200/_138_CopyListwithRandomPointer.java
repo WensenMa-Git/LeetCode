@@ -1,10 +1,17 @@
 package leetcode.to200;
 
+import leetcode.dependency.RandomListNode;
+
 import java.util.HashMap;
 
-
+/**
+ * https://leetcode.com/problems/copy-list-with-random-pointer/
+ * Subject: LinkedList
+ * #Medium
+ */
 public class _138_CopyListwithRandomPointer {
 
+    //Preferred solution.
     public RandomListNode copyRandomList(RandomListNode head) {
         HashMap<RandomListNode, RandomListNode> map = new HashMap<>();
         RandomListNode cur = head;
@@ -21,8 +28,35 @@ public class _138_CopyListwithRandomPointer {
         return map.get(head);
     }
 
-
+    //Provide a second solution. (Preferred)
     public RandomListNode copyRandomList2(RandomListNode head) {
+        RandomListNode p = head;
+        while (p != null) {
+            RandomListNode temp = p.next;
+            p.next = new RandomListNode(p.label);
+            p.next.next = temp;
+            p = temp;
+        }
+        p = head;
+        while (p != null) {
+            if (p.random != null) {
+                p.next.random = p.random.next;
+            }
+            p = p.next.next;
+        }
+        p = head;
+        RandomListNode dummyHead = new RandomListNode(0);
+        RandomListNode d = dummyHead;
+        while (p != null) {
+            d.next = p.next;
+            d = d.next;
+            p.next = d.next;
+            p = p.next;
+        }
+        return dummyHead.next;
+    }
+
+    public RandomListNode copyRandomList3(RandomListNode head) {
         RandomListNode cur = head;
         RandomListNode next;
         //next copy
@@ -55,14 +89,5 @@ public class _138_CopyListwithRandomPointer {
             cur = next;
         }
         return dummy.next;
-    }
-
-    class RandomListNode {
-        int label;
-        RandomListNode next, random;
-
-        RandomListNode(int x) {
-            this.label = x;
-        }
     }
 }
