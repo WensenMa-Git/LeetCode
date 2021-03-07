@@ -1,6 +1,5 @@
 package leetcode.to200;
 
-
 import leetcode.dependency.ListNode;
 
 public class _143_ReorderList {

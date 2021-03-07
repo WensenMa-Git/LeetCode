@@ -5,10 +5,11 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
+ * https://leetcode.com/problems/word-break-ii/
+ * Subject: Backtrack
  * #Hard #hard
  */
 public class _140_WordBreakII {
-
 
     HashMap<Integer, List<String>> map = new HashMap<>();
 
@@ -35,5 +36,26 @@ public class _140_WordBreakII {
         }
         map.put(start, res);
         return res;
+    }
+
+    //Provide a second solution.
+    public List<String> wordBreak2(String s, List<String> wordDict) {
+        List<String> res = new ArrayList<>();
+        backtrack(res, "", s, wordDict, 0);
+        return res;
+    }
+
+    private void backtrack(List<String> res, String temp, String s, List<String> wordDict, int start) {
+        if (start == s.length()) {
+            res.add(temp.trim());
+            return;
+        }
+
+        for (int i = start + 1; i <= s.length(); i++) {
+            String cur = s.substring(start, i);
+            if (wordDict.contains(cur)) {
+                backtrack(res, temp + " " + cur, s, wordDict, i);
+            }
+        }
     }
 }
