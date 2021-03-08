@@ -1,6 +1,10 @@
 package leetcode.to200;
 
-
+/**
+ * https://leetcode.com/problems/find-minimum-in-rotated-sorted-array-ii/
+ * Subject: Binary Search
+ * #Hard
+ */
 public class _154_FindMinimuminRotatedSortedArrayII {
 
     public int findMin(int[] nums) {
@@ -19,5 +23,21 @@ public class _154_FindMinimuminRotatedSortedArrayII {
         }
         if (nums[start] < nums[end]) return nums[start];
         else return nums[end];
+    }
+
+    //Provide a second solution (Preferred)
+    public int findMin2(int[] nums) {
+        int L = 0, R = nums.length - 1;
+        while(L < R && nums[L] >= nums[R]){
+            int M = (L + R) / 2;
+            if(nums[M] < nums[R]){
+                R = M;
+            }else if(nums[M] > nums[R]){
+                L = M + 1;
+            }else{
+                R--;
+            }
+        }
+        return nums[L];
     }
 }

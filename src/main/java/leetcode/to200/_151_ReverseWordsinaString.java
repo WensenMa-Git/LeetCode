@@ -1,13 +1,16 @@
 package leetcode.to200;
 
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * https://leetcode.com/problems/reverse-words-in-a-string/
+ * Subject: Two Pointer
+ * #Medium
+ */
 public class _151_ReverseWordsinaString {
-
 
     //time : O(n), space : O(n)
     public String reverseWords(String s) {
@@ -95,5 +98,24 @@ public class _151_ReverseWordsinaString {
             list.add(str);
         }
         return retList;
+    }
+
+    //Provide a third solution (Preferred)
+    public String reverseWords3(String s) {
+        StringBuilder sb = new StringBuilder();
+        for(int R = s.length(), L = s.length() - 1; L >= 0; L--){
+            if(s.charAt(L) == ' '){
+                R = L;
+                continue;
+            }
+            if(L == 0 || s.charAt(L - 1) == ' '){
+                if(sb.length() > 0){
+                    sb.append(' ');
+                }
+                sb.append(s.substring(L, R));
+
+            }
+        }
+        return sb.toString();
     }
 }

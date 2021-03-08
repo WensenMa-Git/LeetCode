@@ -2,7 +2,11 @@ package leetcode.to200;
 
 import java.util.Stack;
 
-
+/**
+ * https://leetcode.com/problems/min-stack/
+ * Subject: Stack
+ * #Easy
+ */
 public class _155_MinStack {
 
     private final Stack<Integer> stack;
@@ -41,6 +45,41 @@ public class _155_MinStack {
     }
 }
 
+//Provide a second solution (Preferred).
+/*
+class MinStack {
+    private Stack<Integer> stack;
+    private Stack<Integer> minStack;
+
+    public MinStack() {
+        stack = new Stack<>();
+        minStack = new Stack<>();
+    }
+
+    public void push(int x) {
+        stack.push(x);
+        if (minStack.isEmpty() || minStack.peek() >= x) {
+            minStack.push(x);
+        }
+    }
+
+    public void pop() {
+        if (stack.pop().equals(minStack.peek())) minStack.pop();
+    }
+
+    public int top() {
+        return stack.peek();
+    }
+
+    public int getMin() {
+        return minStack.peek();
+    }
+}
+*/
+
+
+//Given a third solution.
+/*
 class MinStack2 {
 
     Stack<Integer> stack;
@@ -73,4 +112,4 @@ class MinStack2 {
         return min;
     }
 }
-
+*/

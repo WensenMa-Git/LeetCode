@@ -1,9 +1,13 @@
 package leetcode.to200;
 
-
 import leetcode.dependency.ListNode;
 
-public class _160_IntersectionofTwoLinkedLists {
+/**
+ * https://leetcode.com/problems/intersection-of-two-linked-lists/
+ * Subject: LinkedList
+ * #Easy
+ */
+public class _160_IntersectionOfTwoLinkedLists {
 
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
         if (headA == null || headB == null) return null;
@@ -47,4 +51,35 @@ public class _160_IntersectionofTwoLinkedLists {
         }
         return a;
     }
+
+    //Provide a third solution (Preferred)
+    public ListNode getIntersectionNode3(ListNode headA, ListNode headB) {
+        if (headA == null || headB == null) return null;
+        ListNode pointerA = headA;
+        ListNode pointerB = headB;
+        int lenA = 0, lenB = 0;
+        while (pointerA != null) {
+            lenA++;
+            pointerA = pointerA.next;
+        }
+        while (pointerB != null) {
+            lenB++;
+            pointerB = pointerB.next;
+        }
+        while (lenA > lenB) {
+            headA = headA.next;
+            lenA--;
+        }
+        while (lenB > lenA) {
+            headB = headB.next;
+            lenB--;
+        }
+        while (headA != headB) {
+            headA = headA.next;
+            headB = headB.next;
+        }
+        return headA;
+
+    }
+
 }

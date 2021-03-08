@@ -1,8 +1,15 @@
 package leetcode.to200;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Stack;
 
-
+/**
+ * https://leetcode.com/problems/evaluate-reverse-polish-notation/
+ * Subject: Stack
+ * #Medium
+ */
 public class _150_EvaluateReversePolishNotation {
 
     public int evalRPN(String[] tokens) {
@@ -25,5 +32,34 @@ public class _150_EvaluateReversePolishNotation {
             }
         }
         return stack.pop();
+    }
+
+    //Provide a second solution (Preferred)
+    public int evalRPN2(String[] tokens) {
+        Set<String> operators = new HashSet<>(Arrays.asList("+", "-", "*", "/"));
+        Stack<Integer> numbers = new Stack<>();
+        for (String token : tokens) {
+            if (operators.contains(token)) {
+                int y = numbers.pop();
+                int x = numbers.pop();
+                numbers.push(eval(token, x, y));
+            } else {
+                numbers.push(Integer.parseInt(token));
+            }
+        }
+        return numbers.pop();
+    }
+
+    private int eval(String operator, int x, int y) {
+        switch (operator) {
+            case "+":
+                return x + y;
+            case "-":
+                return x - y;
+            case "*":
+                return x * y;
+            default:
+                return x / y;
+        }
     }
 }

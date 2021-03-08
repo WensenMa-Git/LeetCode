@@ -4,9 +4,10 @@ import leetcode.dependency.Point;
 
 import java.util.HashMap;
 
-
+/**
+ * https://leetcode.com/problems/max-points-on-a-line/
+ */
 public class _149_MaxPointsonaLine {
-
 
     public int maxPoints(Point[] points) {
         if (points == null || points.length == 0) return 0;
