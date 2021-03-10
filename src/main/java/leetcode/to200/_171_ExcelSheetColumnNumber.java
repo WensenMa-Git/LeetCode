@@ -1,6 +1,10 @@
 package leetcode.to200;
 
-
+/**
+ * https://leetcode.com/problems/excel-sheet-column-number/
+ * Subject: Math
+ * #Easy
+ */
 public class _171_ExcelSheetColumnNumber {
 
     public int titleToNumber(String s) {

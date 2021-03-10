@@ -1,6 +1,10 @@
 package leetcode.to200;
 
-
+/**
+ * https://leetcode.com/problems/excel-sheet-column-title/
+ * Subject: Math
+ * #Easy
+ */
 public class _168_ExcelSheetColumnTitle {
 
     public String convertToTitle(int n) {

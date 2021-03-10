@@ -3,7 +3,11 @@ package leetcode.to200;
 import java.util.Arrays;
 import java.util.HashMap;
 
-
+/**
+ * https://leetcode.com/problems/majority-element/
+ * Subject: Array
+ * #Easy
+ */
 public class _169_MajorityElement {
 
 
@@ -50,4 +54,21 @@ public class _169_MajorityElement {
         return res;
     }
 
+    //Provide a forth solution (Preferred).
+    public int majorityElement(int[] nums) {
+        int candidate = nums[0];
+        int count = 1;
+
+        for(int i = 1; i < nums.length; i++){
+            if(candidate == nums[i]){
+                count++;
+            }else if(count == 0){
+                candidate = nums[i];
+                count = 1;
+            }else{
+                count--;
+            }
+        }
+        return candidate;
+    }
 }
