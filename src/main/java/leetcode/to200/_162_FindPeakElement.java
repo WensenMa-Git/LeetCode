@@ -1,6 +1,10 @@
 package leetcode.to200;
 
-
+/**
+ * https://leetcode.com/problems/find-peak-element/
+ * Subject: Binary Search
+ * #Medium
+ */
 public class _162_FindPeakElement {
 
     public int findPeakElement(int[] nums) {
@@ -26,5 +30,21 @@ public class _162_FindPeakElement {
             }
         }
         return nums.length - 1;
+    }
+
+    //Provide a third solution (Preferred)
+    public int findPeakElement3(int[] nums) {
+        int left = 0;
+        int right = nums.length - 1;
+        while (left < right) {
+            int middle = (left + right) / 2;
+            int middle2 = middle + 1;
+            if (nums[middle] < nums[middle2]) {
+                left = middle2;
+            } else {
+                right = middle;
+            }
+        }
+        return left;
     }
 }

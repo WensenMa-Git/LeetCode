@@ -1,8 +1,11 @@
 package leetcode.to200;
 
-
+/**
+ * https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/
+ * Subject: Two Pointer
+ * #Easy
+ */
 public class _167_TwoSumII {
-
 
     public static int[] twoSum(int[] numbers, int target) {
         if (numbers == null || numbers.length < 2) {

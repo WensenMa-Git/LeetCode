@@ -1,6 +1,10 @@
 package leetcode.to200;
 
-
+/**
+ * https://leetcode.com/problems/compare-version-numbers/
+ * Subject: Array
+ * #Medium
+ */
 public class _165_CompareVersionNumbers {
 
     public int compareVersion(String version1, String version2) {
@@ -14,6 +18,22 @@ public class _165_CompareVersionNumbers {
                 return -1;
             } else if (num1 > num2) {
                 return 1;
+            }
+        }
+        return 0;
+    }
+
+    //Provide a second solution (Preferred)
+    public int compareVersion2(String version1, String version2) {
+        String[] parts1 = version1.split("\\.");
+        String[] parts2 = version2.split("\\.");
+        for(int p = 0; p < parts1.length || p < parts2.length; p++){
+            int num1 = p < parts1.length? Integer.parseInt(parts1[p]) : 0;
+            int num2 = p < parts2.length? Integer.parseInt(parts2[p]) : 0;
+            if(num1 > num2){
+                return 1;
+            }else if(num1 < num2){
+                return -1;
             }
         }
         return 0;
