@@ -9,7 +9,6 @@ import java.util.Queue;
 
 public class _199_BinaryTreeRightSideView {
 
-
     public List<Integer> rightSideView(TreeNode root) {
         List<Integer> res = new ArrayList<>();
         if (root == null) return res;

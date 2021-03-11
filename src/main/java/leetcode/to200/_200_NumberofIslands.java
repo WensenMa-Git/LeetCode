@@ -3,9 +3,12 @@ package leetcode.to200;
 import java.util.LinkedList;
 import java.util.Queue;
 
-
+/**
+ * https://leetcode.com/problems/number-of-islands/
+ * Subject: DFS
+ * #Medium
+ */
 public class _200_NumberofIslands {
-
 
     private int m;
     private int n;

@@ -1,6 +1,10 @@
 package leetcode.to200;
 
-
+/**
+ * https://leetcode.com/problems/rotate-array/
+ * Subject: Array
+ * #Medium
+ */
 public class _189_RotateArray {
 
     //time : O(n)  space : O(n)
@@ -14,9 +18,7 @@ public class _189_RotateArray {
         }
     }
 
-    //time : O(n)  space : O(1)
-
-
+    //Provide a second solution (Preferred).
     public void rotate2(int[] nums, int k) {
         k %= nums.length;
         reverse(nums, 0, nums.length - 1);

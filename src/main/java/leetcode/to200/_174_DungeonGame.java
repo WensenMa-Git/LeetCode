@@ -1,6 +1,12 @@
 package leetcode.to200;
 
+import java.util.Arrays;
 
+/**
+ * https://leetcode.com/problems/dungeon-game/
+ * Subject: Dynamic Programming
+ * #Hard #hard #Attention
+ */
 public class _174_DungeonGame {
 
 
@@ -25,6 +31,24 @@ public class _174_DungeonGame {
                 int down = Math.max(dp[i + 1][j] - dungeon[i][j], 1);
                 int right = Math.max(dp[i][j + 1] - dungeon[i][j], 1);
                 dp[i][j] = Math.min(down, right);
+            }
+        }
+        return dp[0][0];
+    }
+
+    //Provide a second solution (Preferred)
+    //https://leetcode-cn.com/problems/dungeon-game/solution/di-xia-cheng-you-xi-by-leetcode-solution/
+    public int calculateMinimumHP2(int[][] dungeon) {
+        int n = dungeon.length, m = dungeon[0].length;
+        int[][] dp = new int[n + 1][m + 1];
+        for (int i = 0; i <= n; ++i) {
+            Arrays.fill(dp[i], Integer.MAX_VALUE);
+        }
+        dp[n][m - 1] = dp[n - 1][m] = 1;
+        for (int i = n - 1; i >= 0; --i) {
+            for (int j = m - 1; j >= 0; --j) {
+                int minn = Math.min(dp[i + 1][j], dp[i][j + 1]);
+                dp[i][j] = Math.max(minn - dungeon[i][j], 1);
             }
         }
         return dp[0][0];
