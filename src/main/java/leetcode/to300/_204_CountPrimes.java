@@ -1,6 +1,10 @@
 package leetcode.to300;
 
-
+/**
+ * https://leetcode.com/problems/count-primes/
+ * Subject: Math
+ * #Easy #Attention
+ */
 public class _204_CountPrimes {
 
     public int countPrimes(int n) {

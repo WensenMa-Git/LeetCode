@@ -2,7 +2,11 @@ package leetcode.to300;
 
 import java.util.HashMap;
 
-
+/**
+ * https://leetcode.com/problems/isomorphic-strings/
+ * Subject: HashTable
+ * #Easy #Attention
+ */
 public class _205_IsomorphicStrings {
 
     // time : O(n^2) space : O(1)

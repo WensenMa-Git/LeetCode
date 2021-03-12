@@ -20,4 +20,8 @@ public class _214_ShortestPalindrome {
         }
         return new StringBuilder(s.substring(end + 1)).reverse().toString() + s;
     }
+
+    //Provide a second solution
+    //https://leetcode-cn.com/problems/shortest-palindrome/solution/shi-jian-fu-za-du-on-jie-fa-la-che-by-time-limit/
+    //
 }

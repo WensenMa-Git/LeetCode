@@ -1,9 +1,12 @@
 package leetcode.to300;
 
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
-
+/**
+ * https://leetcode.com/problems/course-schedule/
+ * Subject: Topological Sort
+ * #Medium
+ */
 public class _207_CourseSchedule {
 
 
@@ -35,5 +38,38 @@ public class _207_CourseSchedule {
             }
         }
         return res == 0;
+    }
+
+    //Provide a second solution (Preferred)
+    public boolean canFinish2(int numCourses, int[][] prerequisites) {
+
+        if (numCourses <= 0 || prerequisites == null) return false;
+        if (prerequisites.length == 0) return true;
+        int[] inDegree = new int[numCourses];
+        Map<Integer, List<Integer>> outMap = new HashMap<>();
+        for (int i = 0; i < prerequisites.length; i++) {
+            inDegree[prerequisites[i][0]]++;
+            if(!outMap.containsKey(prerequisites[i][1])){
+                outMap.put(prerequisites[i][1], new ArrayList<>());
+            }
+            outMap.get(prerequisites[i][1]).add(prerequisites[i][0]);
+        }
+
+        Queue<Integer> q = new LinkedList<>();
+        for (int i = 0; i < numCourses; i++) {
+            if (inDegree[i] == 0) q.offer(i);
+        }
+        while (!q.isEmpty()) {
+            int num = q.poll();
+            numCourses--;
+            if(!outMap.containsKey(num)) continue;
+            for (int i : outMap.get(num)) {
+                inDegree[i]--;
+                if (inDegree[i] == 0) {
+                    q.offer(i);
+                }
+            }
+        }
+        return numCourses == 0;
     }
 }

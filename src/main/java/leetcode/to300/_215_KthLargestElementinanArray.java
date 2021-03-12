@@ -2,9 +2,12 @@ package leetcode.to300;
 
 import java.util.PriorityQueue;
 
-
+/**
+ * https://leetcode.com/problems/kth-largest-element-in-an-array/
+ * Subject: Array
+ * #Medium
+ */
 public class _215_KthLargestElementinanArray {
-
 
     public int findKthLargest(int[] nums, int k) {
         if (nums == null || nums.length == 0) return 0;
@@ -21,7 +24,6 @@ public class _215_KthLargestElementinanArray {
             }
         }
     }
-
 
     private int partition(int[] nums, int left, int right) {
         int pivot = nums[left];
@@ -44,7 +46,7 @@ public class _215_KthLargestElementinanArray {
         nums[j] = temp;
     }
 
-
+    //Preferred Solution.
     public int findKthLargest2(int[] nums, int k) {
         if (nums == null || nums.length == 0) return 0;
         PriorityQueue<Integer> minHeap = new PriorityQueue<>();
@@ -55,5 +57,20 @@ public class _215_KthLargestElementinanArray {
             }
         }
         return minHeap.poll();
+    }
+
+    //Provide a second solution (Preferred Solution).
+    public int findKthLargest3(int[] nums, int k) {
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        for(int i = 0; i < k; i++){
+            pq.add(nums[i]);
+        }
+        for(int i = k; i < nums.length; i++){
+            if(nums[i] > pq.peek()){
+                pq.poll();
+                pq.add(nums[i]);
+            }
+        }
+        return pq.peek();
     }
 }

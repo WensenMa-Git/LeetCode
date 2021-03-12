@@ -1,15 +1,19 @@
 package leetcode.to300;
 
-
 import leetcode.dependency.ListNode;
 
+/**
+ * https://leetcode.com/problems/remove-linked-list-elements/
+ * Subject: LinkedList
+ * #Easy
+ */
 public class _203_RemoveLinkedListElements {
 
     public static ListNode removeElements(ListNode head, int val) {
         if (head == null) return head;
-        ListNode dummy = new ListNode(0);
-        dummy.next = head;
-        ListNode p = dummy;
+        ListNode dummyHead = new ListNode(0);
+        dummyHead.next = head;
+        ListNode p = dummyHead;
         while (p.next != null) {
             if (p.next.val == val) {
                 p.next = p.next.next;
@@ -17,7 +21,7 @@ public class _203_RemoveLinkedListElements {
                 p = p.next;
             }
         }
-        return dummy.next;
+        return dummyHead.next;
     }
 
     public static ListNode removeElements2(ListNode head, int val) {
