@@ -3,7 +3,6 @@ package leetcode.to300;
 
 public class _263_UglyNumber {
 
-
     public boolean isUgly(int num) {
         if (num == 1) return true;
         if (num == 0) return false;
