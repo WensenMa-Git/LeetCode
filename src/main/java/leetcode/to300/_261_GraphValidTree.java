@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-
+/**
+ * Subject: DFS, Union Find
+ * #Medium #Attention
+ */
 public class _261_GraphValidTree {
-
 
     public boolean validTree(int n, int[][] edges) {
         if (n == 1 && edges.length == 0) return true;
@@ -58,7 +60,37 @@ public class _261_GraphValidTree {
             if (visited.contains(v)) return false;
             visited.add(v);
             boolean res = helper(graph, visited, v, node);
-            if (res == false) return false;
+            if (!res) return false;
+        }
+        return true;
+    }
+
+    //Provide a third solution (Preferred)
+    public boolean validTree3(int n, int[][] edges) {
+        List<List<Integer>> graph = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            graph.add(new ArrayList<>());
+        }
+        for (int i = 0; i < edges.length; i++) {
+            graph.get(edges[i][0]).add(edges[i][1]);
+            graph.get(edges[i][1]).add(edges[i][0]);
+        }
+
+        HashSet<Integer> visited = new HashSet<>();
+
+        boolean res = helper(graph, visited, 0, -1);
+        return res && visited.size() == n;
+    }
+
+    private boolean dfs(List<List<Integer>> graph, HashSet<Integer> visited, int node, int parent) {
+        visited.add(node);
+        List<Integer> sub = graph.get(node);
+        for (int v : sub) {
+            if (visited.add(v)) {
+                if (!dfs(graph, visited, v, node)) return false;
+            } else if (v != parent) {
+                return false;
+            }
         }
         return true;
     }

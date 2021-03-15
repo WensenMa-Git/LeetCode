@@ -1,8 +1,12 @@
 package leetcode.to300;
 
-
 import java.util.Map;
 
+/**
+ * https://leetcode.com/problems/shortest-palindrome/
+ * Subject:
+ * #Hard #hard
+ */
 public class _214_ShortestPalindrome {
 
     // time :  O(n^2) for aaaaabcaaaaa

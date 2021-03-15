@@ -3,9 +3,12 @@ package leetcode.to300;
 import java.util.Arrays;
 import java.util.HashSet;
 
-
+/**
+ * https://leetcode.com/problems/contains-duplicate/
+ * Subject: Array
+ * #Easy
+ */
 public class _217_ContainsDuplicate {
-
 
     // time : O(n) space : O(n)
     public boolean containsDuplicate(int[] nums) {
