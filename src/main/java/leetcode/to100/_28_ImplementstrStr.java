@@ -41,4 +41,29 @@ public class _28_ImplementstrStr {
         }
         return -1;
     }
+
+    //Boyer-Moore Algorithm
+    public int strStr3(String haystack, String needle) {
+        char[] sChars = haystack.toCharArray();
+        char[] nChars = needle.toCharArray();
+        int n = sChars.length;
+        int m = nChars.length;
+        int[] right = new int[256];
+        for (int i = 0; i < 256; i++) {
+            right[i] = -1;
+        }
+        //find the index of the rightmost occurance of character (char) i in needle;
+        for (int j = 0; j < m; j++) {
+            right[nChars[j]] = j;
+        }
+        for (int i = 0, skip = 0; i <= n - m; i += skip, skip = 0) {
+            for (int j = m - 1; j >= 0; j--) {
+                if (sChars[i + j] != nChars[j]) {
+                    skip = Math.max(1, j - right[sChars[i + j]]);
+                }
+            }
+            if (skip == 0) return i;
+        }
+        return -1;
+    }
 }
