@@ -1,10 +1,11 @@
 package leetcode.to600;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 
 public class _528_RandomPickwithWeight {
-
 
     Random rmd;
     int[] sum;
@@ -16,7 +17,6 @@ public class _528_RandomPickwithWeight {
         }
         this.sum = w;
     }
-
 
     public int pickIndex() {
         int index = rmd.nextInt(sum[sum.length - 1]) + 1;
@@ -33,5 +33,34 @@ public class _528_RandomPickwithWeight {
             }
         }
         return left;
+    }
+
+    //Provide a second solution.
+    //https://leetcode-cn.com/problems/random-pick-with-weight/solution/an-quan-zhong-sui-ji-xuan-ze-by-leetcode/
+    class RandomPickWithWeight {
+
+        List<Integer> psum = new ArrayList<>();
+        int tot = 0;
+        Random rand = new Random();
+
+        public RandomPickWithWeight(int[] w) {
+            for (int x : w) {
+                tot += x;
+                psum.add(tot);
+            }
+        }
+
+        public int pickIndex() {
+            int targ = rand.nextInt(tot);
+
+            int lo = 0;
+            int hi = psum.size() - 1;
+            while (lo != hi) {
+                int mid = (lo + hi) / 2;
+                if (targ >= psum.get(mid)) lo = mid + 1;
+                else hi = mid;
+            }
+            return lo;
+        }
     }
 }
