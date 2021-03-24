@@ -1,8 +1,11 @@
 package leetcode.to300;
 
-
+/**
+ * https://leetcode.com/problems/maximal-square/
+ * Subject: Medium
+ * #Medium
+ */
 public class _221_MaximalSquare {
-
 
     public int maximalSquare(char[][] matrix) {
         if (matrix.length == 0) return 0;

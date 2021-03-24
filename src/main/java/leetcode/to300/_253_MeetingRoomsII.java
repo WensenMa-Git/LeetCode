@@ -49,4 +49,26 @@ public class _253_MeetingRoomsII {
         }
         return heap.size();
     }
+
+    //Provide a third solution. (Preferred)
+    public int minMeetingRooms3(Interval[] intervals) {
+        int[] starts = new int[intervals.length];
+        int[] ends = new int[intervals.length];
+        for (int i = 0; i < intervals.length; i++) {
+            starts[i] = intervals[i].start;
+            ends[i] = intervals[i].end;
+        }
+        Arrays.sort(starts);
+        Arrays.sort(ends);
+        int rooms = 0;
+        int endIndex = 0;
+        for (int start : starts) {
+            if (start < ends[endIndex]) {
+                rooms++;
+            } else {
+                endIndex++;
+            }
+        }
+        return rooms;
+    }
 }
