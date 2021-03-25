@@ -1,6 +1,10 @@
 package leetcode.to300;
 
-
+/**
+ * https://leetcode.com/problems/rectangle-area/
+ * Subject: Math
+ * #Medium
+ */
 public class _223_RectangleArea {
 
 

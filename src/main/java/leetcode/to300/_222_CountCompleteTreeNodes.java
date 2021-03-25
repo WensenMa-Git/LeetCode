@@ -55,4 +55,40 @@ public class _222_CountCompleteTreeNodes {
             return (1 << height) - 1;
         return 1 + countNodes(root.left) + countNodes(root.right);
     }
+
+    //Provide a third solution. (Preferred)
+    public int countNodes3(TreeNode root) {
+        if(root == null){
+            return 0;
+        }
+        int left = countLevel(root.left);
+        int right = countLevel(root.right);
+        if(left == right){
+            return countNodes(root.right) + ((int)Math.pow(2, left));
+        }else{
+            return countNodes(root.left) + ((int)Math.pow(2, right));
+        }
+    }
+    private int countLevel(TreeNode root){
+        int level = 0;
+        while(root != null){
+            level++;
+            root = root.left;
+        }
+        return level;
+    }
+
+    //Provide a forth soluiton.
+    public int countNodes4(TreeNode root) {
+        if(root == null){
+            return 0;
+        }
+        int left = countLevel(root.left);
+        int right = countLevel(root.right);
+        if(left == right){
+            return countNodes(root.right) + (1<<left);
+        }else{
+            return countNodes(root.left) + (1<<right);
+        }
+    }
 }

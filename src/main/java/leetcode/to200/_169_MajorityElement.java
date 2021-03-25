@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 /**
  * https://leetcode.com/problems/majority-element/
- * Subject: Array
+ * Subject: Array, Majority
  * #Easy
  */
 public class _169_MajorityElement {

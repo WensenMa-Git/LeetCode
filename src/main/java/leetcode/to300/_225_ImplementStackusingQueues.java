@@ -3,7 +3,11 @@ package leetcode.to300;
 import java.util.LinkedList;
 import java.util.Queue;
 
-
+/**
+ * https://leetcode.com/problems/implement-stack-using-queues/
+ * Subject: Stack, Queue
+ * #Easy
+ */
 public class _225_ImplementStackusingQueues {
 
     Queue<Integer> queue;

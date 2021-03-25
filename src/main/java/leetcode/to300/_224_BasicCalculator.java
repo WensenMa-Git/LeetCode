@@ -2,7 +2,11 @@ package leetcode.to300;
 
 import java.util.Stack;
 
-
+/**
+ * https://leetcode.com/problems/basic-calculator/
+ * Subject: Stack, Math
+ * #Hard
+ */
 public class _224_BasicCalculator {
 
     public int calculate(String s) {
@@ -32,4 +36,47 @@ public class _224_BasicCalculator {
         }
         return res;
     }
+
+    class Solution {
+        private int i = 0;
+
+        public int calculate(String s) {
+            if (s == null || s.length() == 0) return 0;
+            i = 0;
+            return calc(s + "+");
+        }
+
+        private int calc(String s) {
+            int result = 0;
+            int prev = 0;
+            int num = 0;
+            char sign = '+';
+            for (; i < s.length(); i++) {
+                char c = s.charAt(i);
+                if (c == ' ') continue;
+                if (c == '+' || c == '-' || c == ')') {
+                    if (sign == '+') {
+                        result += prev;
+                        prev = num;
+                    } else if (sign == '-') {
+                        result += prev;
+                        prev = -num;
+                    }
+                    if (c == ')') {
+                        return result + prev;
+                    }
+                    sign = c;
+                    num = 0;
+                } else if (c == '(') {
+                    i++;
+                    num = calc(s);
+                } else {
+                    num = num * 10 + (int) (c - '0');
+                }
+            }
+            return result + prev;
+        }
+    }
 }
+
+

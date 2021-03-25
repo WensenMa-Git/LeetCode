@@ -5,9 +5,14 @@ import leetcode.dependency.TreeNode;
 import java.util.LinkedList;
 import java.util.Queue;
 
+/**
+ * https://leetcode.com/problems/invert-binary-tree/
+ * Subject: Tree Invert
+ * #Easy
+ */
 public class _226_InvertBinaryTree {
 
-
+    //Preferred soluiton.
     public TreeNode invertTree(TreeNode root) {
         if (root == null) return root;
         TreeNode left = invertTree(root.left);
