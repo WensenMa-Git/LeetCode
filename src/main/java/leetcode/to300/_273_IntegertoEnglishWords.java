@@ -32,9 +32,10 @@ public class _273_IntegertoEnglishWords {
         }
     }
 
-
-    //Provide a second solution.
+    //Provide a second solution. (Preferred)
     private String[] THOUSANDS = {" Billion", " Million", " Thousand", " Hundred"};
+    private String[] LESS20 = {"", " One", " Two", " Three", " Four", " Five", " Six", " Seven", " Eight", " Nine", " Ten", " Eleven", " Twelve", " Thirteen", " Fourteen", " Fifteen", " Sixteen", " Seventeen", " Eighteen", " Nineteen"};
+    private String[] TENS = {"", " Ten", " Twenty", " Thirty", " Forty", " Fifty", " Sixty", " Seventy", " Eighty", " Ninety"};
     private int[] radix = {1000000000, 1000000, 1000, 100};
 
     public String numberToWords2(int num) {
@@ -52,6 +53,37 @@ public class _273_IntegertoEnglishWords {
                 num %= radix[i];
             }
         }
+        if (num >= 20) {
+            sb.append(TENS[num / 10]);
+            num %= 10;
+        }
+        if (num > 0) {
+            sb.append(LESS20[num]);
+        }
+        return sb.toString();
+    }
+
+    //Provide a third implementation.
+    public String format2(int num) {
+        if (num == 0) return "Zero";
+        StringBuffer sb = new StringBuffer();
+        for (int i = 0; i < 4; i++) {
+            if (num >= radix[i]) {
+                sb.append(format(num / radix[i]));
+                sb.append(THOUSANDS[i]);
+                num %= radix[i];
+            }
+        }
+        if (num >= 20) {
+            sb.append(TENS[num / 10]);
+            num %= 10;
+        }
+        if (num > 0) {
+            sb.append(LESS20[num]);
+        }
+
+
+
         // 20-90
         if (num >= 20) {
             switch (num / 10) {
