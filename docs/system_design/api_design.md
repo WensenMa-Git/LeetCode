@@ -2,13 +2,6 @@ API naming: https://restfulapi.net/resource-naming/
 API Design: https://docs.microsoft.com/en-us/azure/architecture/best-practices/api-design
 API Design Tool: http://httpbin.org/, https://www.infoworld.com/article/3410586/13-free-tools-for-api-design-development-and-testing.html
 
-HTTP Methods: Delete, Get, Patch, Post, Put
-- GET retrieves a representation of the resource at the specified URI. The body of the response message contains the details of the requested resource.
-- POST creates a new resource at the specified URI. The body of the request message provides the details of the new resource. Note that POST can also be used to trigger operations that don't actually create resources.
-- PUT either creates or replaces the resource at the specified URI. The body of the request message specifies the resource to be created or updated.
-- PATCH performs a partial update of a resource. The request body specifies the set of changes to apply to the resource.
-- DELETE removes the resource at the specified URI.
-
 REST APIs use Uniform Resource Identifiers (URIs) to address resources.
 
 Example from AWS API Gateway:
