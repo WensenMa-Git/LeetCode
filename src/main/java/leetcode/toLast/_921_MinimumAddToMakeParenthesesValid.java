@@ -10,6 +10,7 @@ import java.util.Stack;
  */
 public class _921_MinimumAddToMakeParenthesesValid {
 
+    //Preferred Solution.
     public int minAddToMakeValid(String s) {
         Stack<Character> stack = new Stack<>();
         int result = 0;
