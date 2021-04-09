@@ -1,6 +1,5 @@
 package leetcode.to300;
 
-
 import leetcode.dependency.ListNode;
 
 public class _234_PalindromeLinkedList {
@@ -12,7 +11,7 @@ public class _234_PalindromeLinkedList {
 
         ListNode p = head;
         ListNode q = middle.next;
-        while (p != null && q != null) {
+        while (q != null) {
             if (p.val != q.val) return false;
             p = p.next;
             q = q.next;

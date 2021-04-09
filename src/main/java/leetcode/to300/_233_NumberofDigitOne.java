@@ -1,6 +1,10 @@
 package leetcode.to300;
 
-
+/**
+ * https://leetcode.com/problems/number-of-digit-one/
+ * Subject: Math
+ * #Hard #Attention
+ */
 public class _233_NumberofDigitOne {
 
 

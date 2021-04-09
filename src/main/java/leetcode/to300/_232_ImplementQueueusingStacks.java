@@ -2,7 +2,11 @@ package leetcode.to300;
 
 import java.util.Stack;
 
-
+/**
+ * https://leetcode.com/problems/implement-queue-using-stacks/
+ * Subject: Stack
+ * #Easy
+ */
 public class _232_ImplementQueueusingStacks {
 
 
