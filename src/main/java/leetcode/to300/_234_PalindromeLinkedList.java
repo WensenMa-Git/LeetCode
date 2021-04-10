@@ -2,6 +2,11 @@ package leetcode.to300;
 
 import leetcode.dependency.ListNode;
 
+/**
+ * https://leetcode.com/problems/palindrome-linked-list/
+ * Subject: LinkedList
+ * #Easy
+ */
 public class _234_PalindromeLinkedList {
 
     public boolean isPalindrome(ListNode head) {
