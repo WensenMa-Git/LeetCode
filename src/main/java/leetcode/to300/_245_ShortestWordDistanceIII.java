@@ -1,6 +1,10 @@
 package leetcode.to300;
 
-
+/**
+ * https://leetcode.com/problems/shortest-word-distance-iii/
+ * Subject: Array
+ * #Medium
+ */
 public class _245_ShortestWordDistanceIII {
 
     public int shortestWordDistance(String[] words, String word1, String word2) {

@@ -4,14 +4,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-
+/**
+ * https://leetcode.com/problems/shortest-word-distance-ii/
+ * Subject: Array
+ * #Medium
+ */
 public class _244_ShortestWordDistanceII {
 
-
     //_244_ShortestWordDistanceII 这个题在leetcode中构造函数是 WordDistance
-
     private final HashMap<String, List<Integer>> map;
-
 
     public _244_ShortestWordDistanceII(String[] words) {
         map = new HashMap<>();
@@ -26,7 +27,7 @@ public class _244_ShortestWordDistanceII {
         }
     }
 
-    //time : O(n * m)
+    //Preferred solution. (time : O(n * m))
     public int shortest(String word1, String word2) {
         List<Integer> l1 = map.get(word1);
         List<Integer> l2 = map.get(word2);

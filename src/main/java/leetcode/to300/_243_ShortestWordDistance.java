@@ -1,8 +1,11 @@
 package leetcode.to300;
 
-
+/**
+ * https://leetcode.com/problems/shortest-word-distance/
+ * Subject: Array
+ * #Easy
+ */
 public class _243_ShortestWordDistance {
-
 
     //time : O(n^2);
     public static int shortestDistance(String[] words, String word1, String word2) {
@@ -19,7 +22,7 @@ public class _243_ShortestWordDistance {
         return res;
     }
 
-    //time : O(n);
+    //Preferred solution. (time : O(n));
     public static int shortestDistance2(String[] words, String word1, String word2) {
         int res = words.length;
         int a = -1;

@@ -1,6 +1,10 @@
 package leetcode.to300;
 
-
+/**
+ * https://leetcode.com/problems/valid-anagram/
+ * Subject: String
+ * #Easy
+ */
 public class _242_ValidAnagram {
 
     public boolean isAnagram(String s, String t) {
