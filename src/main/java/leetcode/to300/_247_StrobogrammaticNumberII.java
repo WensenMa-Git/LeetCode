@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-
+/**
+ * https://leetcode.com/problems/strobogrammatic-number-ii/
+ * Subject: Recursion
+ * #Medium
+ */
 public class _247_StrobogrammaticNumberII {
 
     public List<String> findStrobogrammatic(int n) {
@@ -31,7 +35,7 @@ public class _247_StrobogrammaticNumberII {
         return res;
     }
 
-    //Provide a second solution.
+    //Provide a second solution. (Preferred)
     class Solution {
 
         char[] nums;

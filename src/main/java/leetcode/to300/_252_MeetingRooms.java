@@ -4,7 +4,11 @@ import leetcode.dependency.Interval;
 
 import java.util.Arrays;
 
-
+/**
+ * https://leetcode.com/problems/meeting-rooms/
+ * Subject: Array
+ * #Easy
+ */
 public class _252_MeetingRooms {
 
     public boolean canAttendMeetings(Interval[] intervals) {

@@ -5,7 +5,11 @@ import leetcode.dependency.Interval;
 import java.util.Arrays;
 import java.util.PriorityQueue;
 
-
+/**
+ * https://leetcode.com/problems/meeting-rooms-ii/
+ * Subject: Array
+ * #Medium
+ */
 public class _253_MeetingRoomsII {
 
     public int minMeetingRooms(Interval[] intervals) {

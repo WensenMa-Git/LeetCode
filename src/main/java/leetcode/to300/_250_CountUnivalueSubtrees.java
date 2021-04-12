@@ -1,8 +1,12 @@
 package leetcode.to300;
 
-
 import leetcode.dependency.TreeNode;
 
+/**
+ * https://leetcode.com/problems/count-univalue-subtrees/
+ * Subject: Tree
+ * #Medium
+ */
 public class _250_CountUnivalueSubtrees {
 
     int res;
@@ -34,4 +38,30 @@ public class _250_CountUnivalueSubtrees {
         return false;
     }
 
+    //Provide a second solution. (Preferred)
+    public int countUnivalSubtrees2(TreeNode root) {
+        if (root == null)
+            return 0;
+
+        int cnt = 0;
+        if (isUnival(root, root.val)) {
+            cnt++;
+        }
+
+        cnt = cnt + countUnivalSubtrees2(root.left);
+        cnt = cnt + countUnivalSubtrees2(root.right);
+
+        return cnt;
+    }
+
+    boolean isUnival(TreeNode node, int val) {
+
+        if (node.left == null && node.right == null && val == node.val) {
+            return true;
+        }
+
+        return node.val == val && (node.left == null || (node.left != null && isUnival(node.left, val)))
+                && (node.right == null || (node.right != null && isUnival(node.right, val)));
+
+    }
 }

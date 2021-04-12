@@ -3,9 +3,12 @@ package leetcode.to300;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * https://leetcode.com/problems/factor-combinations/
+ * Subject: Backtrack
+ * #Medium
+ */
 public class _254_FactorCombinations {
-
 
     public List<List<Integer>> getFactors(int n) {
         List<List<Integer>> res = new ArrayList<>();
