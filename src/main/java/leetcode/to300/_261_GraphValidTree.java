@@ -3,6 +3,7 @@ package leetcode.to300;
 import java.util.*;
 
 /**
+ * https://leetcode.com/problems/graph-valid-tree/
  * Subject: DFS, Union Find
  * #Medium #Attention
  */
@@ -34,6 +35,7 @@ public class _261_GraphValidTree {
         return i;
     }
 
+    //Provide a second solution.
     public boolean validTree2(int n, int[][] edges) {
         List<List<Integer>> graph = new ArrayList<>();
         for (int i = 0; i < n; i++) {
