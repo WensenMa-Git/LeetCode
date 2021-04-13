@@ -1,6 +1,10 @@
 package leetcode.to300;
 
-
+/**
+ * https://leetcode.com/problems/ugly-number/
+ * Subject: Math
+ * #Easy
+ */
 public class _263_UglyNumber {
 
     public boolean isUgly(int num) {

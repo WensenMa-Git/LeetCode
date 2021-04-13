@@ -1,9 +1,14 @@
 package leetcode.to400;
 
-
+/**
+ * https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-characters/
+ * Subject: Two Pointer
+ * #Medium
+ */
 public class _340_LongestSubstringwithAtMostKDistinctCharacters {
 
-
+    //Preferred solution.
+    //Test case: "eceba", 2
     public int lengthOfLongestSubstringKDistinct(String s, int k) {
         int[] count = new int[256];
         int res = 0, num = 0, j = 0;

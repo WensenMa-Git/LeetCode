@@ -7,11 +7,12 @@ import java.util.PriorityQueue;
 
 /**
  * https://leetcode.com/problems/sliding-window-maximum/
- * Subject: Sliding Window
+ * Subject: Sliding Window, Array
  * #Hard
  */
 public class _239_SlidingWindowMaximum {
 
+    //Provide a second soluiton.
     public int[] maxSlidingWindow(int[] nums, int k) {
         if (nums == null || nums.length == 0) {
             return new int[0];

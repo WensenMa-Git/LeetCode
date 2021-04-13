@@ -1,6 +1,10 @@
 package leetcode.to300;
 
-
+/**
+ * https://leetcode.com/problems/ugly-number-ii/
+ * Subject: Math, 找规律
+ * #Medium, #Attention
+ */
 public class _264_UglyNumberII {
 
     public int nthUglyNumber(int n) {

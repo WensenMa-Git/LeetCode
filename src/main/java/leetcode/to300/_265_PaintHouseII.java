@@ -3,7 +3,6 @@ package leetcode.to300;
 
 public class _265_PaintHouseII {
 
-
     public int minCostII(int[][] costs) {
         if (costs == null || costs.length == 0) return 0;
         int n = costs.length;
