@@ -5,7 +5,11 @@ import leetcode.dependency.TreeNode;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * https://leetcode.com/problems/binary-tree-paths/
+ * Subject: Tree
+ * #Easy
+ */
 public class _257_BinaryTreePaths {
 
     public static List<String> binaryTreePaths(TreeNode root) {

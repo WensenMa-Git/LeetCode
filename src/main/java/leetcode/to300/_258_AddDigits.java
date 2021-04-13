@@ -3,7 +3,6 @@ package leetcode.to300;
 
 public class _258_AddDigits {
 
-
     public static int addDigits1(int num) {
         int sum = 0;
         while (num != 0) {

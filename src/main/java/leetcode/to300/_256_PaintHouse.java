@@ -1,6 +1,10 @@
 package leetcode.to300;
 
-
+/**
+ * https://leetcode.com/problems/paint-house/
+ * Subject: Dynamic Programming
+ * #Medium
+ */
 public class _256_PaintHouse {
 
     public int minCost(int[][] costs) {
