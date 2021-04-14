@@ -2,12 +2,30 @@ package leetcode.to300;
 
 import java.util.HashSet;
 
-
+/**
+ * https://leetcode.com/problems/palindrome-permutation/
+ * Subject: Array
+ * #Easy
+ */
 public class _266_PalindromePermutation {
 
+    //Provide a new solution. (Preferred)
+    public boolean canPermutePalindrome(String s) {
+        boolean[] odd = new boolean[256];
+        int oddCount = 0;
+        for (char c : s.toCharArray()) {
+            odd[c] = !odd[c];
+            if (odd[c]) {
+                oddCount++;
+            } else {
+                oddCount--;
+            }
+        }
+        return oddCount <= 1;
+    }
 
     //space : O(n)
-    public boolean canPermutePalindrome(String s) {
+    public boolean canPermutePalindrome1(String s) {
         HashSet<Character> set = new HashSet<>();
         for (char c : s.toCharArray()) {
             if (set.contains(c)) {

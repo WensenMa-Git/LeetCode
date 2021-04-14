@@ -1,8 +1,11 @@
 package leetcode.to300;
 
-
+/**
+ * https://youtu.be/XtMThy8QKqU?t=1901
+ * Subject: Array, Math
+ * #Easy
+ */
 public class _268_MissingNumber {
-
 
     public int missingNumber(int[] nums) {
         int res = nums.length;
@@ -12,6 +15,7 @@ public class _268_MissingNumber {
         return res;
     }
 
+    //Preferred solution.
     public int missingNumber2(int[] nums) {
         int expectedSum = nums.length * (nums.length + 1) / 2;
         int actualSum = 0;
