@@ -1,6 +1,10 @@
 package leetcode.to300;
 
-
+/**
+ * https://leetcode.com/problems/paint-fence/
+ * Subject: Dynamic Programming
+ * #Medium #Attention
+ */
 public class _276_PaintFence {
 
     public int numWays(int n, int k) {

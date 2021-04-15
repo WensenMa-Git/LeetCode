@@ -1,6 +1,10 @@
 package leetcode.to300;
 
-
+/**
+ * https://leetcode.com/problems/find-the-celebrity/
+ * Subject: Array
+ * #Medium
+ */
 public class _277_FindtheCelebrity {
 
     public int findCelebrity(int n) {
@@ -21,5 +25,43 @@ public class _277_FindtheCelebrity {
 
     public boolean knows(int a, int b) {
         return true;
+    }
+
+    private int numberOfPeople;
+
+    //Provide a second solution. (Preferred)
+    public int findCelebrity2(int n) {
+        numberOfPeople = n;
+        int celebrityCandidate = 0;
+        for (int i = 0; i < n; i++) {
+            if (knows(celebrityCandidate, i)) {
+                celebrityCandidate = i;
+            }
+        }
+        if (isCelebrity(celebrityCandidate)) {
+            return celebrityCandidate;
+        }
+        return -1;
+    }
+
+    private boolean isCelebrity(int i) {
+        for (int j = 0; j < numberOfPeople; j++) {
+            if (i == j) continue; // Don't ask if they know themselves.
+            if (knows(i, j) || !knows(j, i)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    //Provide a third solution. (Brute force)
+    public int findCelebrity3(int n) {
+        numberOfPeople = n;
+        for (int i = 0; i < n; i++) {
+            if (isCelebrity(i)) {
+                return i;
+            }
+        }
+        return -1;
     }
 }

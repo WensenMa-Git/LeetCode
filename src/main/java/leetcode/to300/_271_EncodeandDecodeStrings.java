@@ -1,11 +1,15 @@
 package leetcode.to300;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-
+/**
+ * https://leetcode.com/problems/encode-and-decode-strings/
+ * Subject: String
+ * #Medium
+ */
 public class _271_EncodeandDecodeStrings {
-
 
     // Encodes a list of strings to a single string.
     public String encode(List<String> strs) {
@@ -28,4 +32,6 @@ public class _271_EncodeandDecodeStrings {
         }
         return res;
     }
+
+
 }

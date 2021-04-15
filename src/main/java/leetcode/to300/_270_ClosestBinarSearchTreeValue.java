@@ -2,10 +2,14 @@ package leetcode.to300;
 
 import leetcode.dependency.TreeNode;
 
+/**
+ * https://leetcode.com/problems/closest-binary-search-tree-value/
+ * Subject: Tree
+ * #Easy
+ */
 public class _270_ClosestBinarSearchTreeValue {
 
-
-    // time : O(logn) space : O(1)
+    // Preferred solution. time : O(logn) space : O(1)
     public int closestValue(TreeNode root, double target) {
         int res = root.val;
         while (root != null) {
