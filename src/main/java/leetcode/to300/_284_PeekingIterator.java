@@ -2,7 +2,11 @@ package leetcode.to300;
 
 import java.util.Iterator;
 
-
+/**
+ * https://leetcode.com/problems/peeking-iterator/
+ * Subject: Design
+ * #Medium
+ */
 public class _284_PeekingIterator {
 
 

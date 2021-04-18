@@ -1,8 +1,13 @@
 package leetcode.to300;
 
-
+/**
+ * https://leetcode.com/problems/move-zeroes/
+ * Subject: Array
+ * #Easy
+ */
 public class _283_MoveZeroes {
 
+    //Preferred solution.
     // num of operation : nums.length;
     public void moveZeroes1(int[] nums) {
         if (nums == null || nums.length == 0) return;

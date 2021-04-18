@@ -4,9 +4,12 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-
+/**
+ * https://leetcode.com/problems/zigzag-iterator/
+ * Subject: Array
+ * #Medium
+ */
 public class _281_ZigzagIterator {
-
 
     LinkedList<Iterator> list;
     private Iterator<Integer> i, j, temp;
@@ -46,5 +49,41 @@ public class _281_ZigzagIterator {
 
     public boolean hasNext2() {
         return !list.isEmpty();
+    }
+
+    //Provide a second solution. (Preferred).
+    class ZigzagIterator {
+
+        private int index1 = 0;
+        private int index2 = 0;
+        private List<Integer> v1;
+        private List<Integer> v2;
+        private boolean flag = false;
+
+        public ZigzagIterator(List<Integer> v1, List<Integer> v2) {
+            this.v1 = v1;
+            this.v2 = v2;
+        }
+
+        public int next() {
+            flag = !flag;
+            if (flag) {
+                if (index1 < v1.size()) {
+                    return v1.get(index1++);
+                } else {
+                    return v2.get(index2++);
+                }
+            } else {
+                if (index2 < v2.size()) {
+                    return v2.get(index2++);
+                } else {
+                    return v1.get(index1++);
+                }
+            }
+        }
+
+        public boolean hasNext() {
+            return index1 != v1.size() || index2 != v2.size();
+        }
     }
 }
