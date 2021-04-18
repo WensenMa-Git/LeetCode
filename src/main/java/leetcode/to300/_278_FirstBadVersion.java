@@ -1,9 +1,13 @@
 package leetcode.to300;
 
-
+/**
+ * https://leetcode.com/problems/first-bad-version/
+ * Subject: Binary Search
+ * #Easy
+ */
 public class _278_FirstBadVersion {
 
-
+    //Preferred solution.
     public int firstBadVersion(int n) {
         int start = 1;
         int end = n;
