@@ -3,7 +3,6 @@ package leetcode.to300;
 
 public class _289_GameofLife {
 
-
     public void gameOfLife(int[][] board) {
         if (board == null || board.length == 0) return;
         int m = board.length;
@@ -38,4 +37,32 @@ public class _289_GameofLife {
         return count;
     }
 
+    //Provide a second solution. (Preferred)
+    public void gameOfLife2(int[][] board) {
+        int m = board.length, n = m == 0 ? 0 : board[0].length;
+        if(m == 0 || n == 0) return;
+        for(int i = 0; i < m; i++) {
+            for(int j = 0; j < n; j++) {
+                int nb = getNB(board, i, j);
+                if(board[i][j] == 1 && (nb == 2 || nb == 3)) board[i][j] = 3;
+                else if(board[i][j] == 0 && nb == 3) board[i][j] = 2;
+            }
+        }
+        for(int i = 0; i < m; i++) {
+            for(int j = 0; j < n; j++)
+                board[i][j] >>>= 1;
+        }
+    }
+    private int getNB(int[][] board, int i, int j) {
+        int cnt = 0;
+        for(int r = -1; r < 2; r++) {
+            for(int c = -1; c < 2; c++) {
+                int x = r + i, y = c + j;
+                if(x < 0 || y < 0 || x >= board.length || y >= board[0].length) continue;
+                cnt += board[x][y] & 1;
+            }
+        }
+        cnt -= board[i][j] & 1;
+        return cnt;
+    }
 }

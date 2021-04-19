@@ -1,8 +1,14 @@
 package leetcode.to300;
 
+import java.util.Arrays;
 
+/**
+ * https://leetcode.com/problems/find-the-duplicate-number/
+ * Similar to https://leetcode.com/problems/linked-list-cycle-ii/
+ * Subject: LinkedList
+ * #Medium
+ */
 public class _287_FindtheDuplicateNumber {
-
 
     // time : O(nlogn) space : O(1)
     public int findDuplicate(int[] nums) {
@@ -39,5 +45,16 @@ public class _287_FindtheDuplicateNumber {
             fast = nums[fast];
         }
         return slow;
+    }
+
+    //Provide a third solution. //time : O(nlogn)
+    public int findDuplicate3(int[] nums) {
+        Arrays.sort(nums);
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] == nums[i - 1]) {
+                return nums[i];
+            }
+        }
+        return -1;
     }
 }

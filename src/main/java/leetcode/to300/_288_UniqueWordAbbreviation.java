@@ -2,9 +2,12 @@ package leetcode.to300;
 
 import java.util.HashMap;
 
-
+/**
+ * https://leetcode.com/problems/unique-word-abbreviation/
+ * Subject: Design
+ * #Medium
+ */
 public class _288_UniqueWordAbbreviation {
-
 
     HashMap<String, String> map;
 
