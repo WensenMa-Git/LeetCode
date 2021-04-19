@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		//工厂函数
+		//构造函数此时只是做了初始化工作
+		function createMan(name1,age1){  //构造函数
+			//添加原料
+			// var obj=new Object()  //创建对象
+			//当使用new实例化的时候，其实系统帮我们做了这步
+			//var this=new Object()
+			//对我们的原料进行加工
+			//定义属性
+			this.name=name1
+			this.age=age1
+			//定义方法
+			this.showName=function(){
+				alert('我的名字'+this.name)
+			}
+			this.showAge=function(){
+				alert('我的年龄'+this.age)
+			}
+			//出厂
+			// return obj
+		}
+		//使用new进行实例化构造函数
+		//new帮我们做了两件事  1、创建原料var this=new Object()  2、return this
+		var obj1=new createMan('Tim',29)
+		var obj2=new createMan('xiaod',32)
+		obj1.showAge()
+		obj2.showAge()
+		alert(obj1.showAge==obj2.showAge)
+		//输出的还是false ，证明每次调用还是会重新生成了我们的定义的方法
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>

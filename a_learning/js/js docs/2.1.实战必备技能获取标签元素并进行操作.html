@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		#tim{
+			width: 200px;
+			height: 200px;
+			border:1px solid black;
+			margin:0 auto;
+		}
+	</style>
+</head>
+<body>
+	<div id="tim" class="xiaod"></div>
+	<script type="text/javascript">
+		//返回这个id名的元素
+		// document.getElementById('tim').style.background='red'
+		//返回所有这个标签名的元素的集合  获取到的是一个集合，拥有数组的特性
+		// document.getElementsByTagName('div')[0].style.background='black'
+		//通过classname获取到的也是一个集合
+		// document.getElementsByClassName('xiaod')[0].style.background='yellow'
+		//document.querySelector("css任意选择器") 返回第一个
+		// document.querySelector("div").style.background='black'
+		//document.querySelectorAll("css任意选择器")  返回符合的所有
+		document.querySelectorAll("div")[0].style.background='red'
+
+	</script>
+</body>
+</html>

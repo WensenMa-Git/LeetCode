@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		//清除定时器  
+		//创建间隔性定时器
+		var timer1=setInterval(function(){
+			console.log("我是间隔型定时器")
+			// clearTimeout(timer2)
+		},1000)
+		//创建延时性的定时器
+		var timer2=setTimeout(function(){
+			console.log("我是延时性定时器")
+			clearInterval(timer1)
+		},3000)
+
+
+
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>

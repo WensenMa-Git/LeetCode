@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div id="tim"></div>
+	<div id="rewrite">重写</div>
+	<script type="text/javascript">
+		// alert('我是弹窗内容')
+
+		console.log('我是在浏览器调试窗口输出的内容')
+
+		 document.getElementById('tim').innerHTML='<h1>我是tim盒子的内容，我被注入进来了</h1>'
+
+		// document.getElementById('tim').innerText='<h1>我是tim盒子的内容，我被注入进来了</h1>'
+
+		document.getElementById('rewrite').onclick=function(){
+			document.write('我是新的html了，原本的已经被我替代掉')
+		}
+		
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>

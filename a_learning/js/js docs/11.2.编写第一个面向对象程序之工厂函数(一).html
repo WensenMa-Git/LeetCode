@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		// var obj1=new Object()  //创建对象
+		// //定义属性
+		// obj1.name='Tim'
+		// obj1.age=29
+		// //定义方法
+		// //this指向调用此方法的对象  所以this指向obj1
+		// obj1.showName=function(){
+		// 	alert('我的名字'+this.name)
+		// }
+		// obj1.showAge=function(){
+		// 	alert('我的年龄'+this.age)
+		// }
+		// obj1.showName()
+		// obj1.showAge()
+
+		// var obj2=new Object()  //创建对象
+		// //定义属性
+		// obj2.name='xiaod'
+		// obj2.age=32
+		// //定义方法
+		// //this指向调用此方法的对象  所以this指向obj1
+		// obj2.showName=function(){
+		// 	alert('我的名字'+this.name)
+		// }
+		// obj2.showAge=function(){
+		// 	alert('我的年龄'+this.age)
+		// }
+		// obj2.showName()
+		// obj2.showAge()
+
+		function createMan(name1,age1){  //构造函数
+			var obj=new Object()  //创建对象
+			//定义属性
+			obj.name=name1
+			obj.age=age1
+			//定义方法
+			obj.showName=function(){
+				alert('我的名字'+this.name)
+			}
+			obj.showAge=function(){
+				alert('我的年龄'+this.age)
+			}
+			return obj
+		}
+
+		var obj1=createMan('Tim',29)
+		var obj2=createMan('xiaod',32)
+		// obj1.showName()
+		// obj2.showName()
+		alert(obj1.showName==obj2.showName) //返回false  证明每次调用构造函数的时候他都会重新创建showName和showAge这两个方法  ，这不是我们想要的
+	</script>
+</body>
+</html>

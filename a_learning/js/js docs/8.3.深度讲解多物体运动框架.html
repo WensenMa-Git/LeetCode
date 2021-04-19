@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		#div1,div{
+			float: left;
+			width: 100px;
+			height: 100px;
+			background: red;
+			margin-right: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div id="div1"></div>
+	<div></div>
+	<div></div>
+	<script type="text/javascript">
+		var oDiv=document.getElementsByTagName('div')
+		// var timer=null
+
+		for(var i=0;i<oDiv.length;i++){
+			//添加鼠标移入事件
+			oDiv[i].timer=null
+			oDiv[i].onmouseover=function(){
+				moving(this,400)
+			}
+			//添加鼠标移出事件
+			oDiv[i].onmouseout=function(){
+				moving(this,100)
+			}
+		}
+		
+		// //添加鼠标移入事件
+		// oDiv.onmouseover=function(){
+		// 	moving(400)
+		// }
+		// //添加鼠标移出事件
+		// oDiv.onmouseout=function(){
+		// 	moving(100)
+		// }
+		function moving(obj,target){
+			clearInterval(obj.timer)
+			obj.timer=setInterval(function(){
+				var speed=(target-obj.offsetHeight)/8
+				//做向上取整和向下取整处理
+				speed=speed>0?Math.ceil(speed):Math.floor(speed)
+				if(obj.offsetHeight==target){
+					clearInterval(obj.timer)
+				}else{
+					obj.style.height=obj.offsetHeight+speed+'px'
+				}
+			},30)
+		}
+
+
+
+
+
+
+	</script>
+
+
+
+
+
+
+
+
+</body>
+</html>

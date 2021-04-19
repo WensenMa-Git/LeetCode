@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div id="div1" value="2">123</div>
+
+
+	<script type="text/javascript">
+		var oDiv=document.getElementById('div1')
+		//第一种
+		// oDiv.style.color='red'
+		//第二种
+		oDiv.style['color']='red'
+		//第三种  dom的方式
+		//获取属性
+		console.log("我是改变前的id："+oDiv.getAttribute('id'))
+		console.log("我是改变前的value："+oDiv.getAttribute('value'))
+		//改变属性
+		oDiv.setAttribute('id','tim')
+		oDiv.setAttribute('value','100')
+
+		console.log("我是改变后的id："+oDiv.getAttribute('id'))
+		console.log("我是改变后的value："+oDiv.getAttribute('value'))
+		//删除属性  removeAttribute
+		oDiv.removeAttribute('value')
+
+
+
+
+
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>

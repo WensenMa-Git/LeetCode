@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div style="height:2000px;background:red;"></div>
+
+	<script type="text/javascript">
+
+		window.onload=function(){
+			//滚动事件
+			window.onscroll=function(){
+				//兼容ie 获取滚动距离
+				if(document.body.scrollTop){
+					console.log(document.body.scrollTop)
+				}else{
+					console.log(document.documentElement.scrollTop)
+				}
+			}
+
+			//监听可是窗口变化事件 
+			window.onresize=function(){
+				console.log(document.documentElement.clientHeight)
+			}
+
+
+
+
+
+
+
+
+
+
+
+		}
+
+
+	</script>
+</body>
+</html>

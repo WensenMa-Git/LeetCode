@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div id="div1">
+		<div>我是第一个</div>
+		<div>我是第二个</div>
+		<div id="three">我是第三个</div>
+		<div>我是第四个</div>
+		<div>我是第五个</div>
+	</div>
+
+
+	<script type="text/javascript">
+		var oDiv=document.getElementById('div1')
+		var three=document.getElementById('three')
+		//获取第一个子节点
+		// console.log(oDiv.firstChild)
+		// console.log(oDiv.firstElementChild)
+		//获取最后一个子节点
+		// console.log(oDiv.lastElementChild)
+		//获取上一个兄弟节点
+		console.log(three.previousElementSibling)
+		//获取下一个兄弟节点
+		console.log(three.nextElementSibling)
+
+
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>

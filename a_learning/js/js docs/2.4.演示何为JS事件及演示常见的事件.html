@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		#tim{
+			width:300px;
+			height: 300px;
+			background:red;
+			margin: 0 auto;
+		}
+
+	</style>
+</head>
+<body>
+		<div id="tim"></div>
+		<input type="" name="" id="xd">
+		<script type="text/javascript">
+			//点击事件
+			document.getElementById("tim").onclick=function(){
+				//函数里面写我们要做的事情
+				alert('我是被点击了')
+			}
+			//鼠标移入事件
+			document.getElementById("tim").onmouseover=function(){
+				console.log('鼠标移入我的范围内了')
+			}
+			//鼠标移出事件
+			document.getElementById("tim").onmouseout=function(){
+				console.log('鼠标移出我的范围内了')
+			}
+			//元素改变事件，一般用在表单元素
+			document.getElementById('xd').onchange=function(){
+				console.log(document.getElementById('xd').value)
+			}
+			//键盘事件，按下键盘事件
+			document.getElementById('xd').onkeydown=function(){
+				console.log('键盘按下了')
+			}
+			//获取焦点事件
+			document.getElementById('xd').onfocus=function(){
+				console.log('我获取到焦点了')
+			}
+			//失去焦点事件
+			document.getElementById('xd').onblur=function(){
+				console.log('我失去焦点了')
+			}
+		</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

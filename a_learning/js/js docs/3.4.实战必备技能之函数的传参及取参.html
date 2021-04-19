@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+
+		#tim{
+			width: 100px;
+			height: 100px;
+			background: red;
+			margin: 0 auto;
+		}
+	</style>
+</head>
+<body>
+	<button id="taller" onClick="change('height','300px')">增高</button>
+	<button id="longer" onClick="change('width','300px')">增长</button>
+	<button id="changebg" onClick="change('background','black')">改变背景颜色</button>
+	<div id="tim" ></div>
+	<script type="text/javascript">
+		//获取到要改变的div  id为tim
+			var oDiv=document.getElementById('tim')
+			//写点击增高的按钮时需要调用的函数
+			// var taller=function(){
+			// 		oDiv.style.height='300px'
+			// }
+			// //写点击增长的按钮时需要调用的函数
+			// function longer(){
+			// 		oDiv.style.width='300px'
+			// }
+			// //写点击改变背景颜色的按钮时需要调用的函数
+			// function changebg(){
+			// 		oDiv.style.background='black'
+			// }
+		
+			function change(styleattr,value){
+				//两种写法是一样的，但是如果需要传入变量就需要用第二种
+					// oDiv.style.styleattr=value
+					oDiv.style[styleattr]=value
+
+			}
+
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

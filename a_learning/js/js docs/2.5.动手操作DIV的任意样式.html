@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+
+		#tim{
+			width: 100px;
+			height: 100px;
+			background: red;
+			margin: 0 auto;
+		}
+	</style>
+</head>
+<body>
+	<button id="taller">增高</button>
+	<button id="longer">增长</button>
+	<button id="changebg">改变背景颜色</button>
+	<div id="tim" ></div>
+	<script type="text/javascript">
+
+		window.onload=function(){
+			//给我们的增高按钮添加点击事件
+			document.getElementById('taller').onclick=function(){
+				//获取id名为tim的div
+				document.getElementById('tim').style.height='300px'
+			}
+			//给我们的增高长按钮添加点击事件
+			document.getElementById('longer').onclick=function(){
+				//获取id名为tim的div
+				document.getElementById('tim').style.width='300px'
+			}
+			//给我们的改变背景颜色按钮添加点击事件
+			document.getElementById('changebg').onclick=function(){
+				//获取id名为tim的div
+				document.getElementById('tim').style.background='black'
+			}
+		}
+
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

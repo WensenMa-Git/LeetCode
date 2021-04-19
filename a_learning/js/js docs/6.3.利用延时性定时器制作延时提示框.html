@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		#div1{
+			float: left;
+			width: 50px;
+			height: 50px;
+			background: red;
+			margin-right: 30px;
+		}
+		#div2{
+			float: left;
+			width: 200px;
+			height: 200px;
+			background: black;
+			display: none;
+		}
+
+	</style>
+</head>
+<body>
+	<div id="div1"></div>
+	<div id="div2"></div>
+	<script type="text/javascript">
+
+		window.onload=function(){
+			var oDiv1=document.getElementById('div1')
+			var oDiv2=document.getElementById('div2')
+			var timer=null
+			//给div1添加鼠标移入事件
+			oDiv2.onmouseover=oDiv1.onmouseover=function(){
+				//改变div2的display
+				clearTimeout(timer)
+				oDiv2.style.display='block'
+			}
+			//给div1添加鼠标移出事件
+			oDiv2.onmouseout=oDiv1.onmouseout=function(){
+				//改变div2的display
+				timer=setTimeout(function(){
+					oDiv2.style.display='none'
+				},500)
+			}
+
+			//给div2添加鼠标移入事件
+			// oDiv2.onmouseover=function(){
+			// 	//改变div2的display
+			// 	clearTimeout(timer)
+			// 	oDiv2.style.display='block'
+
+			// }
+
+			//给div2添加鼠标移出事件
+			// oDiv2.onmouseout=function(){
+			// 	//改变div2的display
+			// 	timer=setTimeout(function(){
+			// 		oDiv2.style.display='none'
+			// 	},500)
+			// }
+
+		}
+
+
+
+
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

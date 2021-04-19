@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<script type="text/javascript">
+		var a=9
+		//判断  一个=表示赋值   两个==是判断左右两边是否相等 还会进行类型的转换
+		//三个===是全等的类型，意思是不会转换类型 ，要判断===左右两边的类型和值都相等才会返回true
+		// if(a==10){
+		// 	console.log('a等于10是成立的')
+		// }else{
+		// 	console.log('a等于10是不成立的')
+		// }
+
+		// if(a=='11'){
+		// 	console.log('两个==会转换类型')
+		// }else if(a==10){
+		// 	console.log('a等于10是成立的')
+		// }else{
+		// 	console.log('a不等于10 也不等于11')
+		// }
+
+		//全等是三个=== ，需要左右两边的类型和值都一样才返回true
+		// if(a==='9'){
+		// 	console.log('现在的是指和类型都相等')
+		// }else{
+		// 	console.log('现在的是指和类型不全相等，有可能是值不相等，有可能是类型不相等，也有可能两者都不相等')
+		// }
+
+		//三目运算    条件？'成立执行冒号前面的': '不成立执行冒号后面的'
+		// var b=10
+		// b==='10'?console.log('成立'):console.log('不成立')
+
+		//switch  case 的高级用法
+
+
+		function fun(type){
+			switch(type){
+				case 0:
+				console.log('传入的条件是0');
+				break;
+				case 1:
+				console.log('传入的条件是1');
+				break;
+				case 2:
+				console.log('传入的条件是2');
+				break;
+				case 3:
+				console.log('传入的条件是3');
+				break;
+				case 4:
+				console.log('传入的条件是4');
+				break;
+				default:
+				console.log('我是默认的，就是上述条件都不成立就输出我');
+				break;
+			}
+		}
+		fun(0)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>

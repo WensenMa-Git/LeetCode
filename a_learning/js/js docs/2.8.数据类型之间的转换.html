@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+			var a='123'
+			var b='abc'
+			//强制类型转换(显式转换)
+			console.log(a,"类型："+typeof(a))
+			console.log(a,"用number进行类型转换之后的类型："+typeof(Number(a)))
+
+			//用number转换一个是字符串类型，但内容不是数字
+			console.log(b,"类型："+typeof(b))
+			console.log(b,Number(b),"用number进行类型转换之后的类型："+typeof(Number(b)))
+			//NaN是not a number的缩写 意思是 不是一个数字
+
+			var c='3.1415926abc'
+			console.log(c,'整形转换：'+parseInt(c))
+			console.log(c,'浮点型转换:'+parseFloat(c))
+
+
+			var d=123456
+			console.log(d,String(d),typeof(String(d)))
+			console.log(d,d.toString(),typeof(d.toString()))
+
+
+			console.log(d,Boolean(d))
+
+			//隐式转换
+			//数字跟数字相加，不用转换类型
+			// var sum
+			// sum=1+2
+			// console.log('sum='+sum)
+			//数字跟字符串相加 发生类型转换，会变成字符串之间的拼接，就是把我们的数字1变成了字符串‘1’
+			var sum
+			sum=1+'2'
+			console.log('sum='+sum,typeof(sum))
+			if(12=='12'){
+				console.log('判断成立了，我被执行了')
+			}
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

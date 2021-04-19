@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+
+		#tim{
+			width: 100px;
+			height: 100px;
+			background: red;
+			margin: 0 auto;
+		}
+	</style>
+</head>
+<body>
+	<button id="taller" onClick="taller()">增高</button>
+	<button id="longer" onClick="longer()">增长</button>
+	<button id="changebg" onClick="changebg()">改变背景颜色</button>
+	<div id="tim" ></div>
+	<script type="text/javascript">
+		//获取到要改变的div  id为tim
+			var oDiv=document.getElementById('tim')
+			//写点击增高的按钮时需要调用的函数
+			var taller=function(){
+					oDiv.style.height='300px'
+			}
+			//写点击增长的按钮时需要调用的函数
+			function longer(){
+					oDiv.style.width='300px'
+			}
+			//写点击改变背景颜色的按钮时需要调用的函数
+			function changebg(){
+					oDiv.style.background='black'
+			}
+		// window.onload=function(){
+		// 	//给我们的增高按钮添加点击事件
+		// 	document.getElementById('taller').onclick=function(){
+		// 		//获取id名为tim的div
+		// 		document.getElementById('tim').style.height='300px'
+		// 	}
+		// 	//给我们的增高长按钮添加点击事件
+		// 	document.getElementById('longer').onclick=function(){
+		// 		//获取id名为tim的div
+		// 		document.getElementById('tim').style.width='300px'
+		// 	}
+		// 	//给我们的改变背景颜色按钮添加点击事件
+		// 	document.getElementById('changebg').onclick=function(){
+		// 		//获取id名为tim的div
+		// 		document.getElementById('tim').style.background='black'
+		// 	}
+		// }
+
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

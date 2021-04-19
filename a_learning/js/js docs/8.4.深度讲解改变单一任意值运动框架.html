@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		#div1,div{
+			float: left;
+			width: 100px;
+			height: 100px;
+			background: red;
+			margin-right: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div id="div1" style="color:black;">111</div>
+	<div id="div2"></div>
+	<div id="div3"></div>
+	<script type="text/javascript">
+		var oDiv1=document.getElementById('div1')
+		var oDiv2=document.getElementById('div2')
+		var oDiv3=document.getElementById('div3')
+		
+			//给div1添加鼠标移入事件
+			
+			oDiv1.onmouseover=function(){
+				moving(this,'fontSize',50)
+			}
+			//给div1添加鼠标移出事件
+			oDiv1.onmouseout=function(){
+				moving(this,'fontSize',12)
+			}
+			//给div2添加鼠标移入事件
+			
+			oDiv2.onmouseover=function(){
+				moving(this,'width',400)
+			}
+			//给div2添加鼠标移出事件
+			oDiv2.onmouseout=function(){
+				moving(this,'width',100)
+			}
+			//给div3添加鼠标移入事件
+			
+			oDiv3.onmouseover=function(){
+				moving(this,'height',400)
+			}
+			//给div3添加鼠标移出事件
+			oDiv3.onmouseout=function(){
+				moving(this,'height',100)
+			}
+			//oDiv1.style.xxx只能获取行内样式(内联样式)
+			// console.log(oDiv1.style.color,'颜色')
+			// console.log(oDiv1.style.width,'宽度')
+			//获取内部样式（写在style标签内部的）  外部样式（通过link引入的样式表）
+			//在谷歌浏览器获取内部和外部样式getComputedStyle
+			// console.log(getComputedStyle(oDiv1,false)['width'])
+			//在ie浏览器下就是用oDiv1.currentStyle
+
+			//写一个方法获取我们需要改变的样式的值
+			function getStyleValue(obj,attr){
+				if(obj.currentStyle){
+					return obj.currentStyle[attr]
+				}else{
+					return getComputedStyle(obj,false)[attr]
+				}
+			}
+			
+			console.log(getStyleValue(oDiv1,'width'))
+
+			function moving(obj,attr,target){
+				clearInterval(obj.timer)
+				obj.timer=setInterval(function(){
+					//定义一个变量接收我们需要改变的样式的值
+					var currvalue=parseInt(getStyleValue(obj,attr)) 
+					var speed=(target-currvalue)/8
+					//做向上取整和向下取整处理
+					speed=speed>0?Math.ceil(speed):Math.floor(speed)
+					if(currvalue==target){
+						clearInterval(obj.timer)
+					}else{
+						obj.style[attr]=currvalue+speed+'px'
+					}
+				},30)
+			}
+
+
+
+
+
+
+	</script>
+
+
+
+
+
+
+
+
+</body>
+</html>

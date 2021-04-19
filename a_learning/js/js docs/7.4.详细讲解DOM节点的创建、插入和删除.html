@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<ul id="ullist">
+		<li>我是第一个</li>
+		<li>我是第二个</li>
+		<li>我是第三个</li>
+		<li>我是第四个</li>
+	</ul>
+	<script type="text/javascript">
+		var oUl=document.getElementById('ullist')
+		var oLi=oUl.getElementsByTagName('li')
+		//创建dom节点
+		var li=document.createElement('li')
+		li.innerHTML='我是新创建的li'
+		// oUl.appendChild(li)
+		//我们要在指定的位置插入新创建的li
+		// oUl.insertBefore(li,oLi[2])
+
+		//删除节点
+		oUl.removeChild(oLi[3])
+
+
+
+
+
+
+
+
+
+
+
+
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

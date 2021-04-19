@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		//序列化，js对象转换成json字符串
+		var obj={'name':'tim','age':16}
+		console.log(obj,typeof(obj))
+		console.log(JSON.stringify(obj),typeof(JSON.stringify(obj)))
+
+		//反序列化   json字符串转换成js对象
+		console.log('********反序列化*********')
+		var jsonString='{"name":"tim","age":18}'
+		console.log(jsonString,typeof(jsonString))
+		console.log(JSON.parse(jsonString),typeof(JSON.parse(jsonString)))
+
+
+
+
+	</script>
+</body>
+</html>

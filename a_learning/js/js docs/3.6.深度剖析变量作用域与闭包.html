@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		//局部变量不能供其他的作用域使用，只能在定义的当前作用域内使用
+		// function a(){
+		// 	var tim=1
+		// 	console.log('我是a方法内部调用这个全局变量的：'+all)
+		// 	// console.log(tim)
+		// }
+
+		// // console.log(tim)
+
+		// //全局变量谁都可以使用
+		// var all=100
+		// console.log(all)
+		// a()
+
+		//闭包
+
+		function a(){
+			var tim=10
+			var b=function(){
+				console.log(tim)
+			}
+			return b
+		}
+
+		a()()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>

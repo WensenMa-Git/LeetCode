@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		#div1,div{
+			float: left;
+			width: 100px;
+			height: 100px;
+			background: red;
+			margin-right: 20px;
+		}
+		#div2{
+			/*兼容ie的写法*/
+			filter: alpha(opacity:30);
+			/*兼容非ie浏览器的写法*/
+			opacity:0.3;
+		}
+	</style>
+</head>
+<body>
+	<div id="div1">点击我展开</div>
+	<div id="div2"></div>
+	<div id="div3">点击我收起</div>
+	<script type="text/javascript">
+		var oDiv1=document.getElementById('div1')
+		var oDiv2=document.getElementById('div2')
+		var oDiv3=document.getElementById('div3')
+		
+			
+			oDiv1.onclick=function(){
+				moving(oDiv2,{"width":400,"height":400,"opacity":100},function(){
+					alert('我已经执行完了')
+				})
+			}
+			oDiv3.onclick=function(){
+				moving(oDiv2,{"width":100,"height":100,"opacity":30})
+			}
+			//写一个方法获取我们需要改变的样式的值
+			function getStyleValue(obj,attr){
+				if(obj.currentStyle){
+					return obj.currentStyle[attr]
+				}else{
+					return getComputedStyle(obj,false)[attr]
+				}
+			}
+			
+			console.log(getStyleValue(oDiv1,'width'))
+
+			function moving(obj,json,callbackfun){
+				clearInterval(obj.timer)
+				obj.timer=setInterval(function(){
+					//判断所有运动是否已完成
+					var beclear=true
+					for(var attr in json){
+						//定义一个变量接收我们需要改变的样式的值
+						var currvalue=0
+						if(attr=='opacity'){
+							// 为什么使用四舍五入的取整方式，是因为计算机对于计算存在一些bug，大家可以尝试输出 0.7*100就明白了 
+							currvalue=Math.round(getStyleValue(obj,attr)*100)
+						}else{
+							currvalue=parseInt(getStyleValue(obj,attr)) 
+						}
+						
+						var speed=(json[attr]-currvalue)/8
+						//做向上取整和向下取整处理
+						speed=speed>0?Math.ceil(speed):Math.floor(speed)
+
+						if(currvalue!=json[attr]){
+							beclear=false
+							if(attr=='opacity'){
+								obj.style.filter='alpha(opacity:'+(currvalue+speed)+')'
+								obj.style.opacity=(currvalue+speed)/100
+							}else{
+								obj.style[attr]=currvalue+speed+'px'
+							}
+							
+						}
+					}
+					if(beclear){
+						clearInterval(obj.timer)
+						if(callbackfun){
+							callbackfun()
+						}
+					}
+				},30)
+			}
+
+
+
+
+
+
+	</script>
+
+
+
+
+
+
+
+
+</body>
+</html>

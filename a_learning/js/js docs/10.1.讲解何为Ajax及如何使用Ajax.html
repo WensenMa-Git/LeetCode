@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<button id="read">读取数据</button>
+	<script type="text/javascript" src="ajax.js"></script>
+	<script type="text/javascript">
+
+		var oBtn=document.getElementById('read')
+		oBtn.onclick=function(){
+			ajax('xiaod.txt?t='+new Date().getTime(),function(res){
+				alert(res)
+			},function(){
+				alert('读取失败')
+			})
+		}
+
+
+	</script>
+</body>
+</html>

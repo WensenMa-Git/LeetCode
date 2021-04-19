@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		#bigdiv{
+			position: relative;
+		}
+
+	</style>
+</head>
+<body>
+	<div id="bigdiv">
+		<div id="div1">
+			<div>1111</div>
+			<div>2222</div>
+		</div>
+	</div>
+	
+
+	<script type="text/javascript">
+		var oDiv=document.getElementById('div1')
+		//childNodes获取子节点会获取到文本节点和元素节点
+		var div1=oDiv.childNodes
+		console.log(oDiv.childNodes)
+		//这种只获取元素节点，不会获取到文本节点 children
+		console.log(oDiv.children)
+		//获取父节点
+		// console.log(oDiv.parentNode)
+		// console.log(oDiv.parentElement)
+		// console.log(oDiv.offsetParent)
+		//判断节点类型  1是元素节点    3是文本节点
+		console.log(div1[0].nodeType,'我是第一个，我是文本节点')
+		console.log(div1[1].nodeType,'我是第二个，我是元素节点')
+
+
+
+
+
+	</script>
+</body>
+</html>
