@@ -37,7 +37,7 @@ public class _290_WordPattern {
         String[] s = str.split(" ");
         if(s.length != pattern.length()) return false;
         int i = 0;
-        while(i<pattern.length()){
+        while(i < pattern.length()){
             if(map.containsKey(pattern.charAt(i))){
                 if(!map.get(pattern.charAt(i)).equals(s[i])){
                     return false;
