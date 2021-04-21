@@ -3,7 +3,11 @@ package leetcode.to300;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * https://leetcode.com/problems/flip-game/
+ * Subject: String
+ * #Easy
+ */
 public class _293_FlipGame {
 
     public List<String> generatePossibleNextMoves(String s) {

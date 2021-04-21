@@ -3,7 +3,11 @@ package leetcode.to300;
 import java.util.HashMap;
 import java.util.HashSet;
 
-
+/**
+ * https://leetcode.com/problems/word-pattern-ii/
+ * Subject: DFS
+ * #Medium #hard #Attention
+ */
 public class _291_WordPatternII {
 
     public boolean wordPatternMatch(String pattern, String str) {
