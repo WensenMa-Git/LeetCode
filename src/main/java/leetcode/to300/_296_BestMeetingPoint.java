@@ -3,7 +3,11 @@ package leetcode.to300;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * https://leetcode.com/problems/best-meeting-point/
+ * Subject: Array
+ * #Hard
+ */
 public class _296_BestMeetingPoint {
 
     public int minTotalDistance(int[][] grid) {

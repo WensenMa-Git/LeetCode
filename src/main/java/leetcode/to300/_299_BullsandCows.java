@@ -18,4 +18,27 @@ public class _299_BullsandCows {
         }
         return bulls + "A" + cows + "B";
     }
+
+    //Provide a second solution. (Preferred)
+    public String getHint2(String secret, String guess) {
+        int bulls = 0;
+        int maxCows = 0;
+        int[] count = new int[10];
+        for (int i = 0; i < secret.length(); i++) {
+            if (secret.charAt(i) == guess.charAt(i)) {
+                bulls++;
+            } else {
+                maxCows++;
+                count[secret.charAt(i) - '0']++;
+                count[guess.charAt(i) - '0']--;
+            }
+        }
+        int leftCows = 0;
+        for (int c : count) {
+            if (c > 0) {
+                leftCows += c;
+            }
+        }
+        return bulls + "A" + (maxCows - leftCows) + "B";
+    }
 }
