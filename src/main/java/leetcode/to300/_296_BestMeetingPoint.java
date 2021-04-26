@@ -6,7 +6,6 @@ import java.util.List;
 
 public class _296_BestMeetingPoint {
 
-
     public int minTotalDistance(int[][] grid) {
         int m = grid.length;
         int n = grid[0].length;
