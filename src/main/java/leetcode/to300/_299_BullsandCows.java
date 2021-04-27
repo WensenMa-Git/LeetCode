@@ -3,7 +3,6 @@ package leetcode.to300;
 
 public class _299_BullsandCows {
 
-
     public String getHint(String secret, String guess) {
         int bulls = 0;
         int cows = 0;

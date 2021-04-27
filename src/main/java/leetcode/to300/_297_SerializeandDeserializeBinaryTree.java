@@ -5,9 +5,12 @@ import leetcode.dependency.TreeNode;
 import java.util.LinkedList;
 import java.util.Queue;
 
-
+/**
+ * https://leetcode.com/problems/serialize-and-deserialize-binary-tree/
+ * Subject: Tree
+ * #Hard
+ */
 public class _297_SerializeandDeserializeBinaryTree {
-
 
     // Encodes a tree to a single string.
     public String serialize(TreeNode root) {

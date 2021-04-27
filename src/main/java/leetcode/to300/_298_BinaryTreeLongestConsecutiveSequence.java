@@ -5,7 +5,6 @@ import leetcode.dependency.TreeNode;
 
 public class _298_BinaryTreeLongestConsecutiveSequence {
 
-
     private int res = 0;
 
     public int longestConsecutive(TreeNode root) {

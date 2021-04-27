@@ -1,6 +1,5 @@
 package leetcode.to300;
 
-
 import java.util.Arrays;
 
 public class _300_LongestIncreasingSubsequence {
