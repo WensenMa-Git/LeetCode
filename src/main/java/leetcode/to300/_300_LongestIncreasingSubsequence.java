@@ -2,6 +2,11 @@ package leetcode.to300;
 
 import java.util.Arrays;
 
+/**
+ * https://leetcode.com/problems/longest-increasing-subsequence/
+ * Subject: Array, Binary Search
+ * #Medium
+ */
 public class _300_LongestIncreasingSubsequence {
 
     public int lengthOfLIS(int[] nums) {

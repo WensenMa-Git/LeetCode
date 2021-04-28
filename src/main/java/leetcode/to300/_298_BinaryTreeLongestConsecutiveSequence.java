@@ -1,8 +1,12 @@
 package leetcode.to300;
 
-
 import leetcode.dependency.TreeNode;
 
+/**
+ * https://leetcode.com/problems/binary-tree-longest-consecutive-sequence/
+ * Subject: Tree
+ * #Medium
+ */
 public class _298_BinaryTreeLongestConsecutiveSequence {
 
     private int res = 0;

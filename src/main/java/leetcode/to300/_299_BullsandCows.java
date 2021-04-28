@@ -1,6 +1,10 @@
 package leetcode.to300;
 
-
+/**
+ * https://leetcode.com/problems/bulls-and-cows/
+ * Subject: Array
+ * #Medium
+ */
 public class _299_BullsandCows {
 
     public String getHint(String secret, String guess) {
