@@ -8,7 +8,7 @@ import java.util.*;
  * #Medium #hard
  * Reference: https://leetcode-cn.com/problems/4sum/solution/si-shu-zhi-he-by-leetcode-solution/
  */
-class _18_4Sum {
+public class _18_4Sum {
     public List<List<Integer>> fourSum(int[] nums, int target) {
         List<List<Integer>> quadruplets = new ArrayList<List<Integer>>();
         if (nums == null || nums.length < 4) {
