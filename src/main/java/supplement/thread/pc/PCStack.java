@@ -2,6 +2,11 @@ package supplement.thread.pc;
 
 import java.util.*;
 
+/**
+ * http://tutorials.jenkov.com/java-concurrency/read-write-locks.html
+ * https://www.tutorialspoint.com/java_concurrency/concurrency_readwritelock.htm
+ */
+
 //One Producer and one consumer
 public class PCStack {
 
