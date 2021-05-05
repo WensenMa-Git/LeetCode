@@ -32,8 +32,9 @@ public class _418_SentenceScreenFitting {
         int index=0;
         int ans=0;
 
-        while (row>0 && col>=0) {
+        while (row>0) {
             String word= sentence[index];
+
             if (word.length() <=col) {
                 col=col-word.length();
                 index++;
@@ -45,11 +46,13 @@ public class _418_SentenceScreenFitting {
                 col=cols;
                 row--;
             }
+
             if (index==sentence.length) {
                 ans++;
                 index=0;
             }
         }
+
         return ans;
     }
 
