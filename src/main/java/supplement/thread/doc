@@ -1,0 +1,4 @@
+How to handle concurrency:
+- Optimitic lock vs passmistic lock
+
+How to debug using break point:
