@@ -13,6 +13,7 @@ public class _200_NumberofIslands {
     private int m;
     private int n;
 
+    //Preferred solution.
     public int numIslands(char[][] grid) {
         int res = 0;
         m = grid.length;
