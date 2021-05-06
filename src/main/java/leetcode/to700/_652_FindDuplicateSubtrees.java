@@ -10,7 +10,7 @@ import java.util.Map;
 /**
  * https://leetcode.com/problems/find-duplicate-subtrees/
  * Subject: Tree
- * #Medium
+ * #Medium #Google
  */
 public class _652_FindDuplicateSubtrees {
 
