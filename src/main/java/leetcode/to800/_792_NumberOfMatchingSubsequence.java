@@ -5,6 +5,11 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
+/**
+ * https://leetcode.com/problems/number-of-matching-subsequences/
+ * Subject: String
+ * #Medium #Google
+ */
 public class _792_NumberOfMatchingSubsequence {
 
     //Fastest solution.
