@@ -1,6 +1,5 @@
 Java Questions:
 https://www.wisdomjobs.com/e-university/the-java-debugger-jdb-interview-questions.html
-- How to debug
 
 AWS Questions:
 https://www.wisdomjobs.com/e-university/amazon-web-services-aws-interview-questions-answers.html
@@ -11,8 +10,42 @@ https://www.edureka.co/blog/interview-questions/spring-boot-interview-questions/
 SSL/OAuth/Linux
 =========================================================================================
 - Difference between HTTP GET / PUT
+    * GET retrieves a representation of the resource at the specified URI. The body of the response message contains the details of the requested resource.
+    * POST creates a new resource at the specified URI. The body of the request message provides the details of the new resource. Note that POST can also be used to trigger operations that don't actually create resources.
+    * PUT either creates or replaces the resource at the specified URI. The body of the request message specifies the resource to be created or updated.
+    * PATCH performs a partial update of a resource. The request body specifies the set of changes to apply to the resource.
+    * DELETE removes the resource at the specified URI.
+
 - For the JVM, what is the process for creating a new object
-- How to debug / trouble shooting: using remote break point. Using comments.
+    * https://stackoverflow.com/questions/17058499
+    * Memory is allocated. (in heap memory)
+    * Fields are initialized to their default values.
+    * The "first line" of the chosen constructor is invoked, unless it's an Object. By first line I mean either explicit call to super() or this(), or an implicit call to super().
+    * The instance initializer is executed and the fields are initialized to their requested values (actually field initialization is usually compiled as an inline part of the instance initializer).
+    * The rest of the constructor code is executed.
+    * A reference related with the object will be returned.
+
+- How to debug / trouble shooting / testing: using remote break point. Using comments.
+    * Using log information to analyze the bug. (With other information, like database)
+    * Reproduce the problem and using breakpoint for the remote debugging
+
 - HashCode/Equals
+    * HashCode is used to allocate bucket for the HashMap / HashSet.
+    * When two objects have same hashcode, then these two objects would share a same bucket.
+    * If you change the hashcode to the same value, but not change equals, then the result would not change, but it's not efficient.
+    * If two equals object with different hashcode, then it would be duplicate in HashMap / Set.
+
 - How HashMap works.
+    * Resizable array with a linked list. The hashcode refers to the array index.
+    * Allocate the array index and then store the equals objects in linked list.
+
+- Benefits of micro-service
+    * https://raygun.com/blog/what-are-microservices/
+
+- How SQS, SNS, DynamoDB, SQL DB works
+- How do learn new stuff.
+
+- volatile
+- design pattern.
+- events vs message
 
