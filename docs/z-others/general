@@ -48,4 +48,5 @@ SSL/OAuth/Linux
 - volatile
 - design pattern.
 - events vs message
+- memory leek in java / garbage collection.
 

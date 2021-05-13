@@ -1,2 +1,6 @@
 How to resolve deadlock:
 - A deadlock scenario occurs when two or more threads are blocked forever after forming a cyclic dependency
+
+Google Cloud vs AWS: https://kinsta.com/blog/google-cloud-vs-aws/
+
+
