@@ -13,7 +13,7 @@ We must say that the architecture will evolve as time grows. But it’s not nece
 - [IO] Index the database table.
 - [asynchronize] If the request need more time to proceed, we can use asynchronized queue to improve the respond speed. Such as Amazon MQ, Amazon SNS, Amazon SQS.
 - [cluster] To improve the computing performance, wen can create a cluster of db/file server. (AWS S3, AWS DB)
-- [cluster] To improve the computing perfornace, we can create a cluster of application server. [Scale out]
+- [cluster] To improve the computing performance, we can create a cluster of application server. [Scale out]
 - [Scale up] Add CPU and Memories. 
 - [distributed] We can split the business model to micro-services.
 - We can consider Nosql such as Dynamo DB, Elastic Search. (Consider AWS)
