@@ -23,7 +23,6 @@ public class _695_MaxAreaOfIsland {
             }
         }
         return maxArea;
-
     }
 
     private void getArea(int[][] grid, int m, int n, int i, int j){

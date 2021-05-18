@@ -77,7 +77,7 @@ public class _729_MyCalenderI {
                     left = middle + 1;
                 }
             }
-            //right is the index where event start time just smaller than start
+            //right is the index where event start time just smaller than end
             if (right == -1 || events.get(right)[1] <= start) {
                 events.add(right + 1, new int[]{start, end});
                 return true;
