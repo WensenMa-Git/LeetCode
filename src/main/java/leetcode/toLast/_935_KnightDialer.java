@@ -20,6 +20,7 @@ public class _935_KnightDialer {
             {3,1},
             {2,4}};
     private static final int MOD_FACTOR = 1000000007;
+
     public int knightDialer(int n) {
         int[] curr = new int[10];
         Arrays.fill(curr, 1);

@@ -42,6 +42,12 @@ SSL/OAuth/Linux
 - Benefits of micro-service
     * https://raygun.com/blog/what-are-microservices/
 
+- Database choice concern:
+    * If the data is structured and the structure not changing, we use SQL
+    * If we need to heavily use Join, we need to use SQL
+    * If we need ACID (Atomicity, Consistency, Isolation, Durability), we need to use SQL
+    * If the data is not structured and need to be highly scale up, we can use NoSQL.
+
 - How SQS, SNS, DynamoDB, SQL DB works
 - How do learn new stuff.
 
