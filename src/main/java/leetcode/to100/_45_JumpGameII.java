@@ -2,7 +2,7 @@ package leetcode.to100;
 
 /**
  * https://leetcode.com/problems/jump-game-ii/
- * Subject: Dynamic Programming.
+ * mic Programming.
  * #Hard
  */
 public class _45_JumpGameII {
