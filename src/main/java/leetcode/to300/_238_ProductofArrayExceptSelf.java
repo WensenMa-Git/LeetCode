@@ -1,7 +1,9 @@
 package leetcode.to300;
 
 /**
- *
+ * https://leetcode.com/problems/product-of-array-except-self/
+ * Subject: Array
+ * #Medium
  */
 public class _238_ProductofArrayExceptSelf {
 
@@ -20,6 +22,7 @@ public class _238_ProductofArrayExceptSelf {
         return res;
     }
 
+    //Provide a second solution. (Preferred).
     public int[] productExceptSelf2(int[] nums) {
         int result = 1;
         int countOfZero = 0;

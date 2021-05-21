@@ -40,5 +40,4 @@ public class _935_KnightDialer {
             result = (result + curr[i]) % MOD_FACTOR;
         return result;
     }
-
 }
