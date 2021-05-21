@@ -11,7 +11,7 @@ public class _1406_StoneGameIII {
 
     public String stoneGameIII(int[] stoneValue) {
         int n = stoneValue.length;
-        int[] dp = new int[n + 1];
+        int[] dp = new int[n + 1]; //dp[i] means if i piles of stone has been taken, what is the max stone the person can take as next.
         Arrays.fill(dp, Integer.MIN_VALUE);
         dp[n] = 0;
 
