@@ -7,7 +7,50 @@ package leetcode.to100;
  */
 public class _34_SearchforaRange {
 
+    //Preferred solution.
     public int[] searchRange(int[] nums, int target) {
+        int res[] = new int[2];
+        binarySearchLeft(nums,0,nums.length-1,target, res);
+        binarySearchRight(nums,0,nums.length-1,target, res);
+        return res;
+    }
+
+    private void binarySearchLeft(int[] nums, int left, int right, int target, int[] res){
+        while (left <= right) {
+            int middle = (left + right) / 2;
+            if (nums[middle] >= target) {
+                right = middle - 1;
+            } else {
+                left = middle + 1;
+            }
+        }
+        //right is the index where [right] just smaller than target
+        if ((right + 1 != nums.length) && nums[right + 1] == target) {
+            res[0] = right + 1;
+        } else {
+            res[0] = -1;
+        }
+    }
+
+    private void binarySearchRight(int[] nums, int left, int right, int target, int[] res){
+        while (left <= right) {
+            int middle = (left + right) / 2;
+            if (nums[middle] > target) {
+                right = middle - 1;
+            } else {
+                left = middle + 1;
+            }
+        }
+        //left is the index where [left] just bigger than target
+        if (left > 0 && nums[left - 1] == target) {
+            res[1] = left - 1;
+        } else {
+            res[1] = -1;
+        }
+    }
+
+
+    public int[] searchRange2(int[] nums, int target) {
         if (nums == null || nums.length == 0) {
             return new int[]{-1, -1};
         }
@@ -51,8 +94,8 @@ public class _34_SearchforaRange {
         return -1;
     }
 
-    //Provide a second solution (Preferred)
-    public int[] searchRange2(int[] nums, int target) {
+    //Provide a third solution (Preferred)
+    public int[] searchRange3(int[] nums, int target) {
         int res[] = new int[2];
         int left= binarySearchLeft(nums,0,nums.length-1,target,-1);
         int right = binarySearchRight(nums,0,nums.length-1,target,-1);
