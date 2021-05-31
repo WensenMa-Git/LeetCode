@@ -3,6 +3,11 @@ package leetcode.toLast;
 import java.util.LinkedList;
 import java.util.Queue;
 
+/**
+ * https://leetcode.com/problems/path-with-minimum-effort/
+ * Subject: Binary Search
+ * #Medium #Google
+ */
 public class _1631_PathWithMinimumEffort {
 
     //Binary Search + BFS

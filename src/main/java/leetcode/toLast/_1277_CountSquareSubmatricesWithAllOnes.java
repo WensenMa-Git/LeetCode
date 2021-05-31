@@ -1,5 +1,10 @@
 package leetcode.toLast;
 
+/**
+ * https://leetcode.com/problems/count-square-submatrices-with-all-ones/
+ * Subject: Dynamic Programming
+ * #Medium
+ */
 public class _1277_CountSquareSubmatricesWithAllOnes {
 
     public int countSquares(int[][] matrix) {

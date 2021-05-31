@@ -30,7 +30,7 @@ public class _833_FindAndReplaceInString {
         return sb.toString();
     }
 
-    //Provide a second soluiton.
+    //Provide a second solution.
     public String findReplaceString2(String S, int[] indexes, String[] sources, String[] targets) {
         StringBuilder result=new StringBuilder();
         Map<Integer,Integer> map=new HashMap<>();

@@ -2,6 +2,11 @@ package leetcode.to700;
 
 import leetcode.dependency.TreeNode;
 
+/**
+ * https://leetcode.com/problems/construct-string-from-binary-tree/
+ * Subject: Tree
+ * #Easy #Attention
+ */
 public class _606_ConstructStringFromBinaryTree {
 
     public String tree2str(TreeNode t) {

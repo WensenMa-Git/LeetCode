@@ -33,6 +33,7 @@ public class _128_LongestConsecutiveSequence {
         return res;
     }
 
+
     //Provide a second solution (Preferred).
     public int longestConsecutive2(int[] nums) {
         if (nums == null || nums.length == 0) return 0;

@@ -1,6 +1,10 @@
 package leetcode.to400;
 
-
+/**
+ * https://leetcode.com/problems/coin-change/
+ * Subject: Dynamic Programming
+ * #Medium
+ */
 public class _322_CoinChange {
 
     public int coinChange(int[] coins, int amount) {
@@ -18,5 +22,15 @@ public class _322_CoinChange {
             dp[i] = min == Integer.MAX_VALUE ? -1 : min;
         }
         return dp[amount];
+    }
+
+    //Provide a second solution.
+    public int coinChange2(int[] coins, int amount) {
+        int[] dp = new int[amount + 1];
+        for (int i = 1; i <= amount; i++) dp[i] = 0x7fff_fffe;
+        for (int coin : coins)
+            for (int i = coin; i <= amount; i++)
+                dp[i] = Math.min(dp[i], dp[i - coin] + 1);
+        return dp[amount] == 0x7fff_fffe ? -1 : dp[amount];
     }
 }
