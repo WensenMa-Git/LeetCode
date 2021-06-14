@@ -1,0 +1,39 @@
+Web Crawler: https://www.educative.io/courses/grokking-the-system-design-interview/NE5LpPrWrKv#div-stylecolorblack-background-colore2f4c7-border-radius5px-padding5px1-what-is-a-web-crawlercenter
+https://eileen-code4fun.medium.com/system-design-interview-mini-google-search-6fd319cd66ca
+https://www.youtube.com/watch?v=CeGtqouT8eA (How Google searches one document among Billions of documents quickly?)
+
++ Elastic Search
+
+==========================================================================================
+There are four sections / models for building a Search Engine: https://developers.google.com/search/docs/beginner/how-search-works
+- Crawling:
+    * The first step is finding out what pages exist on the web.
+- Indexing (inverted index): Using B-Tree to do index
+    * After a page is discovered, the analyzes the content of the page, catalogs images and video files embedded on the page.
+    * Store the information in database
+- Ranking:
+    * Using TF / IDF statistical methods for evaluation of words of documents
+- Serving:
+    * When a user types a query, Search Engine tries to find the most relevant answer from its index based on many factors.
+
+
+Requirements and goals of the system:!!!!!!!!!!!!!!!!!!!!!!!!
+- Functional Requirements: (Design faciade rest api based on this)
+    * Search with low latency and high throughput
+- Non-functional Requirements:
+    * Our service needs to be highly available.
+    * The acceptable latency should be low.
+    * The system should be highly reliable and fault tolerance.
+
+
+Some design consideration and assumption:==========
+- Indexing should ignore the meaningless word.
+- Search: find the documents which contains all query words and with the same sequence.
+
+==========================================================================================
+Common Architecture:
+Client -> load balance -> web services -> backend service (Ranking algorithm) -> huge SQL Database
+                                                                              -> huge Cache Servers. (CDN)
+                                                                              -> huge static content
+
+===========================================================================================

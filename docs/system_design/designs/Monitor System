@@ -1,0 +1,180 @@
+https://www.linkedin.com/pulse/monitoring-observability-distributed-systems-hossein-samarrokhi/
+https://www.digitalocean.com/community/tutorials/an-introduction-to-metrics-monitoring-and-alerting
+While I worked in Amazon, we have a very powerful monitor system.
+    * Because we have to know immediately if there is any serious error occurred or terrible things happened.
+
+For the monitor system, no matter if it's a standalone application or it's a distributed system. The process is similar.
+- What is Monitoring?
+    * Monitoring means gathering metrics from several services or machines, processing,
+    * aggregating to more valuable metrics, and visualizing them into easy to understand dashboards,
+    * and setting useful alerts
+
+- Monitor Metric Types:
+    * Host-Based Metrics:
+        # CPU
+        # Memory
+        # Disk space
+        # Processes
+    * Application Metrics:
+        # Error and success rates
+        # Service failures and restarts
+        # Performance and latency of responses
+        # Resources usage
+    * Network and Connectivity Metrics:
+        # Connectivity
+        # Error rates and packet loss
+        # Latency
+        # Bandwidth utilization
+    * Server Pool Metrics
+        # Pooled resource usage
+        # Scaling adjustment indicators
+        # Degraded instances
+    * External Dependency Metrics
+        # Service status and availability
+        # Success and error rates
+        # Run rate and operational costs
+        # Resource exhaustion
+
+- How to monitor distributed system:
+    * Collecting and gathering metrics data and store it to database;
+    * Create a dashboard for the metrics.
+
+----------------------------------------------------------------------------------------------------
+                                            Gather metrics and store to database
+                                                       |
+Client (Dashboard) -> load balancer -> servers -> SQL Database (<-all live applications metrics).
+                                               -> cache
+
+----------------------------------------------------------------------------------------------------
+Rest API design:
+- GET https://api.endpoint.com/data/metrics HTTP/1.1
+- Content-Type: application/form-data.; charset=utf-8
+- Content-Length: 100
+- Parameters:
+  {
+    "MetricType":"CPU",
+    "Host":"host-example"
+    "TimeRange":"30 Minutes"
+  }
+- Accept: application/json
+        #: HTTP/1.1 200 OK
+           {
+               "status": 200,
+               "metric": [
+                         {
+                           "host-name": "host-example",
+                           "cpu-rate": "25%",
+                           "Timestamp": "2021-4-01 23:59:59.997",
+                         },
+                         {
+                           "host-name": "type",
+                           "cpu-rate": "27%",
+                           "Timestamp": "2021-4-01 23:59:49.997",
+                         }
+                         ...
+                       ],
+               "last-query-time":"2021-4-01 23:59:59.997"
+           }
+        #: HTTP/1.1 400 Bad request
+            {
+                "status": 400,
+                "name": "Bad request",
+                "message": "Invalid parameter in request body: Syntax error."
+            }
+
+----------------------------------------------------------------------------------------------------
+
+Database Design:
+Metrics is time-series data, it's better to use SQL Database: https://blog.timescale.com/blog/time-series-data-why-and-how-to-use-a-relational-database-instead-of-nosql-d0cd6975e87c/
+    * Typically, the reason for adopting NoSQL time-series databases comes down to scale. While relational databases have many useful features that most NoSQL databases do not (robust secondary index support; complex predicates; a rich query language; JOINs, etc), they are difficult to scale.
+    * But NoSQL database take more memory.
+    * SQL database search is much fast. With an index, a query can quickly find a row with a specified ID without scanning the entire table or “walking” the table in some sorted order.
+    * We can scale up the SQL database by sharding up the database
+
+CupMetric((ID:int), Host:varchar, CPURate:float, Timestamp:datetime);
+ErrorMetric((ErrorMetricID:int), Host:varchar, ApplicationName:varchar, ErrorName:varchar, Timestamp:datetime);
+
+
+----------------------------------------------------------------------------------------------------
+public class DynamicTimeSeriesChart extends JPanel {
+
+    private final DynamicTimeSeriesCollection dataset;
+    private final JFreeChart chart;
+
+    public DynamicTimeSeriesChart(final String title) {
+        dataset = new DynamicTimeSeriesCollection(1, 1000, new Second());
+        dataset.setTimeBase(new Second(0, 0, 0, 23, 1, 2014));
+        dataset.addSeries(new float[1], 0, title);
+        chart = ChartFactory.createTimeSeriesChart(
+            title, "Time", title, dataset, true, true, false);
+        final XYPlot plot = chart.getXYPlot();
+        DateAxis axis = (DateAxis) plot.getDomainAxis();
+        axis.setFixedAutoRange(10000);
+        axis.setDateFormatOverride(new SimpleDateFormat("ss.SS"));
+        final ChartPanel chartPanel = new ChartPanel(chart);
+        add(chartPanel);
+    }
+
+    public void update(float value) {
+        float[] newData = new float[1];
+        newData[0] = value;
+        dataset.advanceTime();
+        dataset.appendData(newData);
+    }
+
+    public static void main(String[] args) {
+        EventQueue.invokeLater(new Runnable() {
+
+            @Override
+            public void run() {
+                JFrame frame = new JFrame("testing");
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                final DynamicTimeSeriesChart chart
+                    = new DynamicTimeSeriesChart("Alternating data");
+                frame.add(chart);
+                frame.pack();
+                Timer timer = new Timer(1000, new ActionListener() {
+                    private boolean b;
+
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        chart.update(b ? 1 : 0);
+                        b = !b;
+                    }
+                });
+                timer.start();
+                frame.setVisible(true);
+            }
+        });
+    }
+}
+-------------------------------------------------
+
+Title: Design a system to monitor systems.
+https://www.youtube.com/watch?v=JaR2yjMHA2I
+Monitoring distributed systems: https://dl.acm.org/doi/10.1145/13677.22723
+
+Requirements and goals of the system:
+- Highly visited web page?
+- How many users are logged into the system?
+- Browser types
+- Bandwidth of the system. For example you want to know how many data is transacted through the each port of the system
+- you also need to know the CPU spikes, Disk out of space etc.
+- Alerting - when there are issues.
+
+What are the ingredients needed for monitoring?
+- Web server log files. such as access logs and error logs.
+- or Using Beacons - Deploy the image in separate server, have web page calls.
+- Load balancer logs. The log provides information like which server the transactino is happening and
+- Bandwidth -SNMP poke the switch and get how much data it has send to the port
+- MySQL - Show Status, logs
+- Memcache status - $ echo -ne "stats\r\n" | -i localhost 11233
+- Alerting: Nagios tool can be used.
+
+- We need to monitor applications performance.
+    * Web server log files and metrics.
+- We need to monitor server's health
+    * we need to know the CUP usage
+    * we need to know the Memory usage
+    * we need to know the Disk IO.
+

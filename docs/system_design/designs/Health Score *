@@ -1,0 +1,91 @@
+First, Let’s start with very basic and standalone application.
+Then we can discuss how to scale up, how to reduce the latency, how to improve the performance, availability, and reliability later.
+
+Requirements and goals of the system:
+- Functional Requirements:
+    * Yelp server should be able to retrieve the health score for each businiess and show the score on the page.
+- Non-functional Requirements:
+    * Our service needs to be highly available.
+    * The acceptable latency should be low.
+    * The system should be highly reliable and fault tolerance.
+
+Some design consideration and assumption:==========
+- Assume government provide API to retrieve health score data.
+- The data type of the score should be integer.
+- Retrieve Data Frequency:Daily / Month
+- Store the data in SQL DB, which could improve the fault tolernace in case goverment api is broken.
+- Use cache would help to reduce the latency.
+- HealthScoreRetrieverApp is scheduled to retrieve data from government in a certain period.
+- If no score retrieved from government. The default value should be N/A(Non applicable.)
+
+==========================================================================================
+High Level Design:Component design: ******
+Server(HealthScoreRetrieverApp) <-----(Timer + retry mechanism)---Government API
+    |
+    ---------------------------------------------------------------> SQL DB (if score changed, notify the business owner)
+                                                                    |
+Client(js) -> load balancer -> Server ((Cache) Backend) -> ---------^
+
+Decouple front-end server and back-end server.
+*******************************************************************************************
+
+Rest API design:
+- GET https://api.endpoint.com/data/health-score HTTP/1.1
+- Content-Type: application/form-data.; charset=utf-8
+- Content-Length: 100
+- Parameters:
+  {
+    "BusinessID":1234,
+    "BranchID":12
+  }
+- Accept: application/json
+        #: HTTP/1.1 200 OK
+           {
+               "status": 200,
+               "heath-score": "89",
+               "last-updated-time":"2020-12-31 23:59:59.997"
+           }
+        #: HTTP/1.1 400 Bad request
+            {
+                "status": 400,
+                "name": "Bad request",
+                "message": "Invalid parameter in request body: Syntax error."
+            }
+
+*******************************************************************************************
+Database Design:
+- User((UserID:int), UserName:varchar, Email:varchar, PhoneNumber:int);
+- Business((BusinessID:int), [UserID:int], BusinessName:varchar);
+- Branch((BranchID:int), [BusinessID:int], BranchName:varchar)
+- HealthScore((HealthScoreID:int), BusinessID:int / BranchID:int, Score:int, LastUpdatedTime:datetime);
+
+*******************************************************************************************
+Implementation:
+- SQL Join:
+- Front-end implementation:
+- Back-end implementation:
+如果你要把这个东西implement到yelp现在的网页上，你会怎么implement ==> <BCommonDesign>
+
+*******************************************************************************************
+Load balancing layer:
+We can add a Load balancing layer at three places in our system:
+
+Between Clients and Application servers
+Between Application Servers and database servers
+Between Application Servers and Cache servers
+Initially, we could use a simple Round Robin approach that distributes incoming requests equally among backend servers.
+    * This LB is simple to implement and does not introduce any overhead.
+    * Another benefit of this approach is that if a server is dead, LB will take it out of the rotation and will stop sending any traffic to it.
+
+A problem with Round Robin LB is that we don’t take the server load into consideration.
+    * If a server is overloaded or slow, the LB will not stop sending new requests to that server.
+    * To handle this, a more intelligent LB solution can be placed that periodically queries the backend server about its load and adjusts traffic based on that.
+
+----------------------------------------------------------------------------------------------
+MVVM vs MVC: https://www.raywenderlich.com/34-design-patterns-by-tutorials-mvvm
+MVVM:
+Use this pattern when you need to transform models into another representation for a view.
+    * For example, you can use a view model to transform a Date into a date-formatted String,
+    * a Decimal into a currency-formatted String, or many other useful transformations.
+This pattern compliments MVC especially well. Without view models, you’d likely put model-to-view transformation code in your view controller.
+    * However, view controllers are already doing quite a bit: handling viewDidLoad and other view lifecycle events, handling view callbacks via IBActions and several other tasks as well.

@@ -1,0 +1,54 @@
+https://support.hackerrank.com/hc/en-us/articles/360048201413-Whiteboard-in-CodePair#whiteboard-in-codepair
+
+# 聊项目 + system design，就是给了一些txt file，里面应该是json数据，问如何建表。感觉主要是考一些DB上的逻辑和service如何读取表，问了下如何pre process data，如何persistent data。最后问了下简单的monitor system如何搭建（slave - master）
+
+# system design - android search view autocomplete
+==================================================================================
+
+
+
+
+- [Implementation] 新题，设计一个系统可以让用户create 一个dinner event，邀请朋友加入vote餐厅:
+    * DB to store: Vote((VoteID:int), [UserID:int], RestaurantID:int)
+    * Map<String, Set<String>>;
+
+- Distributed Tracing. 问的一脸懵逼。: [Monitor system]
+
+- 然后谈项目，问设计一个搜索引擎；最后问了个level order traversal的题，忘了怎么包装的了: [elastic search]
+    * https://eileen-code4fun.medium.com/system-design-interview-mini-google-search-6fd319cd66ca
+
+--------yelp会设计不同的UI布局分配给不同的用户，要求是通过设计一个后端的service可以控制前端不同的layout展示。
+
+--------系统设计 设计一个 测试service找bug 的系统这轮没太搞懂具体要问啥 想到什么说什么基本: [monitor system]
+
+--------设计一个，客户排队时间预估的东西 [Implementation]
+
+------- 第二轮design，可能是ABC吧，就是那个找商铺边上最近的bus station的题，不过里面提供的txt一共有4个，有trip，route和bus，我不是很理解这些具体是指的啥，
+    *问了挺久的。follow up问了下如果要考虑bus station是否能在商铺营业时间到达 [Implementation]
+
+--------系统设计，yelp中进入一个local business的页面，它会显示出附近的公交车，地铁等公共交通的线路。让设计这个service。主要时间都用在geohash上了，分布式存储那些都一带而过了。
+======
+亚裔小哥，system design，设计类似一个查询用户信息的一个系统，小哥人很好会给提示。
+======
+一个商店，周围有一些车站，然后还有一个终点，问怎么走最近；具体细节忘了，好像是任何一个车站都能到达终点之类的，反正是很莫名其妙；也不是考察geohash，就随便扯了扯
+======
+design yelp的check in功能，如何显示你的朋友也check in了
+
+/*
+经典常考题 给1个餐馆的经纬度坐标 找到能够达一个餐馆的所有公共交通路线。比如地铁一号线。
+面试官给出的是data base 里的4个table的schema。先从 stop table 里找出餐馆附近的 stop, 然再从trip table里找出经过这些stop的trip， 以此类推 把4个table都遍历一找到所有符合要求的交通线路。
+这个题分析起来很简单，但写代码就很gg，假设所有data都已经在内存里了， 要求根据你的编程语言定义一下数据结构，然后开始找。。。建议用javascript array.map array.filter 等方法，一行搞定。。。
+最后你要把这些信息显示在前端，具体要求我忘记了，考css, float left, border-radius 之类的。。。
+ */
+
+
+
+
+
+
+
+
+
+
+
+

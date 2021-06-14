@@ -1,0 +1,48 @@
+https://developers.google.com/web/ilt/pwa/introduction-to-push-notifications
+A notification is a message that pops up on the user's device.
+Notifications can be triggered locally by an open application, or they can be "pushed" from the server to the user even when the app is not running.
+
+-----------------------------------------------------------------------------------------------
+First, Let’s start with very basic and standalone application.
+Then we can discuss how to scale up, how to reduce the latency, how to improve the performance, availability, and reliability later.
+
+Requirements and goals of the system:
+- Functional Requirements:
+    * The system is scheduled to send message to subscribers.
+    * One User cann't get message for k times within 24 hous.
+    * ? how the notification get trigger? timer?
+- Non-functional Requirements:
+    * Our service needs to be highly available. // Scalable and high available
+    * The acceptable latency should be low. //High performance
+    * The system should be highly reliable and fault tolerance.
+
+Some design consideration and assumption:==========
+- The most important things is the strategy to send notification.
+    * one strategy would be get the top recent kth notificaiton of the user, if that notificaiton is older than 24 hours, then new notificaiton could be sent.
+    * another strategy would be get the latest notificaiton of the user, we can push notificaiton if now is older than 24/k.
+- If the same notificaiton content for multiple users, we can store the notificaiton content in cache.
+
+==========================================================================================
+High Level Design:Component design: ******
+Publishers -> (Asyncronize message queue)RabbitMQ or SQS -> (cache) Notification Services -> (Message handler) ->subscribers.
+     ^                                                ^             ^
+     |                                                              |
+      ---------------------------------------------------------  Database (SQL)
+- Note1: if the notification sent failed, the message would sent back to the queue.
+- Note2: Message sent to SQS: topic, content, sender, receiver.
+
+*******************************************************************************************
+Database Design:
+- User((UserID:int), UserName:varchar, Email:varchar, PhoneNumber:int);
+- Business((BusinessID:int), [UserID:int], BusinessName:varchar);
+- Notification((NotificationID:int), [ReceiverID:int], SentTime:datetime, Title:varchar, Content:varchar);
+
+Cache: LRU, LFU
+*******************************************************************************************
+Implementation:
+- How Notification get generated? : recommond system?
+
+SQL: select most recent 10 records
+SELECT * FROM notification where receiver_id = 212102
+ORDER BY A DESC LIMIT 10
+

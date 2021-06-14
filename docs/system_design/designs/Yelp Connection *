@@ -1,0 +1,142 @@
+System Desgin: Yelp Connect, how does the user follow a business, how about latency, how to design database, how to scale
+fault tolerant的思路,
+
+What is Yelp Connect: https://www.youtube.com/watch?v=wrtaUc-GqE0
+- Yelp Connect is a paid feature that allows businesses to tell their unique story and share important updates or news
+directly on their Yelp business page. Your Yelp Connect posts will appear to all Yelpers on your business page,
+and be promoted to your followers in emails and elsewhere in Yelp’s app.
+- Yelp Connect is like Facebook or Instagram social media which specifically used for an engaged customer base on yelp.
+- The business owner can pushing their content and updates to their customer.
+- Custom Post [Update, Event, Ongoing]
+
+Requirements and Goals of the system:
+- Functional Requirements: (corresponding to rest api)
+    * Business owner should be able to create / delete / edit a post. [post type could be "Update", "Event", "ongoing"]. https://www.yelp-support.com/article/What-should-I-post-with-Yelp-Connect?l=en_US
+    * The Yelper can follow others.
+    * The Yelper would get notifiation if the follower pushed a new post.
+    * The system should generate and display a yelper's post feed from all the business the user follows.
+    * The User can perform search based on title.
+- Non-functional Requirements:
+    * Our service needs to be highly available.
+    * The acceptable latency of the system is 200ms for the post feed generation. [read/write separation, cache/cnd, message queue, cluster]
+    * The system should be highly reliable; any uploaded photo or video should never be lost.
+
+Capacity Estimation and Constraints:
+- Let’s assume we have 500M total users, with 1M daily active users.
+- 2M new photos every day, 23 new photos every second.
+- Average photo file size => 200KB
+- Total space required for 1 day of photos: 2M * 200KB => 400 GB
+- Total space required for 10 years:
+- 400GB * 365 (days a year) * 10 (years) ~= 1425TB
+
+High Level System Design:
+- At a high-level, we need to support two scenarios, one to upload post and the other to view/search post.
+- Our service would need some object storage servers to store photos and some database servers to store metadata information about the photos.
+
+Component Design: ********
+- Clients -> Load Balancer -> (Cache) Application Servers -> Database + Object Storage.
+- Yelp Post uploads (or writes) can be slow as they have to go to the disk, whereas reads will be faster, especially if they are being served from cache.
+- We can consider to use Message queue to reduce the writing response time.
+- Uploading users can consume all the available connections, as uploading is a slow process.
+    * This means that ‘reads’ cannot be served if the system gets busy with all the ‘write’ requests.
+    * We should keep in mind that web servers have a connection limit before designing our system.
+    * If we assume that a web server can have a maximum of 500 connections at any time, then it can’t have more than 500 concurrent uploads or reads.
+    * To handle this bottleneck, we can split reads and writes into separate services.
+    * We will have dedicated servers for reads and different servers for writes to ensure that uploads don’t hog the system.
+- Separating post (photo)’ read and write requests will also allow us to scale and optimize each of these operations independently.
+    * ## Clients -> Read/Write :: Load Balancer -> (Cache) Application Servers / Cache Servers holding feeds -> Database + Object Storage.
+    * https://www.educative.io/courses/grokking-the-system-design-interview/gxpWJ3ZKYwl
+
+System APIs: Rest URL design:
+
+- post(api_dev_key, tweet_data, tweet_location, user_id);
+    * POST http://api.endpoint.com/v1/post HTTP/1.1
+    * Content-Type: application/form-data.; charset=utf-8
+    * Content-Length: 57
+    * Parameters: {"UserId":1, "PostType":"Event","Title":"Example","Content":"Hello World", "PhotoID":2, "URL":"http:www.google.com"}
+- update(tweet_id);
+    * HTTP PUT https://api.endpoint.com/tweet/{tweet-id}
+- delete(tweet_id);
+    * HTTP DELETE https://api.endpoint.com/tweet/{tweet-id}
+- get_feeds(user_id);
+    * GET https://api.endpoint.com/feeds/{user-id} HTTP/1.1
+    * Accept: application/json
+        #: HTTP/1.1 200 OK
+           {
+               "status": 200,
+               "message": "Done",
+               "message_code": 1,
+               "action": "verify;enroll",
+               "enrollment": 1,
+               "result": 1,
+               "high_confidence": 1,
+           }
+        #: HTTP/1.1 400 Bad request
+
+            {
+                "name": "Bad request",
+                "message": "Invalid parameter in request body: Syntax error.",
+                "message_code": 31,
+                "status": 400
+            }
+
+API implementation: Object Oriented Design.
+- Java Upload file example using spirng.
+
+Database Schema:
+- Post((PostID:int), UserID:int, PostType:varchar(256), PostTitle:varchar, PostContent:varchar, PhotoID:int, URL:varchar);
+- Photo((PhotoID:int), UserID:int, PhotoPath:varchar(256), CreationDate:datetime);
+- User((UserID:int), Name:varchar(20), Email:varchar(32), DateOfBirth:datetime, CreationDate:datetime, LastLogin:datetime);
+- UserFollow((UserID1:int, UserID2:int));
+- SQL vs NoSQL: https://www.educative.io/courses/grokking-the-system-design-interview/YQlK1mDPgpK
+    * A straightforward approach for storing the above schema would be to use an RDBMS like MySQL since we require joins.
+    But relational databases come with their challenges, especially when we need to scale them.
+    * We can store photos in a distributed file storage like HDFS or S3.
+    * We can store the above schema in a distributed key-value store to enjoy the benefits offered by NoSQL.
+    All the metadata related to post can go to a table where the ‘key’ would be the ‘PostID’ and
+    the ‘value’ would be an object containing PhotoLocation, UserLocation, CreationTimestamp, etc.
+
+Reliability and Redundancy:
+- Losing files is not an option for our service. Therefore, we will store multiple copies of each file so that
+if one storage server dies, we can retrieve the photo from the other copy present on a different storage server.
+- This same principle also applies to other components of the system. If we want to have high availability of the system,
+we need to have multiple replicas of services running in the system so that even if a few services die down,
+the system remains available and running. Redundancy removes the single point of failure in the system.
+
+Ranking and News Feed Generation:
+- To create the News Feed for any given user, we need to fetch the latest, most popular, and relevant photos of the people the user follows.
+- For simplicity, let’s assume we need to fetch the top 100 photos for a user’s News Feed. Our application server will first get a list of people the user follows and then fetch metadata info of each user’s latest 100 photos. In the final step, the server will submit all these photos to our ranking algorithm, which will determine the top 100 photos (based on recency, likeness, etc.) and return them to the user. A possible problem with this approach would be higher latency as we have to query multiple tables and perform sorting/merging/ranking on the results. To improve the efficiency, we can pre-generate the News Feed and store it in a separate table.
+- Pre-generating the News Feed: We can have dedicated servers that are continuously generating users’ News Feeds and storing them in a ‘UserNewsFeed’ table. So whenever any user needs the latest photos for their News-Feed, we will simply query this table and return the results to the user.
+- Whenever these servers need to generate the News Feed of a user, they will first query the UserNewsFeed table to find the last time the News Feed was generated for that user. Then, new News-Feed data will be generated from that time onwards (following the steps mentioned above).
+- What are the different approaches for sending News Feed contents to the users?
+    * 1. Pull: Clients can pull the News-Feed contents from the server at a regular interval or manually whenever they need it. Possible problems with this approach are a) New data might not be shown to the users until clients issue a pull request b) Most of the time, pull requests will result in an empty response if there is no new data.
+    * 2. Push: Servers can push new data to the users as soon as it is available. To efficiently manage this, users have to maintain a Long Poll request with the server for receiving the updates. A possible problem with this approach is a user who follows a lot of people or a celebrity user who has millions of followers; in this case, the server has to push updates quite frequently.
+    * 3. Hybrid: We can adopt a hybrid approach. We can move all the users who have a high number of followers to a pull-based model and only push data to those who have a few hundred (or thousand) follows. Another approach could be that the server pushes updates to all the users not more than a certain frequency and letting users with a lot of followers/updates to pull data regularly.
+
+Cache and Load balancing:
+- Our service would need a massive-scale photo delivery system to serve globally distributed users. Our service should push its content closer to the user using a large number of geographically distributed photo cache servers and use CDNs
+- We can introduce a cache for metadata servers to cache hot database rows. We can use Memcache to cache the data, and Application servers before hitting the database, can quickly check if the cache has desired rows. Least Recently Used (LRU) can be a reasonable cache eviction policy for our system. Under this policy, we discard the least recently viewed row first.
+- How can we build a more intelligent cache? If we go with the eighty-twenty rule, i.e., 20% of daily read volume for photos is generating 80% of the traffic, which means that certain photos are so popular that most people read them. This dictates that we can try caching 20% of the daily read volume of photos and metadata.
+
+*******************************************************************************************
+Load balancing layer:
+We can add a Load balancing layer at three places in our system:
+
+Between Clients and Application servers
+Between Application Servers and database servers
+Between Application Servers and Cache servers
+Initially, we could use a simple Round Robin approach that distributes incoming requests equally among backend servers.
+    * This LB is simple to implement and does not introduce any overhead.
+    * Another benefit of this approach is that if a server is dead, LB will take it out of the rotation and will stop sending any traffic to it.
+
+A problem with Round Robin LB is that we don’t take the server load into consideration.
+    * If a server is overloaded or slow, the LB will not stop sending new requests to that server.
+    * To handle this, a more intelligent LB solution can be placed that periodically queries the backend server about its load and adjusts traffic based on that.
+
+
+
+
+
+
+
+

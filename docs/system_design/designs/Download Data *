@@ -1,0 +1,103 @@
+Looks like it's very similar to download all your google data. https://support.google.com/accounts/answer/3024190?hl=zh-Hans
+
+First, Let’s start with very basic and standalone application.
+Then we can discuss how to scale up, how to reduce the latency, how to improve the performance, availability, and reliability later.
+
+Requirements and goals of the system:
+- Functional Requirements:
+    * Users should be able to [upload] and download their data including reviews, questions, answers, as well as photo and video.
+    * Download a （compressed file）zip file.
+- Non-functional Requirements:
+    * Our service needs to be highly available.
+    * The acceptable latency of the system is 200ms for the download zip generation. [read/write separation, cache/cnd, message queue, cluster]
+    * The system should be highly reliable; any uploaded photo or video should never be lost.
+
+Some design consideration and assumption:==========
+- Download Frequency:monthly. So, I don't think cache is useful in this case.
+- The size of the whole user data is different and could be huge.
+    * So, I don't recommend to directly download through browser.
+    * We can deliver data by email with a download link.
+    * We can deliver the data to the user's google drive or dropbox.
+- The data processing time could be minutes or half hours or even longer, To improve the response time,
+    * we can use a asynchronous message queue like RabbitMQ, or AWS SQS, which could also increase fault tolerance.
+    * After received the request, the server could put the message to the queue and give a message right away.
+      and showing message to the user like "Your data could be delivered within one hour".
+    * When the data compressed file is ready for delivery, we can send a email to notify the user.
+
+==========================================================================================
+High Level Design:Component design: ******
+
+web server (js)                     after send request to queue, directly send back message to client.
+    |                               <------|
+client (rest call) -> load balancer - > servers (receive request)-> SQS -> servers -> SQL database + object storage (s3)
+   ^                                                                          |                                ^
+   |-------send email notification-(system)----<---Message QUEUE--<----------- --->--store the compressed file-|
+
+- To improve the reliability / fault tolerance, we can add monitor system to the server. + [SQS helps also] + retry mechanism
+- To improve the processing ability, we can add more servers / add more db servers/partition DB
+
+*******************************************************************************************
+Rest API design:
+- GET https://api.endpoint.com/data/export HTTP/1.1
+- Content-Type: application/form-data.; charset=utf-8
+- Content-Length: 100
+- Parameters: {
+    "UserID":1234,
+    "DeliveryMethod":"LinkByEmail", //"Google Drive", "Dropbox"
+    "FileType":".zip" //.tgz}
+- Accept: application/json
+        #: HTTP/1.1 200 OK
+           {
+               "status": 200,
+               "message": "Done",
+           }
+        #: HTTP/1.1 400 Bad request
+            {
+                "name": "Bad request",
+                "message": "Invalid parameter in request body: Syntax error.",
+                "status": 400
+            }
+
+*******************************************************************************************
+Database Design:
+- User((UserID:int), UserName:varchar, Email:varchar, PhoneNumber:int);
+- ReviewPost((PostID:int), [UserID:int], [BusinessID:int], Review:varchar, PhotoID:int, VideoID:int)
+- Question((QuestionID:int), [UserID:int], Title:varchar, Content:varchar);
+- Answer((AnswerID:int), [UserID:int], [QuestionID:int], Content:varchar);
+- Business((BusinessID:int), [UserID:int], BusinessName:varchar);
+* Export((ExportID:int), [UserID:int], DownloadFileID:int, RequestedTime:datetime)
+* DownloadFile((DownloadFileID:int), [UserID:int], DownloadFileLocationURL:varchar);
+
+Database choice concern:
+- If the data is structured and the structure not changing, we use SQL
+- If we need to heavily use Join, we need to use SQL
+- If we need ACID, we need to use SQL
+- If the data is not structured and need to be highly scale up, we can use NoSQL.
+
+SQL Join Example:
+SELECT table1.column1,table1.column2,table2.column1,....
+FROM table1
+INNER JOIN table2
+ON table1.matching_column = table2.matching_column;
+
+*******************************************************************************************
+Load balancing layer:
+We can add a Load balancing layer at three places in our system:
+
+Between Clients and Application servers
+Between Application Servers and database servers
+Between Application Servers and Cache servers
+Initially, we could use a simple Round Robin approach that distributes incoming requests equally among backend servers.
+    * This LB is simple to implement and does not introduce any overhead.
+    * Another benefit of this approach is that if a server is dead, LB will take it out of the rotation and will stop sending any traffic to it.
+
+A problem with Round Robin LB is that we don’t take the server load into consideration.
+    * If a server is overloaded or slow, the LB will not stop sending new requests to that server.
+    * To handle this, a more intelligent LB solution can be placed that periodically queries the backend server about its load and adjusts traffic based on that.
+
+
+
+
+
+
+

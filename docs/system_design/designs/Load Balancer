@@ -1,0 +1,10 @@
+Load Balancer: https://www.educative.io/courses/grokking-the-system-design-interview/3jEwl04BL7Q
+
+round robin Load Balancer: https://www.nginx.com/resources/glossary/round-robin-load-balancing/ : circled queue.
+
+//design 类似load balancer的东西，先写code，然后问round robin不满足哪些情况，怎么改进，怎么证明round robin performance 不好。
+
+Disadvantages of Round Robin Scheduling:
+- Round-robin scheduling, like other first-come, first-served methods, doesn't give special priority to more important tasks.
+- This means an urgent request doesn't get handled any faster than other requests in queue.
+- The best round robin-based systems will include a tool that allows you to suspend the usual priorities for a "rush job."

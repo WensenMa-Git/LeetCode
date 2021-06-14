@@ -1,0 +1,30 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+user request -> service A -> service B -> service C
+                    10ms        20          5
+                   35ms        25ms         5ms
+
+
+Track (function_name, request_received_time, response_produced_time)
+
+TraceNode {
+    thread_id = 123 ;
+    service_id = 456
+    request_received_time;
+    response_produced_time;
+    ExceptionMessage;
+    parent_id = 678
+}
+
+//Using map to group all the traceNode with the same tread_Name, and using sorting to figure out the call chains
+
+select * from tracenode where tread_name = "dsd"
+
+
+[] function(){
+    timer;
+    //we can get request_received_time;
+
+    //we can get the next level traceNode from calling functionB();
+    return createTraceNode(thread_name, request_received_time,  current_time);
+}

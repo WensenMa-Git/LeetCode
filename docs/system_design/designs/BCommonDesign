@@ -1,0 +1,138 @@
+First, Let’s start with very basic and standalone application.
+Then we can discuss how to scale up, how to reduce the latency, how to improve the performance, availability, and reliability later.
+
+Requirements and goals of the system:!!!!!!!!!!!!!!!!!!!!!!!!
+- Functional Requirements: (corresponding to rest api)
+    *
+- Non-functional Requirements:
+    * Our service needs to be highly available.
+    * The acceptable latency should be low. [split tiers, split read/write, cache, SQS, cluster]
+    * The system should be highly reliable and fault tolerance. [cluster, SQS, retry, rollback]
+    * We can have monitoring and alarming service.
+    * we can have notification service.
+
+Common strategy for scale the system up:
+- [Split tiers] Initially, when the application is quite small, we run application server (web server and backend servier), database server and store the static files in one host. Application generally have three tiers (rest, service, data)
+- [Split Server] To improve the performance, separate the application with database. We can use three host: application server, storage server, database server.
+- [IO-Cache] To improve the I/O performance, we can use cache such as Redis, Hazelcast. The database access pressure could be relieved.
+- [IO-Cache] To improve the internet response speed, we can use CDN (AWS cloudfront) for caching static files.
+- [IO] We should segregate our read traffic from write traffic.
+- [IO] To improve the I/O performance even more, we can split the read and write for the database. The primary database takes the responsibility for writing data and syncing the data to the secondary database. The secondary database took the responsibility for reading data. (Segregate our read traffic from write traffic)
+- [IO] Index the database table.
+- [asynchronize] If the request need more time to proceed, we can use asynchronized queue to improve the respond speed. Such as Amazon MQ, Amazon SNS, Amazon SQS.
+- [cluster] To improve the computing performance, wen can create a cluster of db/file server. (AWS S3, AWS DB)
+- [cluster] To improve the computing perfornace, we can create a cluster of application server.
+- [distributed] We can split the business model to micro-services.
+- [NoSQL] We can consider Nosql such as Dynamo DB, Elastic Search. (Consider AWS)
+- [Monitor]Improve the security, and fault tolerance. We can add monitor system.
+
+Some design consideration and assumption:==========
+- Decouple front-end server and back-end server.
+- We could consider split read / write server-and-db to reduce IO port pressure.
+- Consider NoSQL database.
+- Consider use cache / CDN
+- Consider use RabbitMQ or SQS
+- Consider use load balancer [Nginx]
+- Consider monitor system.
+
+==========================================================================================
+Common Architecture:
+Client -> load balance -> web services -> backend service -> SQL Database, NoSQL Database.
+                                                          -> Cache Servers. (CDN)
+                                                          -> SQS -> Servers
+                                                          -> Notification System.
+Rollback machenizam,
+Monitor System.
+
+===========================================================================================
+REST API Design:
+HTTP Methods: Delete, Get, Patch, Post, Put
+- GET retrieves a representation of the resource at the specified URI. The body of the response message contains the details of the requested resource.
+- POST creates a new resource at the specified URI. The body of the request message provides the details of the new resource. Note that POST can also be used to trigger operations that don't actually create resources.
+- PUT either creates or replaces the resource at the specified URI. The body of the request message specifies the resource to be created or updated.
+- PATCH performs a partial update of a resource. The request body specifies the set of changes to apply to the resource.
+- DELETE removes the resource at the specified URI.
+
+*******************************************************************************************
+Load balancing layer:
+We can add a Load balancing layer at three places in our system:
+
+Between Clients and Application servers
+Between Application Servers and database servers
+Between Application Servers and Cache servers
+Initially, we could use a simple Round Robin approach that distributes incoming requests equally among backend servers.
+    * This LB is simple to implement and does not introduce any overhead.
+    * Another benefit of this approach is that if a server is dead, LB will take it out of the rotation and will stop sending any traffic to it.
+
+A problem with Round Robin LB is that we don’t take the server load into consideration.
+    * If a server is overloaded or slow, the LB will not stop sending new requests to that server.
+    * To handle this, a more intelligent LB solution can be placed that periodically queries the backend server about its load and adjusts traffic based on that.
+*******************************************************************************************
+
+React Rest API fetch Example: https://www.jianshu.com/p/4da550ac7f15?utm_campaign=maleskine&utm_content=note&utm_medium=seo_notes&utm_source=recommendation
+import React from 'react'
+class RequestStu extends React.Component{
+  constructor(props){
+    super(props)
+    this.state={
+      test:{},
+      arr:[]
+    }
+  }
+  componentDidMount(){
+    fetch('http://localhost/console/scene/scenedetaillist',{
+      method:'GET',
+      headers:{
+        'Content-Type':'application/json;charset=UTF-8'
+      },
+      mode:'cors',
+      cache:'default'
+    })
+     .then(res =>res.json())
+     .then((data) => {
+       console.log(data)
+       this.setState({
+         test:data
+       },function(){
+         console.log(this.state.test)
+         let com = this.state.test.retBody.map((item,index)=>{
+           console.log(item.id)
+           return <li key={index}>{item.name}</li>
+         })
+         this.setState({
+           arr : com
+         },function(){
+           console.log(this.state.arr)
+         })
+       })
+     })
+  }
+
+  render(){
+    return (
+      <div>
+       <ul>
+          {
+            this.state.arr
+          }
+       </ul>
+      </div>
+    )
+  }
+}
+export default RequestStu
+
+*******************************************************************************************
+Database choice concern:
+- If the data is structured and the structure not changing, we use SQL
+- If we need to heavily use Join, we need to use SQL
+- If we need ACID (Atomicity, Consistency, Isolation, Durability), we need to use SQL
+- If the data is not structured and need to be highly scale up, we can use NoSQL.
+
+How to scale up the sql database: https://medium.com/@rokaso/interview-question-how-to-scale-sql-database-to-allow-more-writes-6c8ba6d11ccd
+- Sharding data: Data sharding is splitting the dataset between different servers based on the hash key.
+
+Why ACID:
+-The ACID properties, in totality, provide a mechanism to ensure correctness and consistency of a database in a way
+such that each transaction is a group of operations that acts a single unit, produces consistent results,
+acts in isolation from other operations and updates that it makes are durably stored.
